@@ -28,8 +28,8 @@ import {
   BreadcrumbSeparator
 } from './components/Breadcrumb';
 import { Calendar } from './components/Calendar';
-import { AspectRatio } from './components/aspect-ratio';
-import Carousel, { CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './components/carousel';
+import { AspectRatio } from './components/Aspect-ratio';
+import Carousel, { CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './components/Carousel';
 import {
   ChartContainer,
   ChartTooltip,
@@ -37,7 +37,7 @@ import {
   ChartLegend,
   ChartLegendContent,
   ChartStyle,
-} from "./components/chart";
+} from "./components/Chart";
 
 import {
   LineChart,
@@ -47,11 +47,11 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
-import Checkbox from './components/checkbox';
+import {Checkbox} from './components/Checkbox/Checkbox';
 import Collapsible, {
   CollapsibleTrigger,
   CollapsibleContent,
-} from "./components/collapsible";
+} from "./components/Collapsible";
 import Command, {
   CommandDialog,
   CommandInput,
@@ -61,7 +61,7 @@ import Command, {
   CommandItem,
   CommandShortcut,
   CommandSeparator,
-} from "./components/command";
+} from "./components/Command";
 import React from 'react';
 import ContextMenu, {
   ContextMenuTrigger,
@@ -77,7 +77,7 @@ import ContextMenu, {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuRadioGroup,
-} from "./components/context-menu";
+} from "./components/Context-menu";
 import {
   Drawer,
   DrawerTrigger,
@@ -87,7 +87,7 @@ import {
   DrawerTitle,
   DrawerDescription,
   DrawerClose,
-} from "./components/drawer";
+} from "./components/Drawer";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -104,8 +104,8 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuRadioGroup,
-} from "./components/dropdown-menu";
-import Label from './components/label';
+} from "./components/Dropdown-menu";
+import Label from './components/Label';
 import { useForm } from "react-hook-form";
 import Form, {
   FormField,
@@ -114,14 +114,14 @@ import Form, {
   FormControl,
   FormDescription,
   FormMessage,
-} from "./components/form";
+} from "./components/Form";
 import {
   FormPopup,
   FormPopupOverlay,
   FormPopupContent,
-} from "./components/form-popup";
-import { HoverCard, HoverCardTrigger, HoverCardContent } from "./components/hover-card";
-import { InputOTPGroup, InputOTPSlot, InputOTPSeparator } from './components/input-otp';
+} from "./components/Form-popup";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "./components/Hover-card";
+import { InputOTPGroup, InputOTPSlot, InputOTPSeparator } from './components/Input-otp';
 import {
   Menubar,
   MenubarMenu,
@@ -139,7 +139,7 @@ import {
   MenubarGroup,
   MenubarSub,
   MenubarShortcut,
-} from './components/menubar';
+} from './components/Menubar';
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -150,7 +150,7 @@ import {
   NavigationMenuIndicator,
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
-} from "./components/navigation-menu";
+} from "./components/Navigation-menu";
 
 import {
   Pagination,
@@ -160,12 +160,12 @@ import {
   PaginationEllipsis,
   PaginationNext,
   PaginationPrevious,
-} from "./components/pagination";
-import { Popover, PopoverTrigger, PopoverContent } from "./components/popover";
-import { Progress } from './components/progress';
-import { RadioGroup, RadioGroupItem } from './components/radio-group';
-import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './components/resizable';
-import { ScrollArea, ScrollBar } from './components/scroll-area';
+} from "./components/Pagination";
+import { Popover, PopoverTrigger, PopoverContent } from "./components/Popover";
+import { Progress } from './components/Progress';
+import { RadioGroup, RadioGroupItem } from './components/Radio-group';
+import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './components/Resizable';
+import { ScrollArea, ScrollBar } from './components/Scroll-area';
 import {
   Select,
   SelectGroup,
@@ -177,8 +177,8 @@ import {
   SelectSeparator,
   SelectScrollUpButton,
   SelectScrollDownButton,
-} from './components/select';
-import { Separator } from './components/separator';
+} from './components/Select';
+import { Separator } from './components/Separator';
 import {
   Sheet,
   SheetTrigger,
@@ -188,10 +188,10 @@ import {
   SheetDescription,
   SheetFooter,
   SheetClose,
-} from "./components/sheet/sheet";
-import { Skeleton } from './components/skeleton';
-import { Slider } from './components/slider/slider';
-import { Switch } from './components/switch';
+} from "./components/Sheet/Sheet";
+import { Skeleton } from './components/Skeleton';
+import { Slider } from './components/Slider/Slider';
+import { Switch } from './components/Switch';
 import {
   Table,
   TableHeader,
@@ -201,10 +201,10 @@ import {
   TableRow,
   TableCell,
   TableCaption,
-} from './components/table';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/tabs';
-import { Textarea } from './components/textarea';
-import { Toggle, toggleVariants } from "./components/toggle";
+} from './components/Table';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/Tabs';
+import { Textarea } from './components/Textarea';
+import { Toggle, toggleVariants } from "./components/Toggle";
 import {
   ToastProvider,
   ToastViewport,
@@ -213,9 +213,9 @@ import {
   ToastDescription,
   ToastClose,
   ToastAction,
-} from "./components/toast";
-import { ToggleGroup, ToggleGroupItem } from './components/toggle-group';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './components/tooltip';
+} from "./components/Toast";
+import { ToggleGroup, ToggleGroupItem } from './components/Toggle-group';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './components/Tooltip';
 import {
   Sidebar,
   SidebarContent,
@@ -231,7 +231,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
   SidebarSeparator,
-} from "./components/sidebar";
+} from "./components/Sidebar";
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);
