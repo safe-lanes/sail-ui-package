@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Mail, Search, Settings } from 'lucide-react';
-import Button from './components/Button';
-import Input from './components/Input';
-import Avatar, { AvatarFallback, AvatarImage } from './components/Avatar';
-import Card from './components/Card';
-import Badge from './components/Badge';
-import Dialog, { DialogContent, DialogDescription, DialogFooter, DialogTitle, DialogTrigger, DialogHeader } from './components/Dialog';
-import Spinner from './components/Spinner';
+import Button from './components/ui/Button';
+import Input from './components/ui/Input';
+import Avatar, { AvatarFallback, AvatarImage } from './components/ui/Avatar';
+import Card from './components/ui/Card';
+import Badge from './components/ui/Badge';
+import Dialog, { DialogContent, DialogDescription, DialogFooter, DialogTitle, DialogTrigger, DialogHeader } from './components/ui/Dialog';
+import Spinner from './components/ui/Spinner';
 import { DialogClose } from '@radix-ui/react-dialog';
 import AlertDialog, {
   AlertDialogTrigger,
@@ -17,8 +17,8 @@ import AlertDialog, {
   AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
-} from './components/Alert-dialog';
-import { Alert, AlertTitle, AlertDescription } from './components/Alert';
+} from './components/ui/Alert-dialog';
+import { Alert, AlertTitle, AlertDescription } from './components/ui/Alert';
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -26,10 +26,10 @@ import {
   BreadcrumbLink,
   BreadcrumbPage,
   BreadcrumbSeparator
-} from './components/Breadcrumb';
-import { Calendar } from './components/Calendar';
-import { AspectRatio } from './components/Aspect-ratio';
-import Carousel, { CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './components/Carousel';
+} from './components/ui/Breadcrumb';
+import { Calendar } from './components/ui/Calendar';
+import { AspectRatio } from './components/ui/Aspect-ratio';
+import Carousel, { CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './components/ui/Carousel';
 import {
   ChartContainer,
   ChartTooltip,
@@ -37,7 +37,7 @@ import {
   ChartLegend,
   ChartLegendContent,
   ChartStyle,
-} from "./components/Chart";
+} from "./components/ui/Chart";
 
 import {
   LineChart,
@@ -47,11 +47,11 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
-import {Checkbox} from './components/Checkbox/Checkbox';
+import {Checkbox} from './components/ui/Checkbox/Checkbox';
 import Collapsible, {
   CollapsibleTrigger,
   CollapsibleContent,
-} from "./components/Collapsible";
+} from "./components/ui/Collapsible";
 import Command, {
   CommandDialog,
   CommandInput,
@@ -61,7 +61,7 @@ import Command, {
   CommandItem,
   CommandShortcut,
   CommandSeparator,
-} from "./components/Command";
+} from "./components/ui/Command";
 import React from 'react';
 import ContextMenu, {
   ContextMenuTrigger,
@@ -77,7 +77,7 @@ import ContextMenu, {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuRadioGroup,
-} from "./components/Context-menu";
+} from "./components/ui/Context-menu";
 import {
   Drawer,
   DrawerTrigger,
@@ -87,7 +87,7 @@ import {
   DrawerTitle,
   DrawerDescription,
   DrawerClose,
-} from "./components/Drawer";
+} from "./components/ui/Drawer";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -104,8 +104,8 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuRadioGroup,
-} from "./components/Dropdown-menu";
-import Label from './components/Label';
+} from "./components/ui/Dropdown-menu";
+import Label from './components/ui/Label';
 import { useForm } from "react-hook-form";
 import Form, {
   FormField,
@@ -114,14 +114,14 @@ import Form, {
   FormControl,
   FormDescription,
   FormMessage,
-} from "./components/Form";
+} from "./components/ui/Form";
 import {
   FormPopup,
   FormPopupOverlay,
   FormPopupContent,
-} from "./components/Form-popup";
-import { HoverCard, HoverCardTrigger, HoverCardContent } from "./components/Hover-card";
-import { InputOTPGroup, InputOTPSlot, InputOTPSeparator } from './components/Input-otp';
+} from "./components/ui/Form-popup";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "./components/ui/Hover-card";
+import { InputOTPGroup, InputOTPSlot, InputOTPSeparator } from './components/ui/Input-otp';
 import {
   Menubar,
   MenubarMenu,
@@ -139,7 +139,7 @@ import {
   MenubarGroup,
   MenubarSub,
   MenubarShortcut,
-} from './components/Menubar';
+} from './components/layout/Menubar';
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -150,7 +150,7 @@ import {
   NavigationMenuIndicator,
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
-} from "./components/Navigation-menu";
+} from "./components/layout/Navigation-menu";
 
 import {
   Pagination,
@@ -160,12 +160,12 @@ import {
   PaginationEllipsis,
   PaginationNext,
   PaginationPrevious,
-} from "./components/Pagination";
-import { Popover, PopoverTrigger, PopoverContent } from "./components/Popover";
-import { Progress } from './components/Progress';
-import { RadioGroup, RadioGroupItem } from './components/Radio-group';
-import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './components/Resizable';
-import { ScrollArea, ScrollBar } from './components/Scroll-area';
+} from "./components/ui/Pagination";
+import { Popover, PopoverTrigger, PopoverContent } from "./components/ui/Popover";
+import { Progress } from './components/ui/Progress';
+import { RadioGroup, RadioGroupItem } from './components/ui/Radio-group';
+import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './components/ui/Resizable';
+import { ScrollArea, ScrollBar } from './components/ui/Scroll-area';
 import {
   Select,
   SelectGroup,
@@ -177,8 +177,8 @@ import {
   SelectSeparator,
   SelectScrollUpButton,
   SelectScrollDownButton,
-} from './components/Select';
-import { Separator } from './components/Separator';
+} from './components/ui/Select';
+import { Separator } from './components/ui/Separator';
 import {
   Sheet,
   SheetTrigger,
@@ -188,10 +188,10 @@ import {
   SheetDescription,
   SheetFooter,
   SheetClose,
-} from "./components/Sheet/Sheet";
-import { Skeleton } from './components/Skeleton';
-import { Slider } from './components/Slider/Slider';
-import { Switch } from './components/Switch';
+} from "./components/ui/Sheet/Sheet";
+import { Skeleton } from './components/ui/Skeleton';
+import { Slider } from './components/ui/Slider/Slider';
+import { Switch } from './components/ui/Switch';
 import {
   Table,
   TableHeader,
@@ -201,10 +201,10 @@ import {
   TableRow,
   TableCell,
   TableCaption,
-} from './components/Table';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/Tabs';
-import { Textarea } from './components/Textarea';
-import { Toggle, toggleVariants } from "./components/Toggle";
+} from './components/ui/Table';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/Tabs';
+import { Textarea } from './components/ui/Textarea';
+import { Toggle, toggleVariants } from "./components/ui/Toggle";
 import {
   ToastProvider,
   ToastViewport,
@@ -213,9 +213,9 @@ import {
   ToastDescription,
   ToastClose,
   ToastAction,
-} from "./components/Toast";
-import { ToggleGroup, ToggleGroupItem } from './components/Toggle-group';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './components/Tooltip';
+} from "./components/ui/Toast";
+import { ToggleGroup, ToggleGroupItem } from './components/ui/Toggle-group';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './components/ui/Tooltip';
 import {
   Sidebar,
   SidebarContent,
@@ -231,7 +231,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
   SidebarSeparator,
-} from "./components/Sidebar";
+} from "./components/layout/Sidebar";
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);
