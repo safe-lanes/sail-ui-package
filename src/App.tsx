@@ -47,7 +47,7 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
-import {Checkbox} from './components/ui/Checkbox/Checkbox';
+import { Checkbox } from './components/ui/Checkbox/Checkbox';
 import Collapsible, {
   CollapsibleTrigger,
   CollapsibleContent,
@@ -232,6 +232,7 @@ import {
   SidebarTrigger,
   SidebarSeparator,
 } from "./components/layout/Sidebar";
+import NormalForm from './pages/form/NormalForm';
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -1604,74 +1605,74 @@ function App() {
         </TooltipProvider>
 
         <h1>Sidebar:</h1>
-          <SidebarProvider>
-      <div className="flex h-screen">
-        {/* Sidebar */}
-        <Sidebar className="bg-primary text-white">
-          <SidebarHeader className="p-4 font-bold text-lg">
-            My App
-          </SidebarHeader>
+        <SidebarProvider>
+          <div className="flex h-screen">
+            {/* Sidebar */}
+            <Sidebar className="bg-primary text-white">
+              <SidebarHeader className="p-4 font-bold text-lg">
+                My App
+              </SidebarHeader>
 
-          <SidebarContent>
-            {/* Group 1 */}
-            <SidebarGroup>
-              <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="hover:bg-primary hover:text-white rounded-md">
-                      Dashboard
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="hover:bg-primary hover:text-white rounded-md">
-                      Settings
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
+              <SidebarContent>
+                {/* Group 1 */}
+                <SidebarGroup>
+                  <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+                  <SidebarGroupContent>
+                    <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton className="hover:bg-primary hover:text-white rounded-md">
+                          Dashboard
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton className="hover:bg-primary hover:text-white rounded-md">
+                          Settings
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </SidebarGroupContent>
+                </SidebarGroup>
 
-            <SidebarSeparator />
+                <SidebarSeparator />
 
-            {/* Group 2 */}
-            <SidebarGroup>
-              <SidebarGroupLabel>More</SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="hover:bg-primary hover:text-white rounded-md">
-                      Help
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="hover:bg-primary hover:text-white rounded-md">
-                      About
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          </SidebarContent>
+                {/* Group 2 */}
+                <SidebarGroup>
+                  <SidebarGroupLabel>More</SidebarGroupLabel>
+                  <SidebarGroupContent>
+                    <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton className="hover:bg-primary hover:text-white rounded-md">
+                          Help
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton className="hover:bg-primary hover:text-white rounded-md">
+                          About
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </SidebarGroupContent>
+                </SidebarGroup>
+              </SidebarContent>
 
-          <SidebarFooter className="p-4 text-sm text-gray-400">
-            © 2025 My App
-          </SidebarFooter>
-        </Sidebar>
+              <SidebarFooter className="p-4 text-sm text-gray-400">
+                © 2025 My App
+              </SidebarFooter>
+            </Sidebar>
 
-        {/* Main content area */}
-        <SidebarInset className="flex-1 bg-gray-50 p-6">
-          <SidebarTrigger className="mb-4 px-3 py-1 bg-primary text-white rounded hover:bg-primary/80">
-            Toggle Sidebar
-          </SidebarTrigger>
-          <h1 className="text-2xl font-bold mb-4">Welcome</h1>
-          <p>
-            This is your main content area. You can resize the sidebar or toggle
-            it using the button above.
-          </p>
-        </SidebarInset>
-      </div>
-    </SidebarProvider>
+            {/* Main content area */}
+            <SidebarInset className="flex-1 bg-gray-50 p-6">
+              <SidebarTrigger className="mb-4 px-3 py-1 bg-primary text-white rounded hover:bg-primary/80">
+                Toggle Sidebar
+              </SidebarTrigger>
+              <h1 className="text-2xl font-bold mb-4">Welcome</h1>
+              <p>
+                This is your main content area. You can resize the sidebar or toggle
+                it using the button above.
+              </p>
+            </SidebarInset>
+          </div>
+        </SidebarProvider>
         {/* Cards Section */}
         <Card>
           <h2 className="text-2xl font-semibold text-slate-900 mb-6">Card Variations</h2>
@@ -1689,6 +1690,9 @@ function App() {
               <p className="text-slate-600">This card has large padding and hover effect.</p>
             </Card>
           </div>
+        </Card>
+        <Card>
+          <NormalForm />
         </Card>
       </div>
     </div>
