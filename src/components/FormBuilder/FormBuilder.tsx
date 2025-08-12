@@ -1,166 +1,376 @@
-import React, { useState } from "react";
-import { useForm, FieldValues } from "react-hook-form";
-import clsx from "clsx";
+import React, { useState, useCallback } from "react";
+import Stepper from "./Stepper";
+import { FormConfig, FieldConfig } from "./types";
+import { ToastContainer, toast } from "react-toastify";
 
-// -------------------- Types --------------------
-export type FieldType = "text" | "email" | "tel" | "checkbox" | "number" | "password";
-
-export interface FieldSchema {
-  name: string;
-  label: string;
-  type: FieldType;
-  required?: boolean;
-  disabled?: boolean;
-  showIf?: {
-    field: string;
-    value: any;
-  };
+interface Props {
+    config: FormConfig;
+    onSubmit: (data: Record<string, any>) => void;
+    stepperOnly?: boolean;
+    formOnly?: boolean;
 }
 
-export interface StepSchema {
-  title: string;
-  fields: FieldSchema[];
-}
+export const FormBuilder: React.FC<Props> = ({
+    config,
+    onSubmit,
+    stepperOnly,
+    formOnly,
+}) => {
+    const [currentStep, setCurrentStep] = useState(0);
+    const [data, setData] = useState<Record<string, any>>({});
+    const [touched, setTouched] = useState<Record<string, boolean>>({});
 
-export interface FormSchema {
-  type: "normal" | "stepper";
-  buttonAlignment?: "left" | "center" | "right" | "space-between";
-  stepperDirection?: "horizontal" | "vertical";
-  fields?: FieldSchema[]; // For normal form
-  steps?: StepSchema[];   // For stepper form
-}
+    const steps = config.steps || [];
+    const stepperDirection = config.stepperDirection || "vertical";
+    const stepperPosH = config.stepperPosition || "top";
+    const buttonAlignment = config.buttonAlignment || "right";
+    const stepType = config.type || "normal";
 
-interface FormBuilderProps<T extends FieldValues> {
-  schema: FormSchema;
-  onSubmit: (data: T) => void;
-}
+    const validateStep = useCallback(
+        (stepIndex: number) => {
+            const fields = steps[stepIndex].fields;
+            for (const f of fields) {
+                if (f.showIf && data[f.showIf.field] !== f.showIf.value) continue;
+                if (f.required) {
+                    const val = data[f.name];
+                    if (val === undefined || val === null || val === "") {
+                        toast.error(`${f.label} is required`);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        },
+        [data, steps]
+    );
 
-// -------------------- Component --------------------
-export default function FormBuilder<T extends FieldValues>({
-  schema,
-  onSubmit
-}: FormBuilderProps<T>) {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<T>();
-  const [step, setStep] = useState(0);
-  const watchAll = watch();
+    // Handle going to next step or submit
+    const handleNext = useCallback(() => {
+        if (!validateStep(currentStep)) return;
+        if (currentStep < steps.length - 1) setCurrentStep((s) => s + 1);
+        else onSubmit(data);
+    }, [currentStep, data, onSubmit, steps.length, validateStep]);
 
-  const isFieldVisible = (field: FieldSchema) => {
-    if (!field.showIf) return true;
-    return watchAll[field.showIf.field] === field.showIf.value;
-  };
+    // Handle going to previous step
+    const handleBack = useCallback(() => {
+        if (currentStep > 0) setCurrentStep((s) => s - 1);
+    }, [currentStep]);
 
-  const currentStep = schema.type === "stepper"
-    ? schema.steps?.[step] ?? { fields: [] }
-    : { fields: schema.fields ?? [] };
+    // Handle clicking on stepper step
+    const handleStepClick = useCallback(
+        (targetStep: number) => {
+            if (targetStep < currentStep) {
+                // Allow going back freely
+                setCurrentStep(targetStep);
+                return;
+            }
+            // Validate current step before moving forward
+            if (!validateStep(currentStep)) return;
+            setCurrentStep(targetStep);
+        },
+        [currentStep, validateStep]
+    );
 
-  const handleNext = () => setStep((prev) => prev + 1);
-  const handlePrev = () => setStep((prev) => prev - 1);
+    // Handle input change
+    const handleChange = useCallback(
+        (name: string, value: any) => {
+            setData((prev) => ({ ...prev, [name]: value }));
+            setTouched((prev) => ({ ...prev, [name]: true }));
+        },
+        []
+    );
 
-  const getButtonAlignmentClass = (align?: FormSchema["buttonAlignment"]) => {
-    switch (align) {
-      case "left": return "justify-start";
-      case "center": return "justify-center";
-      case "right": return "justify-end";
-      case "space-between": return "justify-between";
-      default: return "justify-end";
-    }
-  };
+    // Check if field visible
+    const isVisible = useCallback(
+        (field: FieldConfig) => {
+            if (!field.showIf) return true;
+            return data[field.showIf.field] === field.showIf.value;
+        },
+        [data]
+    );
 
-  return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="space-y-6 bg-white p-6 rounded-xl shadow-md"
-    >
-      {/* Stepper Navigation */}
-      {schema.type === "stepper" &&
-        schema.stepperDirection === "horizontal" &&
-        schema.steps && (
-          <div className="flex gap-4 mb-6">
-            {schema.steps.map((s, i) => (
-              <div
-                key={i}
-                className={clsx(
-                  "px-4 py-2 rounded-full border cursor-pointer transition",
-                  i === step
-                    ? "bg-blue-500 text-white border-blue-500"
-                    : "bg-gray-100 text-gray-600 border-gray-300"
+    // Render input fields by type
+    const renderField = useCallback(
+        (f: FieldConfig) => {
+            if (!isVisible(f)) return null;
+
+            const value = data[f.name] ?? (f.type === "checkbox" ? false : "");
+            const showError =
+                f.required &&
+                touched[f.name] &&
+                (value === "" || value === undefined || value === null);
+
+            const baseLabel = (
+                <label className="block mb-1 font-medium" htmlFor={f.name}>
+                    {f.label}
+                    {f.required && <span className="text-red-500 ml-1">*</span>}
+                </label>
+            );
+
+            switch (f.type) {
+                case "textarea":
+                    return (
+                        <div key={f.name} className="mb-4">
+                            {baseLabel}
+                            <textarea
+                                id={f.name}
+                                value={value}
+                                placeholder={f.placeholder}
+                                onChange={(e) => handleChange(f.name, e.target.value)}
+                                className="w-full border rounded p-2"
+                            />
+                            {showError && (
+                                <div className="text-red-500 text-sm mt-1">{f.label} is required</div>
+                            )}
+                        </div>
+                    );
+
+                case "select":
+                    return (
+                        <div key={f.name} className="mb-4">
+                            {baseLabel}
+                            <select
+                                id={f.name}
+                                value={value}
+                                onChange={(e) => handleChange(f.name, e.target.value)}
+                                className="w-full border rounded p-2"
+                            >
+                                <option value="">Select...</option>
+                                {f.options?.map((opt) => (
+                                    <option key={opt.value} value={opt.value}>
+                                        {opt.label}
+                                    </option>
+                                ))}
+                            </select>
+                            {showError && (
+                                <div className="text-red-500 text-sm mt-1">{f.label} is required</div>
+                            )}
+                        </div>
+                    );
+
+                case "checkbox":
+                    return (
+                        <div key={f.name} className="mb-4 flex items-center">
+                            <input
+                                id={f.name}
+                                type="checkbox"
+                                checked={!!value}
+                                onChange={(e) => handleChange(f.name, e.target.checked)}
+                                className="mr-3"
+                            />
+                            <label htmlFor={f.name} className="font-medium">
+                                {f.label}
+                                {f.required && <span className="text-red-500 ml-1">*</span>}
+                            </label>
+                        </div>
+                    );
+
+                default:
+                    return (
+                        <div key={f.name} className="mb-4">
+                            {baseLabel}
+                            <input
+                                id={f.name}
+                                type={f.type}
+                                value={value}
+                                placeholder={f.placeholder}
+                                onChange={(e) => handleChange(f.name, e.target.value)}
+                                className="w-full border rounded p-2"
+                            />
+                            {showError && (
+                                <div className="text-red-500 text-sm mt-1">{f.label} is required</div>
+                            )}
+                        </div>
+                    );
+            }
+        },
+        [data, handleChange, isVisible, touched]
+    );
+
+    // Buttons component for navigation with alignment
+    const Buttons: React.FC<{
+        lastStep: boolean;
+    }> = ({ lastStep }) => {
+        const justifyClass =
+            buttonAlignment === "center"
+                ? "justify-center"
+                : buttonAlignment === "right"
+                    ? "justify-end"
+                    : buttonAlignment === "space-between"
+                        ? "justify-between"
+                        : "justify-start";
+
+        return (
+            <div className={`mt-6 flex gap-2 ${justifyClass}`}>
+                {currentStep > 0 && (
+                    <button onClick={handleBack} className="px-4 py-2 bg-gray-300 rounded">
+                        Back
+                    </button>
                 )}
-                onClick={() => setStep(i)}
-              >
-                {s.title}
-              </div>
-            ))}
-          </div>
-      )}
-
-      {/* Fields */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {currentStep.fields.map((field) =>
-          isFieldVisible(field) && (
-            <div key={field.name} className="flex flex-col">
-              <label className="font-medium mb-1">{field.label}</label>
-              <input
-                type={field.type}
-                {...register(field.name as keyof T, { required: field.required })}
-                disabled={field.disabled}
-                className={clsx(
-                  "border rounded-lg px-3 py-2 focus:outline-none focus:ring-2",
-                  errors[field.name]
-                    ? "border-red-500 focus:ring-red-400"
-                    : "border-gray-300 focus:ring-blue-400"
+                {!lastStep ? (
+                    <button
+                        onClick={handleNext}
+                        className="px-4 py-2 bg-blue-600 text-white rounded"
+                    >
+                        Next
+                    </button>
+                ) : (
+                    <button
+                        onClick={() => {
+                            if (!validateStep(currentStep)) return;
+                            onSubmit(data);
+                        }}
+                        className="px-4 py-2 bg-green-600 text-white rounded"
+                    >
+                        Submit
+                    </button>
                 )}
-              />
-              {errors[field.name] && (
-                <span className="text-sm text-red-500">
-                  This field is required
-                </span>
-              )}
             </div>
-          )
-        )}
-      </div>
+        );
+    };
 
-      {/* Buttons */}
-      <div
-        className={`flex ${getButtonAlignmentClass(schema.buttonAlignment)} gap-3 mt-6`}
-      >
-        {schema.type === "stepper" ? (
-          <>
-            {step > 0 && (
-              <button
-                type="button"
-                onClick={handlePrev}
-                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
-              >
-                {schema.stepperDirection === "horizontal" ? "← Back" : "Back"}
-              </button>
-            )}
-            {step < (schema.steps?.length ?? 0) - 1 ? (
-              <button
-                type="button"
-                onClick={handleNext}
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-              >
-                {schema.stepperDirection === "horizontal" ? "Next →" : "Next"}
-              </button>
-            ) : (
-              <button
-                type="submit"
-                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-              >
-                Submit
-              </button>
-            )}
-          </>
-        ) : (
-          <button
-            type="submit"
-            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-          >
-            Submit
-          </button>
-        )}
-      </div>
-    </form>
-  );
-}
+    // Render stepper + form according to layout
+    const renderFormLayout = () => {
+        const stepperProps = {
+            steps: steps.map((s) => ({
+                title: s.title,
+                description: s.description ?? "",
+                fields: s.fields,
+            })),
+            current: currentStep,
+            onStepClick: handleStepClick,
+            direction:
+                stepperDirection === "vertical" || stepperDirection === "horizontal"
+                    ? stepperDirection
+                    : "vertical",
+        };
+
+        const formContent = (
+            <div className="p-6 border rounded bg-white max-w-2xl mx-auto">
+                <h3 className="text-lg font-semibold mb-2">{steps[currentStep].title}</h3>
+                {steps[currentStep].description && (
+                    <p className="text-sm text-gray-500 mb-4">{steps[currentStep].description}</p>
+                )}
+                {steps[currentStep].fields.map(renderField)}
+                <Buttons lastStep={currentStep === steps.length - 1} />
+            </div>
+        );
+
+        switch (stepperPosH) {
+            case "top":
+                return (
+                    <div>
+                        <Stepper {...stepperProps} direction="horizontal" />
+                        <div className="mt-6">{formContent}</div>
+                    </div>
+                );
+
+            case "bottom":
+                return (
+                    <div>
+                        <div>{formContent}</div>
+                        <div className="mt-6">
+                            <Stepper {...stepperProps} direction="horizontal" />
+                        </div>
+                    </div>
+                );
+
+            case "left":
+                return (
+                    <div className="flex gap-6">
+                        <div className="w-1/4">
+                            <Stepper {...stepperProps} direction="vertical" />
+                        </div>
+                        <div className="w-3/4">{formContent}</div>
+                    </div>
+                );
+
+            case "right":
+                return (
+                    <div className="flex gap-6">
+                        <div className="w-3/4">{formContent}</div>
+                        <div className="w-1/4">
+                            <Stepper {...stepperProps} direction="vertical" />
+                        </div>
+                    </div>
+                );
+
+            case "center":
+            default:
+                return (
+                    <div>
+                        <div className="flex justify-center">
+                            <Stepper {...stepperProps} direction="horizontal" />
+                        </div>
+                        <div className="mt-6">{formContent}</div>
+                    </div>
+                );
+        }
+    };
+
+    // Render modes
+    if (stepType === 'stepper') {
+        return (
+            <>
+                <ToastContainer />
+                <Stepper
+                    steps={steps.map((s) => ({
+                        title: s.title,
+                        description: s.description ?? "",
+                        fields: s.fields,
+                    }))}
+                    current={currentStep}
+                    onStepClick={handleStepClick}
+                    direction={stepperDirection}
+                />
+            </>
+        );
+    }
+
+    if (stepType === "normal") {
+        return (
+            <>
+                <ToastContainer />
+                <div>
+                    {steps[currentStep].fields.map(renderField)}
+                    <div className="mt-6 flex gap-2 justify-end">
+                        {currentStep > 0 && (
+                            <button
+                                onClick={handleBack}
+                                className="px-4 py-2 bg-gray-300 rounded"
+                            >
+                                Back
+                            </button>
+                        )}
+                        {currentStep < steps.length - 1 ? (
+                            <button
+                                onClick={handleNext}
+                                className="px-4 py-2 bg-blue-600 text-white rounded"
+                            >
+                                Next
+                            </button>
+                        ) : (
+                            <button
+                                onClick={() => {
+                                    if (!validateStep(currentStep)) return;
+                                    onSubmit(data);
+                                }}
+                                className="px-4 py-2 bg-green-600 text-white rounded"
+                            >
+                                Submit
+                            </button>
+                        )}
+                    </div>
+                </div>
+            </>
+        );
+    }
+
+    // Full stepper + form layout
+    return (
+        <>
+            <ToastContainer />
+            {renderFormLayout()}
+        </>
+    );
+};
