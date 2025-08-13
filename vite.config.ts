@@ -9,8 +9,8 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'ComponentLibrary',
-      formats: ['es', 'cjs'],
-      fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`,
+      formats: ['es', 'cjs', 'umd'],
+      fileName: (format) => `index.${format}`,
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
