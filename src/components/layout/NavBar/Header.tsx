@@ -1,60 +1,59 @@
+import React, { useState } from "react";
+import { ModuleNavigator, Module } from "./ModuleNavigator"; // Adjust import path
+import { cn } from "../../../lib/utils"; // or replace with clsx or simple string concat
 
-import React from 'react';
-import { cn } from '../../../lib/utils';
-// Define the navigation item interface
 export interface NavItem {
     id?: string;
     title: string;
-    icon: React.ReactElement;
+    icon: React.ElementType; // Icon component
     link: string;
-    isActive?: boolean;
+    activeBg?: string;
+    activeText?: string;
+    inactiveBg?: string;
+    inactiveText?: string;
     badge?: string;
+    isActive?: boolean; // <-- Control active state externally
 }
 
-// Define the header props interface
+export interface LogoProps {
+    src: string;
+    alt: string;
+    className?: string;
+}
+
 export interface HeaderProps {
-    logo?: {
-        src: string;
-        alt: string;
-        className: string;
-    };
+    logo?: LogoProps;
     navItems: NavItem[];
-    onNavClick?: (item: NavItem) => void;
+    modules: Module[];
     rightSection?: React.ReactNode;
+    onNavClick?: (item: NavItem) => void;
 }
-
 
 export const Header: React.FC<HeaderProps> = ({
     logo,
     navItems,
+    modules,
+    rightSection,
     onNavClick,
-    rightSection
 }) => {
-    const handleNavClick = (item: NavItem) => {
-        if (onNavClick) {
-            onNavClick(item);
-        } else {
-            // Default behavior - navigate to link
-            window.location.href = item.link;
-        }
-    };
+    const [currentModule, setCurrentModule] = useState<string>(
+        modules.length > 0 ? modules[0].id : ""
+    );
 
-    const renderIcon = (iconElement: React.ReactElement) => {
-        return React.cloneElement(iconElement, {
-            className: "w-4 h-4"
-        });
+    const handleModuleChange = (moduleId: string) => {
+        setCurrentModule(moduleId);
     };
 
     return (
-        <header className="bg-white shadow-sm border-b border-gray-200">
-            <div className="flex items-center justify-between px-4 py-1">
-                {/* Left Section - Logo */}
-                <div className="flex items-center">
+        <header className="w-full h-[67px] bg-[#E8E8E8] border-b-2 border-[#5DADE2]">
+            <div className="flex items-center h-full">
+                {/* Logo */}
+                <div className="flex items-center ml-4">
                     {logo ? (
                         <img
                             src={logo.src}
                             alt={logo.alt}
-                            className={cn("h-12 w-auto", logo.className)}
+                            className={cn("h-12 w-auto", logo.className ?? "")}
                         />
                     ) : (
                         <div className="flex items-center">
@@ -65,46 +64,85 @@ export const Header: React.FC<HeaderProps> = ({
                     )}
                 </div>
 
-                {/* Center Section - Navigation Items */}
+                {/* Navigation Menu */}
                 <nav className="flex items-center space-x-1">
-                    {navItems.map((item, index) => (
-                        <button
-                            key={item.id || `nav-${index}`}
-                            onClick={() => handleNavClick(item)}
-                            className={`
-                flex flex-col items-center px-3 py-2 rounded-lg transition-colors duration-200 min-w-[70px] relative
-                ${item.isActive
-                                    ? 'bg-blue-500 text-white'
-                                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
-                                }
-              `}
-                            title={item.title}
-                        >
-                            <div className="flex items-center justify-center mb-1">
-                                {renderIcon(item.icon)}
-                                {item.badge && (
-                                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                                        {item.badge}
-                                    </span>
-                                )}
-                            </div>
-                            <span className="text-xs font-medium truncate max-w-[60px]">
-                                {item.title}
-                            </span>
-                        </button>
-                    ))}
+                    {/* Module Navigator */}
+                    <div className="flex flex-col items-center justify-center w-[100px] h-[67px] bg-[#E8E8E8] border-r border-gray-300">
+                        <ModuleNavigator
+                            currentModule={currentModule}
+                            onModuleChange={handleModuleChange}
+                            modules={modules}
+                        />
+                    </div>
+
+                    {/* Nav Items */}
+                    <div className="flex">
+                        {navItems.map(
+                            ({
+                                id,
+                                title,
+                                link,
+                                icon: Icon,
+                                activeBg = "#5DADE2",
+                                activeText = "white",
+                                inactiveBg = "#E8E8E8",
+                                inactiveText = "#4f5863",
+                                badge,
+                                isActive,
+                            }) => {
+                                // If isActive provided externally, use it; else fallback false
+                                const active = !!isActive;
+
+                                const handleClick = () => {
+                                    onNavClick?.({ id, title, link, icon: Icon });
+                                };
+
+                                return (
+                                    <div
+                                        key={link}
+                                        onClick={handleClick}
+                                        className="relative flex flex-col items-center justify-center w-[100px] h-[67px] border-r border-gray-300 cursor-pointer hover:bg-gray-300"
+                                        style={{
+                                            backgroundColor: active ? activeBg : inactiveBg,
+                                        }}
+                                        role="button"
+                                        tabIndex={0}
+                                        onKeyDown={(e) => {
+                                            if (e.key === "Enter" || e.key === " ") {
+                                                e.preventDefault();
+                                                handleClick();
+                                            }
+                                        }}
+                                    >
+                                        <Icon
+                                            size={24}
+                                            color={active ? activeText : "#6B7280"}
+                                            className="mb-1"
+                                        />
+                                        <div
+                                            className="text-[10px] font-normal font-['Roboto',Helvetica]"
+                                            style={{ color: active ? activeText : inactiveText }}
+                                        >
+                                            {title}
+                                        </div>
+
+                                        {badge && (
+                                            <span className="absolute top-1 right-2 text-xs bg-red-600 rounded-full px-1.5 text-white">
+                                                {badge}
+                                            </span>
+                                        )}
+                                    </div>
+                                );
+                            }
+                        )}
+                    </div>
                 </nav>
 
-                {/* Right Section - Action Buttons & User */}
-                {
-                    rightSection && (
-                        <div className="flex items-center space-x-2 ">
-                            {rightSection}
-                        </div>
-                    )
-                }
+                {/* Right Section */}
+                {rightSection && (
+                    <div className="flex items-center space-x-2 ml-auto mr-4">{rightSection}</div>
+                )}
             </div>
         </header>
     );
 };
-
