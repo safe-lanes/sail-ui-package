@@ -4,13 +4,15 @@
   "description": "A modern React component library built with Vite and Tailwind CSS",
   "type": "module",
   "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.es.mjs",
+  "umd:main": "./dist/index.umd.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.es.mjs",
+      "require": "./dist/index.cjs",
+      "umd": "./dist/index.umd.js"
     },
     "./styles": "./dist/style.css"
   },
@@ -46,7 +48,6 @@
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.344.0",
-    "path": "^0.12.7",
     "react-day-picker": "^8.10.1",
     "react-dropzone": "^14.3.8",
     "react-hook-form": "^7.62.0",
