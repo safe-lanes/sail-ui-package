@@ -1,7 +1,7 @@
 import { Slot } from "@radix-ui/react-slot";
 import { type VariantProps, cva } from "class-variance-authority";
 import * as React from "react";
-import { cn } from  "../../../lib/utils";
+import { cn } from "../../../lib/utils";
 
 // Simple spinner component
 const Spinner = () => (
@@ -42,6 +42,10 @@ const ButtonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        success:
+          "bg-green-500 text-white shadow-sm hover:bg-green-600",
+        warning:
+          "bg-yellow-500 text-black shadow-sm hover:bg-yellow-600",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -55,7 +59,7 @@ const ButtonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 export interface ButtonProps
@@ -63,23 +67,64 @@ export interface ButtonProps
     VariantProps<typeof ButtonVariants> {
   asChild?: boolean;
   loading?: boolean;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  badgeContent?: React.ReactNode; // number, text, or undefined
+  badgeVariant?: "dot" | "number";
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, loading = false, asChild = false, children, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      loading = false,
+      asChild = false,
+      leftIcon,
+      rightIcon,
+      children,
+      badgeContent,
+      badgeVariant = "number",
+      ...props
+    },
+    ref
+  ) => {
     const Comp = asChild ? Slot : "button";
+
     return (
-      <Comp
-        className={cn(ButtonVariants({ variant, size, className }))}
-        ref={ref}
-        disabled={loading || props.disabled}
-        {...props}
-      >
-        {loading && <Spinner />}
-        {loading ? "Loading..." : children}
-      </Comp>
+      <div className="relative inline-block">
+        <Comp
+          className={cn(ButtonVariants({ variant, size, className }))}
+          ref={ref}
+          disabled={loading || props.disabled}
+          {...props}
+        >
+          {loading && <Spinner />}
+          {!loading && leftIcon && (
+            <span className="flex items-center">{leftIcon}</span>
+          )}
+          {loading ? "Loading..." : children}
+          {!loading && rightIcon && (
+            <span className="flex items-center">{rightIcon}</span>
+          )}
+        </Comp>
+
+        {badgeContent !== undefined && (
+          <span
+            className={cn(
+              "absolute -top-1.5 -right-1.5 flex items-center justify-center rounded-full bg-red-500 text-white",
+              badgeVariant === "dot"
+                ? "h-3 w-3"
+                : "min-w-[18px] h-[18px] px-1 text-xs font-bold"
+            )}
+          >
+            {badgeVariant === "number" && badgeContent}
+          </span>
+        )}
+      </div>
     );
-  },
+  }
 );
 Button.displayName = "Button";
 

@@ -5,22 +5,19 @@ import { cn } from  "../../../lib/utils";
 const BadgeVariants = cva(
   "inline-flex items-center rounded-md border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
   {
-    variants: {
+variants: {
       variant: {
-        default:
-          "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
-        secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        destructive:
-          "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
-        danger: // alias for destructive
-          "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
-        outline: "text-foreground border border-input",
+        default: "bg-primary text-primary-foreground border-transparent",
+        secondary: "bg-secondary text-secondary-foreground border-transparent",
+        success: "bg-green-500 text-white border-transparent",
+        warning: "bg-yellow-400 text-black border-transparent",
+        destructive: "bg-red-500 text-white border-transparent",
+        outline: "text-foreground border border-input bg-transparent",
       },
       size: {
-        sm: "px-2 py-0.5 text-xs",
-        md: "px-2.5 py-0.5 text-sm",
-        lg: "px-3 py-1 text-base",
+        sm: "text-xs px-2 py-0.5",
+        md: "text-sm px-3 py-1",
+        lg: "text-base px-4 py-1.5",
       },
     },
     defaultVariants: {

@@ -6,30 +6,43 @@ import {
   Youtube
 } from 'lucide-react';
 import { modulesData, navItems } from '../../utils/headerData';
-
-
+import { useLocation } from 'wouter';
+import { useMemo } from 'react';
+ import { useNavigate } from "react-router-dom";
+ 
 const HeaderExample: React.FC = () => {
+    const navigate = useNavigate();
+  const [location] = useLocation();
   const handleNavClick = (item: NavItem) => {
     console.log('Navigation clicked:', item);
     // Handle navigation logic here
+    navigate(item.link)
   };
-
+ 
   const handleNewClick = () => {
     console.log('New button clicked');
   };
-
+ 
   const handleYoutubeClick = () => {
     console.log('YouTube button clicked');
   };
-
+ 
   const handleRefreshClick = () => {
     console.log('Refresh button clicked');
   };
-  const userAvatar = null
+ 
+  const navData = useMemo(() => {
+    return navItems.map((item: any) => ({
+      ...item,
+      isActive: location === item.link
+    }));
+  }, [location]);
+ 
+  const userAvatar = null;
   return (
     <div>
       <Header
-        navItems={navItems}
+        navItems={navData}
         onNavClick={handleNavClick}
         logo={{
           src: 'https://dev2.sl-sail.com/assets/logo.svg',
@@ -45,7 +58,7 @@ const HeaderExample: React.FC = () => {
             <Plus className="w-4 h-4" />
             <span>New</span>
           </button>
-
+ 
           {/* YouTube Button */}
           <button
             onClick={handleYoutubeClick}
@@ -54,7 +67,7 @@ const HeaderExample: React.FC = () => {
           >
             <Youtube className="w-4 h-4" />
           </button>
-
+ 
           {/* Refresh Button */}
           <button
             onClick={handleRefreshClick}
@@ -63,7 +76,7 @@ const HeaderExample: React.FC = () => {
           >
             <RotateCcw className="w-4 h-4" />
           </button>
-
+ 
           {/* User Avatar */}
           <div className="flex items-center">
             {userAvatar ? (
@@ -84,5 +97,5 @@ const HeaderExample: React.FC = () => {
     </div>
   );
 };
-
+ 
 export default HeaderExample;

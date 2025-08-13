@@ -1,8 +1,4 @@
 import {
-    BarChart3,
-    User,
-    Grid3X3,
-    Calendar,
     FileText,
     UserCheck,
     Users,
@@ -12,36 +8,41 @@ import {
     Settings,
     UserPlus,
     File,
+    FormInput,
+    Grid,
+    Blocks,
+    CheckCircle,
 } from "lucide-react";
 import { NavItem } from "../components/layout/NavBar/Header";
 import { Module } from "../components/layout/NavBar/ModuleNavigator";
 
 export const navItems: NavItem[] = [
     {
-        id: "dashboard",
-        title: "Dashboard",
-        icon: BarChart3,
-        link: "/dashboard",
+        id: "forms",
+        title: "Forms",
+        icon: Grid,
+        link: "/forms",
         isActive: true,
     },
+
     {
-        title: "Personal Details",
-        icon: User,
-        link: "/personal-details",
-        badge: "BETA",
+        title: "Input",
+        icon: FormInput,
+        link: "/inputs",
+        // badge: "BETA",
     },
     {
-        id: "audit",
-        title: "Audit",
-        icon: Grid3X3,
-        link: "/audit",
+        id: "buttons",
+        title: "Buttons",
+        icon: Blocks,
+        link: "/buttons",
         isActive: false,
     },
     {
-        id: "planning",
-        title: "Planning",
-        icon: Calendar,
-        link: "/planning",
+        id: "checkboxes",
+        title: "Checkbox-Radio",
+        icon: CheckCircle,
+        link: "/checkboxes",
         isActive: false,
     },
     {
