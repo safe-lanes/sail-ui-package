@@ -3,6 +3,8 @@ import React from 'react';
 import { SideBar } from './components/layout/NavBar/Sidebar';
 import HeaderExample from './pages/navbar/HeaderExample';
 import { sidebarItems } from './utils/sideBarData';
+import { Card } from '.';
+import NormalForm from './pages/form/NormalForm';
 
 const App: React.FC = () => {
 
@@ -51,6 +53,10 @@ const App: React.FC = () => {
                     <p className="text-sm text-gray-600">Sample content for demonstration</p>
                   </div>
                 </div>
+
+                <Card className='my-3 p-2'>
+                  <NormalForm />
+                </Card>
               </div>
             </div>
           </main>

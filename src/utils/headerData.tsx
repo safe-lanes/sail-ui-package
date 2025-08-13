@@ -93,6 +93,13 @@ export const navItems: NavItem[] = [
         link: "/custom",
         isActive: false,
         badge: "BETA",
+    }, {
+        id: "demo",
+        title: "Demo",
+        icon: Settings,
+        link: "/custom",
+        isActive: false,
+        badge: "BETA",
     },
 ];
 

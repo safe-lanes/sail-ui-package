@@ -13,8 +13,6 @@ interface Props {
 export const FormBuilder: React.FC<Props> = ({
     config,
     onSubmit,
-    stepperOnly,
-    formOnly,
 }) => {
     const [currentStep, setCurrentStep] = useState(0);
     const [data, setData] = useState<Record<string, any>>({});
@@ -246,7 +244,7 @@ export const FormBuilder: React.FC<Props> = ({
         };
 
         const formContent = (
-            <div className="p-6 border rounded bg-white max-w-2xl mx-auto">
+            <div className="p-6 border rounded bg-white ">
                 <h3 className="text-lg font-semibold mb-2">{steps[currentStep].title}</h3>
                 {steps[currentStep].description && (
                     <p className="text-sm text-gray-500 mb-4">{steps[currentStep].description}</p>

@@ -40,7 +40,7 @@ export default function NormalForm() {
     });
 
     return (
-        <div className="max-w-6xl mx-auto p-6">
+        <div>
             {/* Settings Panel */}
             <div className="mb-6 p-4 border rounded bg-gray-50 space-y-4">
                 <h2 className="font-bold mb-4">Form Settings</h2>
