@@ -18,13 +18,19 @@ export default defineConfig({
     },
     rollupOptions: {
       // Externalize React, ReactDOM, and all Radix packages
-      external: ['react', 'react-dom', /^@radix-ui\/.*/],
+      external: [
+        'react',
+        'react-dom',
+        '@radix-ui/react-slot',
+        /^@radix-ui\/.*/
+      ],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-        },
-      },
+          '@radix-ui/react-slot': 'ReactSlot'
+        }
+      }
     },
   },
   optimizeDeps: {

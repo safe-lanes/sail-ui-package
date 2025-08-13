@@ -3499,5 +3499,5 @@ const zt = () => /* @__PURE__ */ X.jsxs(
 It.displayName = "Button";
 export {
   It as Button,
-  Mt as ButtonVariants
+  It as buttonVariants
 };

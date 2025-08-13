@@ -21,7 +21,7 @@ declare const Sidebar: React.ForwardRefExoticComponent<Omit<React.ClassAttribute
     variant?: "sidebar" | "floating" | "inset";
     collapsible?: "offcanvas" | "icon" | "none";
 }, "ref"> & React.RefAttributes<HTMLDivElement>>;
-declare const SidebarTrigger: React.ForwardRefExoticComponent<Omit<import("../../..").ButtonProps & React.RefAttributes<HTMLButtonElement>, "ref"> & React.RefAttributes<HTMLButtonElement>>;
+declare const SidebarTrigger: React.ForwardRefExoticComponent<Omit<import("../../ui/Button/Button").ButtonProps & React.RefAttributes<HTMLButtonElement>, "ref"> & React.RefAttributes<HTMLButtonElement>>;
 declare const SidebarRail: React.ForwardRefExoticComponent<Omit<React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "ref"> & React.RefAttributes<HTMLButtonElement>>;
 declare const SidebarInset: React.ForwardRefExoticComponent<Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, "ref"> & React.RefAttributes<HTMLDivElement>>;
 declare const SidebarInput: React.ForwardRefExoticComponent<Omit<import("../../ui/Input/Input").InputProps & React.RefAttributes<HTMLInputElement>, "ref"> & React.RefAttributes<HTMLInputElement>>;
@@ -46,7 +46,7 @@ declare const SidebarMenuButton: React.ForwardRefExoticComponent<Omit<React.Clas
 } & VariantProps<(props?: ({
     variant?: "default" | "outline" | null | undefined;
     size?: "default" | "sm" | "lg" | null | undefined;
-} & import("class-variance-authority/types").ClassProp) | undefined) => string>, "ref"> & React.RefAttributes<HTMLButtonElement>>;
+} & import("class-variance-authority/dist/types").ClassProp) | undefined) => string>, "ref"> & React.RefAttributes<HTMLButtonElement>>;
 declare const SidebarMenuAction: React.ForwardRefExoticComponent<Omit<React.ClassAttributes<HTMLButtonElement> & React.ButtonHTMLAttributes<HTMLButtonElement> & {
     asChild?: boolean;
     showOnHover?: boolean;

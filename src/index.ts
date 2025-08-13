@@ -1,5 +1,5 @@
-// Components
-export {  Button,ButtonVariants } from './components/ui/Button/Button';
+export { default as Button } from './components/ui/Button';
+export { default as buttonVariants } from './components/ui/Button';
 // export { default as Input } from './components/ui/Input/index';
 // export { default as Card } from './components/ui/Card/index';
 // export { default as Badge } from './components/ui/Badge/index';
