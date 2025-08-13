@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface SidebarItem {
-    id?: string;
+    id: string;
     title: string;
     icon: React.ReactElement;
     link: string;
@@ -10,7 +10,7 @@ export interface SidebarItem {
 
 export interface SideBarProps {
     currentLink: string;
-    allowedLinks: string[];
+    allowedLinks?: string[];
     items: SidebarItem[];
     onItemClick: (link: string) => void;
 }
@@ -24,7 +24,7 @@ export const SideBar: React.FC<SideBarProps> = ({
     return (
         <aside className="w-[67px] absolute left-0 top-[67px] h-[calc(100vh-67px)] bg-[#16569e] flex flex-col">
             {items
-                .filter((item) => allowedLinks.length === 0 ? true : allowedLinks.includes(item.link))
+                .filter((item) => allowedLinks.length === 0 ? true : allowedLinks.includes(item.id))
                 .map((item) => {
                     const active = item.link === currentLink;
 
