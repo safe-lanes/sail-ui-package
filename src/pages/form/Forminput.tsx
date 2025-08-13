@@ -1,4 +1,3 @@
-import React from 'react'
 import Input from '../../components/ui/Input'
 import Card from '../../components/ui/Card'
 import { Mail, Search, Settings, Lock, Phone, Globe, Calendar, Clock, Palette, Upload } from 'lucide-react'

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SelectBasic from "../../components/ui/SelectBasic/SelectBasic";
 import SelectSearchable from "../../components/ui/SelectSearchable/SelectSearchable";
 import SelectMultiple from "../../components/ui/SelectMultiple/SelectMultiple";
@@ -71,7 +71,7 @@ export default function FormSelect() {
         <SelectMultiple
           options={options}
           value={multiValue}
-          onChange={setMultiValue}
+          onChange={(value) => setMultiValue([...value])}
         />
       ),
     },
@@ -81,7 +81,7 @@ export default function FormSelect() {
         <SelectMultipleSearchable
           options={options}
           value={multiSearchValue}
-          onChange={setMultiSearchValue}
+          onChange={(value) => setMultiSearchValue([...value])}
         />
       ),
     },
@@ -121,7 +121,7 @@ export default function FormSelect() {
         <SelectMultipleSearchableLoadMore
           loadOptions={loadMoreOptions}
           value={multiLoadMoreValue}
-          onChange={setMultiLoadMoreValue}
+          onChange={(value) => setMultiLoadMoreValue(Array.from(value))}
         />
       ),
     },

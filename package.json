@@ -17,6 +17,10 @@
   "files": [
     "dist"
   ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc --emitDeclarationOnly",
