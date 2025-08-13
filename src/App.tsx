@@ -5,6 +5,7 @@ import HeaderExample from './pages/navbar/HeaderExample';
 import { sidebarItems } from './utils/sideBarData';
 import { Card } from '.';
 import NormalForm from './pages/form/NormalForm';
+import { Title } from './components/ui/Title/Title';
 
 const App: React.FC = () => {
 
@@ -32,10 +33,14 @@ const App: React.FC = () => {
           {/* Main Content Area fills remaining space */}
           <main className="flex-1 overflow-auto ml-20">
             <div className="w-full">
-              <h1 className="text-3xl font-bold text-gray-900 mb-6">Main Content Area</h1>
+              <Title title={'Main Content Area'} className='mt-4 mr-4'  >
+                <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
+                  Custom Action
+                </button>
+              </Title>
               <div className="bg-white rounded-lg shadow-sm p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">Dashboard</h2>
-                <p className="text-gray-600 mb-4">
+                {/* <h2 className="text-xl font-semibold text-gray-800 mb-4">Dashboard</h2> */}
+                {/* <p className="text-gray-600 mb-4">
                   This is the main content area. The sidebar on the left shows the vertical
                   navigation matching your design with blue background and white icons.
                 </p>
@@ -52,7 +57,7 @@ const App: React.FC = () => {
                     <h3 className="font-medium text-gray-900 mb-2">Feature 3</h3>
                     <p className="text-sm text-gray-600">Sample content for demonstration</p>
                   </div>
-                </div>
+                </div> */}
 
                 <Card className='my-3 p-2'>
                   <NormalForm />
