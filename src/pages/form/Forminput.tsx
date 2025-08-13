@@ -2,6 +2,7 @@ import React from 'react'
 import Input from '../../components/ui/Input'
 import Card from '../../components/ui/Card'
 import { Mail, Search, Settings, Lock, Phone, Globe, Calendar, Clock, Palette, Upload } from 'lucide-react'
+import { Textarea } from '../../components/ui/Textarea'
 
 export default function Forminput() {
     return (
@@ -96,13 +97,13 @@ export default function Forminput() {
                         min="0"
                         max="100"
                     />
-                    {/* <Input
-                        label="Textarea"
-                        as="textarea"
-                        placeholder="Enter multiple lines of text"
-                        rows={3}
+                    <Textarea
+                        id="demo-textarea"
+                        placeholder="Type something here..."
+                        className="w-full border rounded-md p-2 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        rows={5}
                     />
-                    <Input
+                    {/* <Input
                         label="Select"
                         as="select"
                         options={[
@@ -111,7 +112,7 @@ export default function Forminput() {
                             { value: '2', label: 'Option 2' },
                         ]}
                     /> */}
-                    <Input
+                    {/* <Input
                         label="Checkbox"
                         type="checkbox"
                     />
@@ -126,7 +127,7 @@ export default function Forminput() {
                         type="radio"
                         name="radioGroup"
                         value="2"
-                    />
+                    /> */}
                     <Input
                         label="File Upload"
                         type="file"

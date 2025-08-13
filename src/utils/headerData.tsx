@@ -12,6 +12,8 @@ import {
     Grid,
     Blocks,
     CheckCircle,
+    AlarmCheckIcon,
+    List,
 } from "lucide-react";
 import { NavItem } from "../components/layout/NavBar/Header";
 import { Module } from "../components/layout/NavBar/ModuleNavigator";
@@ -46,17 +48,17 @@ export const navItems: NavItem[] = [
         isActive: false,
     },
     {
-        id: "preparation",
-        title: "Preparation",
-        icon: FileText,
-        link: "/preparation",
+        id: "alert",
+        title: "Alerts",
+        icon: AlarmCheckIcon,
+        link: "/alert",
         isActive: false,
     },
     {
-        id: "request-assign",
-        title: "Request/Assign",
-        icon: UserCheck,
-        link: "/request-assign",
+        id: "select",
+        title: "Select",
+        icon: List,
+        link: "/select",
         isActive: false,
     },
     {

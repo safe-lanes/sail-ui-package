@@ -4,12 +4,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { SideBar } from "./components/layout/NavBar/Sidebar";
 import HeaderExample from "./pages/navbar/HeaderExample";
 import { sidebarItems } from "./utils/sideBarData";
-import { Card } from ".";
+import { Card } from "./components/ui/Card/Card";
 import NormalForm from "./pages/form/NormalForm";
 import { Title } from "./components/ui/Title/Title";
 import Forminput from "./pages/form/Forminput";
 import FormButtons from "./pages/form/FormButtons";
 import FormCheckboxRadio from "./pages/form/FormCheckboxRadio";
+import FormAlertDialog from "./pages/form/FormAlertDialog";
+import FormSelect from "./pages/form/FormSelect";
 
 const App: React.FC = () => {
   const handleSidebarClick = (item: any) => {
@@ -68,7 +70,18 @@ const App: React.FC = () => {
                         <FormCheckboxRadio />
                     }
                   />
-                  
+                    <Route
+                    path="/alert"
+                    element={
+                        <FormAlertDialog />
+                    }
+                  />
+                    <Route
+                    path="/select"
+                    element={
+                        <FormSelect />
+                    }
+                  />
                   {/* You can keep adding more routes here */}
                 </Routes>
               </div>
