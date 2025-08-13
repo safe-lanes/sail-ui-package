@@ -38,8 +38,8 @@
   "author": "Your Name",
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=18 <=19",
-    "react-dom": ">=18 <=19"
+   "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+   "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
     "cmdk": "^1.1.1",
