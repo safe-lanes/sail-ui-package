@@ -4,15 +4,13 @@
   "description": "A modern React component library built with Vite and Tailwind CSS",
   "type": "module",
   "main": "./dist/index.cjs",
-  "module": "./dist/index.es.mjs",
-  "umd:main": "./dist/index.umd.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.es.mjs",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
-      "umd": "./dist/index.umd.js"
+      "types": "./dist/index.d.ts"
     },
     "./styles": "./dist/style.css"
   },
@@ -40,8 +38,8 @@
   "author": "Your Name",
   "license": "MIT",
   "peerDependencies": {
-   "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-   "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
     "cmdk": "^1.1.1",
