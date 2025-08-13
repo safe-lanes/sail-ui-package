@@ -1,5 +1,5 @@
 {
-  "name": "@your-org/ui-components",
+  "name": "sail-ui-package",
   "version": "1.0.0",
   "description": "A modern React component library built with Vite and Tailwind CSS",
   "type": "module",
