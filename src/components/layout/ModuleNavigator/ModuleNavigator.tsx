@@ -11,7 +11,7 @@ export interface Module {
   available: boolean;
 }
 
-interface ModuleNavigatorProps {
+export interface ModuleNavigatorProps {
   currentModule: string;
   onModuleChange: (moduleId: string) => void;
   modules: Module[];

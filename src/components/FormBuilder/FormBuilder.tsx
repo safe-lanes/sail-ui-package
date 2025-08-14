@@ -184,44 +184,51 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
             </div>
           );
 
-      case 'checkbox-group':
-  return (
-    <div key={name} className="mb-4">
-      {baseLabel}
-      <div className="flex flex-col gap-2">
-        {f.options?.map((opt) => {
-          const isChecked = Array.isArray(value) && value.includes(opt.value);
+        case "checkbox-group":
           return (
-            <label
-              key={opt.value}
-              className="flex items-center gap-2 cursor-pointer"
-            >
-              <Input
-              className="h-4 w-4"
-                type="checkbox"
-                name={`${name}[]`}
-                value={opt.value}
-                checked={isChecked}
-                onChange={(e) => {
-                  const checked = e.target.checked;
-                  let updated: unknown[] = Array.isArray(value) ? [...value] : [];
-                  if (checked) {
-                    updated.push(opt.value);
-                  } else {
-                    updated = updated.filter((v) => v !== opt.value);
-                  }
-                  handleChange(name, updated);
-                }}
-              />
-              <span>{opt.label}</span>
-            </label>
+            <div key={name} className="mb-4">
+              {baseLabel}
+              <div
+                className={
+                  f.layout === "grid"
+                    ? `grid gap-${f.gap || 2} grid-cols-${f.columns || 2}`
+                    : f.layout === "row"
+                      ? `flex flex-wrap gap-${f.gap || 2}`
+                      : `flex flex-col gap-${f.gap || 2}`
+                }
+              >
+                {f.options?.map((opt) => {
+                  const isChecked = Array.isArray(value) && value.includes(opt.value);
+                  return (
+                    <label
+                      key={opt.value}
+                      className="flex items-center gap-2 cursor-pointer"
+                    >
+                      <Input
+                        className="h-4 w-4"
+                        type="checkbox"
+                        name={`${name}[]`}
+                        value={opt.value}
+                        checked={isChecked}
+                        onChange={(e) => {
+                          const checked = e.target.checked;
+                          let updated: unknown[] = Array.isArray(value) ? [...value] : [];
+                          if (checked) {
+                            updated.push(opt.value);
+                          } else {
+                            updated = updated.filter((v) => v !== opt.value);
+                          }
+                          handleChange(name, updated);
+                        }}
+                      />
+                      <span>{opt.label}</span>
+                    </label>
+                  );
+                })}
+              </div>
+              {renderError(f, value)}
+            </div>
           );
-        })}
-      </div>
-      {renderError(f, value)}
-    </div>
-  );
-
 
         case 'radio':
           return (
@@ -239,29 +246,39 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
             </div>
           );
 
-        case 'radio-group':
+        case "radio-group":
           return (
             <div key={name} className="mb-4">
               {baseLabel}
-              <div className="flex flex-col gap-2">
+              <div
+                className={
+                  f.layout === "grid"
+                    ? `grid gap-${f.gap || 2} grid-cols-${f.columns || 2}`
+                    : f.layout === "row"
+                      ? "flex flex-wrap items-center gap-4"
+                      : "flex flex-col gap-2"
+                }
+              >
                 {f.options?.map((opt) => (
-                  <label key={opt.value} className="flex items-center gap-2">
-                    <Input
-                     className="h-4 w-4"
+                  <label
+                    key={opt.value}
+                    className="flex items-center gap-2 cursor-pointer"
+                  >
+                    <input
                       type="radio"
+                      className="h-4 w-4"
                       name={name}
                       value={opt.value}
                       checked={value === opt.value}
                       onChange={() => handleChange(name, opt.value)}
                     />
-                    {opt.label}
+                    <span className="text-gray-800">{opt.label}</span>
                   </label>
                 ))}
               </div>
               {renderError(f, value)}
             </div>
           );
-
         case 'button-group':
           return (
             <div key={name} className="mb-4">

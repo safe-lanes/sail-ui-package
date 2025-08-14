@@ -13,8 +13,8 @@ export default function NormalForm() {
         grid: { columns: 2, gap: '2rem' },
         fields: [
           { name: 'firstName', label: 'First Name', type: 'text', required: true },
-          { name: 'lastName', label: 'Last Name', type: 'text', required: true },
-          { name: 'password', label: 'Password', type: 'password', required: true },
+          { name: 'lastName', label: 'Last Name', type: 'text', },
+          { name: 'password', label: 'Password', type: 'password', },
           { name: 'age', label: 'Age', type: 'number', min: 0, max: 100 },
         ],
       },
@@ -34,7 +34,7 @@ export default function NormalForm() {
       },
       {
         title: 'Extra Inputs',
-         grid: { columns: 2, gap: '2rem' },
+        grid: { columns: 2, gap: '2rem' },
         fields: [
           {
             name: 'companyName',
@@ -46,6 +46,7 @@ export default function NormalForm() {
           {
             name: 'gender',
             label: 'Gender',
+            layout: "column",
             type: 'radio-group',
             options: [
               { label: 'Male', value: 'male' },
@@ -56,6 +57,7 @@ export default function NormalForm() {
           {
             name: 'hobbies',
             label: 'Hobbies',
+            layout: "row",
             type: 'checkbox-group',
             options: [
               { label: 'Reading', value: 'reading' },

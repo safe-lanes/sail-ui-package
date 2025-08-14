@@ -32,7 +32,7 @@ export type FieldType =
   | 'switch'
   | 'date'
   | 'file';
-  ;
+;
 export interface ShowIf {
   field: string;
   value: unknown;
@@ -48,6 +48,9 @@ export interface FieldConfig {
   placeholder?: string;
   errorMessage?: string;
   className?: string;
+  layout?: "row" | "column" | "grid"; // NEW
+  columns?: number; // only for grid
+  gap?: string;
   [key: string]: unknown;
 }
 export interface FormConfig {

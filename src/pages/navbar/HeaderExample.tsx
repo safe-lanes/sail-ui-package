@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, NavItem } from '../../components/layout/NavBar/Header';
+import { Header, NavItem } from '../../components/layout/Header/Header';
 import { RotateCcw, Plus, Youtube } from 'lucide-react';
 import { modulesData, navItems } from '../../utils/headerData';
 import { useLocation } from 'wouter';

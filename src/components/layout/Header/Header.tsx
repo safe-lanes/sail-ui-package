@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ModuleNavigator, Module } from './ModuleNavigator'; // Adjust import path
+import { ModuleNavigator, Module } from '../ModuleNavigator/ModuleNavigator'; // Adjust import path
 import { cn } from '../../../lib/utils'; // or replace with clsx or simple string concat
 
 export interface NavItem {

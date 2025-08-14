@@ -13,8 +13,8 @@ import {
   AlarmCheckIcon,
   List,
 } from 'lucide-react';
-import { NavItem } from '../components/layout/NavBar/Header';
-import { Module } from '../components/layout/NavBar/ModuleNavigator';
+import { NavItem } from '../components/layout/Header/Header';
+import { Module } from '../components/layout/ModuleNavigator/ModuleNavigator';
 
 export const navItems: NavItem[] = [
   {
