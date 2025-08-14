@@ -79,4 +79,14 @@ MIT
 A big thanks to all who helped build this UI library!
 
 <!-- readme: contributors -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/safe-lanes">
+            <img src="https://avatars.githubusercontent.com/u/224569240?v=4" width="50;" alt="safe-lanes"/>
+            <br />
+            <sub><b>safe-lanes</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: contributors -end -->
