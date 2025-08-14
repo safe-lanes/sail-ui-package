@@ -1,5 +1,5 @@
-import React from "react";
-import { FormConfig } from "./types";
+import React from 'react';
+import { FormConfig } from './types';
 interface Props {
     config: FormConfig;
     onSubmit: (data: Record<string, any>) => void;

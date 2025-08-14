@@ -1,1 +1,1 @@
-export { StandardFormPopup as FormPopup, FormPopupOverlay, FormPopupContent, } from './Form-popup';
+export { StandardFormPopup as FormPopup, FormPopupOverlay, FormPopupContent } from './Form-popup';

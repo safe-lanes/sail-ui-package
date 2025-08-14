@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as RechartsPrimitive from "recharts";
+import * as React from 'react';
+import * as RechartsPrimitive from 'recharts';
 declare const THEMES: {
     readonly light: "";
     readonly dark: ".dark";

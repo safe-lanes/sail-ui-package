@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 export interface Module {
     id: string;
     name: string;
@@ -11,5 +11,5 @@ interface ModuleNavigatorProps {
     onModuleChange: (moduleId: string) => void;
     modules: Module[];
 }
-export declare function ModuleNavigator({ currentModule, onModuleChange, modules, }: ModuleNavigatorProps): import("react/jsx-runtime").JSX.Element;
+export declare function ModuleNavigator({ currentModule, onModuleChange, modules }: ModuleNavigatorProps): import("react/jsx-runtime").JSX.Element;
 export {};

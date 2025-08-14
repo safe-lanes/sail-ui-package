@@ -1,5 +1,5 @@
-import React from "react";
-import { OptionType } from "../SelectBasic/SelectBasic";
+import React from 'react';
+import { OptionType } from '../SelectBasic/SelectBasic';
 interface SelectSearchableLoadMoreProps {
     loadOptions: (inputValue: string, callback: (options: OptionType[]) => void) => void;
     value?: OptionType | null;

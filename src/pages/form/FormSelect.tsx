@@ -110,7 +110,7 @@ export default function FormSelect() {
     },
     {
       label: 'Drag & Drop Zone',
-      element: <DragZone onDrop={(files: any) => console.log('Dropped files:', files)} />,
+      element: <DragZone onDrop={(files: File[]) => console.log('Dropped files:', files)} />,
     },
     {
       label: 'Autocomplete',

@@ -14,7 +14,10 @@ import FormAlertDialog from './pages/form/FormAlertDialog';
 import FormSelect from './pages/form/FormSelect';
 
 const App: React.FC = () => {
-  const handleSidebarClick = (item: any) => {
+  // Define the type for sidebar items based on your sidebarItems structure
+  type SidebarItem = (typeof sidebarItems)[number];
+
+  const handleSidebarClick = (item: SidebarItem) => {
     console.log('Sidebar item clicked:', item);
     // If sidebar items have `link`, navigation will be handled by NavLink or useNavigate
   };

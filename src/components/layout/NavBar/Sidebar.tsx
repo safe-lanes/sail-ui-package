@@ -12,7 +12,7 @@ export interface SideBarProps {
   currentLink: string;
   allowedLinks?: string[];
   items: SidebarItem[];
-  onItemClick: (link: string) => void;
+  onItemClick: (item: SidebarItem) => void;
 }
 
 export const SideBar: React.FC<SideBarProps> = ({
@@ -34,12 +34,12 @@ export const SideBar: React.FC<SideBarProps> = ({
               className={`w-full h-[79px] flex flex-col items-center justify-center cursor-pointer ${
                 active ? 'bg-[#52baf3]' : 'hover:bg-[#1e5fa8]'
               }`}
-              onClick={() => onItemClick(item.link)}
+              onClick={() => onItemClick(item)}
               role="button"
               tabIndex={0}
               onKeyPress={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
-                  onItemClick(item.link);
+                  onItemClick(item);
                 }
               }}
             >

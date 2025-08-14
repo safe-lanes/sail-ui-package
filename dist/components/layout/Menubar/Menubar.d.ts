@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as MenubarPrimitive from "@radix-ui/react-menubar";
+import * as React from 'react';
+import * as MenubarPrimitive from '@radix-ui/react-menubar';
 declare function MenubarMenu({ ...props }: React.ComponentProps<typeof MenubarPrimitive.Menu>): import("react/jsx-runtime").JSX.Element;
 declare function MenubarGroup({ ...props }: React.ComponentProps<typeof MenubarPrimitive.Group>): import("react/jsx-runtime").JSX.Element;
 declare function MenubarPortal({ ...props }: React.ComponentProps<typeof MenubarPrimitive.Portal>): import("react/jsx-runtime").JSX.Element;

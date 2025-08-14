@@ -1,5 +1,5 @@
-import React from "react";
-import { SingleValue } from "react-select";
+import React from 'react';
+import { SingleValue } from 'react-select';
 export interface OptionType {
     value: string;
     label: string;

@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as LabelPrimitive from "@radix-ui/react-label";
-import { type ControllerProps, type FieldPath, type FieldValues } from "react-hook-form";
+import * as React from 'react';
+import * as LabelPrimitive from '@radix-ui/react-label';
+import { type ControllerProps, type FieldPath, type FieldValues } from 'react-hook-form';
 declare const Form: <TFieldValues extends FieldValues, TContext = any, TTransformedValues = TFieldValues>(props: import("react-hook-form").FormProviderProps<TFieldValues, TContext, TTransformedValues>) => React.JSX.Element;
 declare const FormField: <TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({ ...props }: ControllerProps<TFieldValues, TName>) => import("react/jsx-runtime").JSX.Element;
 declare const useFormField: () => {

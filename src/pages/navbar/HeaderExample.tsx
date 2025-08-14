@@ -28,7 +28,7 @@ const HeaderExample: React.FC = () => {
   };
 
   const navData = useMemo(() => {
-    return navItems.map((item: any) => ({
+    return navItems.map((item: NavItem) => ({
       ...item,
       isActive: location === item.link,
     }));

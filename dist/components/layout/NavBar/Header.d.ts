@@ -1,5 +1,5 @@
-import React from "react";
-import { Module } from "./ModuleNavigator";
+import React from 'react';
+import { Module } from './ModuleNavigator';
 export interface NavItem {
     id?: string;
     title: string;

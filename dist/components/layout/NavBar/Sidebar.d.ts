@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 export interface SidebarItem {
     id: string;
     title: string;
@@ -10,6 +10,6 @@ export interface SideBarProps {
     currentLink: string;
     allowedLinks?: string[];
     items: SidebarItem[];
-    onItemClick: (link: string) => void;
+    onItemClick: (item: SidebarItem) => void;
 }
 export declare const SideBar: React.FC<SideBarProps>;
