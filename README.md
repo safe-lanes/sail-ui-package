@@ -73,3 +73,10 @@ This will create a `dist` folder with:
 ## License
 
 MIT
+
+## Contributors
+
+A big thanks to all who helped build this UI library!
+
+<!-- CONTRIBUTORS:START -->
+<!-- CONTRIBUTORS:END -->
