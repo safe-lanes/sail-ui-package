@@ -1,20 +1,10 @@
 import { useState } from 'react';
 import { Card } from '../../components/ui/Card';
-import { SelectBasic } from '../../components/ui/SelectBasic';
-import { SelectSearchable } from '../../components/ui/SelectSearchable';
-import { SelectMultiple } from '../../components/ui/SelectMultiple';
-import { SelectMultipleSearchable } from '../../components/ui/SelectMultipleSearchable';
-import { SelectCreatable } from '../../components/ui/SelectCreatable';
-import { SelectCreatableSearchable } from '../../components/ui/SelectCreatableSearchable';
-import { SelectSearchableLoadMore } from '../../components/ui/SelectSearchableLoadMore';
-import { SelectMultipleSearchableLoadMore } from '../../components/ui/SelectMultipleSearchableLoadMore';
 import { DragZone } from '../../components/ui/DragZone';
 import { AutoComplete } from '../../components/ui/AutoComplete';
+import { CommonSelect, OptionType } from '../../components/ui/Common-Select';
 
-type OptionType = {
-  value: string;
-  label: string;
-};
+
 
 const options: OptionType[] = [
   { value: 'apple', label: 'Apple' },
@@ -39,49 +29,50 @@ export default function FormSelect() {
   const [creatableValue, setCreatableValue] = useState<OptionType | null>(null);
   const [creatableSearchValue, setCreatableSearchValue] = useState<OptionType | null>(null);
   const [loadMoreValue, setLoadMoreValue] = useState<OptionType | null>(null);
-  const [multiLoadMoreValue, setMultiLoadMoreValue] = useState<OptionType[]>([]);
 
   const demoList = [
     {
       label: 'Select Basic',
-      element: <SelectBasic options={options} value={basicValue} onChange={setBasicValue} />,
+      element: <CommonSelect options={options} value={basicValue} onChange={setBasicValue} />,
     },
     {
       label: 'Select Searchable',
       element: (
-        <SelectSearchable options={options} value={searchableValue} onChange={setSearchableValue} />
+        <CommonSelect options={options} value={searchableValue} onChange={setSearchableValue} />
       ),
     },
     {
       label: 'Select Multiple',
       element: (
-        <SelectMultiple
+        <CommonSelect
+          isMulti
           options={options}
           value={multiValue}
-          onChange={(value) => setMultiValue([...value])}
+          onChange={(value) => setMultiValue(value ? [...value] : [])}
         />
       ),
     },
     {
       label: 'Select Multiple Searchable',
       element: (
-        <SelectMultipleSearchable
+        <CommonSelect
+          isMulti
           options={options}
           value={multiSearchValue}
-          onChange={(value) => setMultiSearchValue([...value])}
+          onChange={(value) => setMultiSearchValue(value ? [...value] : [])}
         />
       ),
     },
     {
       label: 'Select Creatable',
       element: (
-        <SelectCreatable options={options} value={creatableValue} onChange={setCreatableValue} />
+        <CommonSelect options={options} value={creatableValue} onChange={setCreatableValue} />
       ),
     },
     {
       label: 'Select Creatable Searchable',
       element: (
-        <SelectCreatableSearchable
+        <CommonSelect
           options={options}
           value={creatableSearchValue}
           onChange={setCreatableSearchValue}
@@ -91,23 +82,14 @@ export default function FormSelect() {
     {
       label: 'Select Searchable with Load More',
       element: (
-        <SelectSearchableLoadMore
+        <CommonSelect
           loadOptions={loadMoreOptions}
           value={loadMoreValue}
           onChange={setLoadMoreValue}
         />
       ),
     },
-    {
-      label: 'Select Multiple Searchable with Load More',
-      element: (
-        <SelectMultipleSearchableLoadMore
-          loadOptions={loadMoreOptions}
-          value={multiLoadMoreValue}
-          onChange={(value) => setMultiLoadMoreValue(Array.from(value))}
-        />
-      ),
-    },
+
     {
       label: 'Drag & Drop Zone',
       element: <DragZone onDrop={(files: File[]) => console.log('Dropped files:', files)} />,

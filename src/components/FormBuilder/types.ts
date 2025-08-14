@@ -4,14 +4,31 @@ export type FieldType =
   | 'tel'
   | 'number'
   | 'checkbox'
-  | 'select'
   | 'textarea'
   | 'password'
-  | 'date';
-
+  | 'date'
+  | 'time'
+  | 'datetime-local'
+  | 'color'
+  | 'file'
+  | 'image'
+  | 'url'
+  | 'search'
+  | 'range'
+  | 'checkbox-group'
+  | 'checkbox'
+  | 'radio'
+  | 'switch'
+  | "select-basic"
+  | "select-searchable"
+  | "select-creatable"
+  | "select-multiple"
+  | "select-multiple-searchable"
+  | "select-creatable-multiple"
+  | "select-load-more";
 export interface ShowIf {
   field: string;
-  value: any;
+  value: unknown;
 }
 
 export interface FieldConfig {
@@ -22,6 +39,10 @@ export interface FieldConfig {
   options?: { label: string; value: string }[]; // for select/radio
   showIf?: ShowIf;
   placeholder?: string;
+  errorMessage?: string;
+  className?: string;
+  [key: string]: unknown;
+
 }
 
 export interface StepConfig {
@@ -40,7 +61,7 @@ export interface FormConfig {
 
 export interface FormBuilderProps {
   config: FormConfig;
-  onSubmit: (data: Record<string, any>) => void;
+  onSubmit: (data: Record<string, unknown>) => void;
   stepperOnly?: boolean;
   formOnly?: boolean;
 }

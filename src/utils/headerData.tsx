@@ -21,7 +21,7 @@ export const navItems: NavItem[] = [
     id: 'forms',
     title: 'Forms',
     icon: Grid,
-    link: '/forms',
+    link: '/',
     isActive: true,
   },
 

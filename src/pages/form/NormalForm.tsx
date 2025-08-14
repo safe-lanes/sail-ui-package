@@ -5,15 +5,35 @@ import { FormConfig } from '../../components/FormBuilder/types';
 export default function NormalForm() {
   const [config, setConfig] = useState<FormConfig>({
     type: 'both', // "stepper" | "normal" | "both"
-    buttonAlignment: 'center',
-    stepperPosition: 'top',
+    buttonAlignment: 'right',
+    stepperPosition: 'left',
     steps: [
       {
-        title: 'Personal Details',
+        title: 'Basic inputs',
         fields: [
           { name: 'firstName', label: 'First Name', type: 'text', required: true },
           { name: 'lastName', label: 'Last Name', type: 'text', required: true },
+          { name: 'password', label: 'Password', type: 'password', required: true },
+          { name: 'age', label: 'Age', type: 'number', min: 0, max: 100 },
+
+        ],
+      },
+      {
+        title: 'Inputs',
+        fields: [
+          { name: 'dob', label: 'Date of Birth', type: 'date' },
+          { name: 'time', label: 'Preferred Time', type: 'time' },
+          { name: 'datetime', label: 'Event Date & Time', type: 'datetime-local' },
+          { name: 'color', label: 'Favorite Color', type: 'color' },
+          { name: 'file', label: 'Upload File', type: 'file', accept: '.pdf,.docx,.jpg' },
+          { name: 'profilePic', label: 'Profile Picture', type: 'image', accept: 'image/*' },
+          { name: 'resume', label: 'Upload Resume', type: 'file', accept: '.pdf,.docx' },
           { name: 'hasCompany', label: 'Do you have a company?', type: 'checkbox' },
+        ],
+      },
+      {
+        title: 'Extra Inputs',
+        fields: [
           {
             name: 'companyName',
             label: 'Company Name',
@@ -21,7 +41,60 @@ export default function NormalForm() {
             required: true,
             showIf: { field: 'hasCompany', value: true },
           },
-        ],
+          {
+            name: 'gender',
+            label: 'Gender',
+            type: 'radio',
+            options: [
+              { label: 'Male', value: 'male' },
+              { label: 'Female', value: 'female' },
+              { label: 'Other', value: 'other' },
+            ],
+          },
+          {
+            name: 'hobbies',
+            label: 'Hobbies',
+            type: 'checkbox-group',
+            options: [
+              { label: 'Reading', value: 'reading' },
+              { label: 'Traveling', value: 'traveling' },
+              { label: 'Gaming', value: 'gaming' },
+            ],
+          },
+          {
+            name: 'country',
+            label: 'Country',
+            type: 'select-searchable',
+            options: [
+              { label: 'India', value: 'in' },
+              { label: 'USA', value: 'us' },
+              { label: 'UK', value: 'uk' },
+            ],
+          },
+          {
+            name: 'bio',
+            label: 'Bio',
+            type: 'textarea',
+            rows: 4,
+          },
+          {
+            name: 'range',
+            label: 'Satisfaction Level',
+            type: 'range',
+            min: 0,
+            max: 10,
+          },
+          {
+            name: 'url',
+            label: 'Website',
+            type: 'url',
+          },
+          {
+            name: 'search',
+            label: 'Search',
+            type: 'search',
+          },
+        ]
       },
       {
         title: 'Contact Info',
@@ -33,13 +106,12 @@ export default function NormalForm() {
       {
         title: 'Address Info',
         fields: [
-          { name: 'email', label: 'Email', type: 'email', required: true },
-          { name: 'phone', label: 'Phone Number', type: 'tel' },
+          { name: 'address', label: 'Address', type: 'textarea', rows: 3 },
+          { name: 'pincode', label: 'Pincode', type: 'number' },
         ],
       },
     ],
   });
-
   return (
     <div>
       {/* Settings Panel */}
