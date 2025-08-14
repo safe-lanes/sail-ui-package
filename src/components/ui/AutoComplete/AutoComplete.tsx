@@ -44,4 +44,5 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({ suggestions, onSelect }) =>
   );
 };
 
-export default AutoComplete;
+export default {AutoComplete};
+export type { AutoCompleteProps }

@@ -1,6 +1,6 @@
-import { ContextMenu } from './Context-menu';
+import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuGroup, ContextMenuItem, ContextMenuLabel, ContextMenuPortal, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubContent, ContextMenuSubTrigger, ContextMenuTrigger } from './Context-menu';
 
-export {
+export default {
   ContextMenu,
   ContextMenuTrigger,
   ContextMenuContent,
@@ -16,6 +16,4 @@ export {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuRadioGroup,
-} from './Context-menu';
-
-export default ContextMenu;
+} ;

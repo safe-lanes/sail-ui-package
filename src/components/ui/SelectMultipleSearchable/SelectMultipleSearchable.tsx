@@ -28,3 +28,4 @@ const SelectMultipleSearchable: React.FC<SelectMultipleSearchableProps> = ({
 };
 
 export default SelectMultipleSearchable;
+export type {SelectMultipleSearchableProps}

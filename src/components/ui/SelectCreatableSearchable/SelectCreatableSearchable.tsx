@@ -28,3 +28,4 @@ const SelectCreatableSearchable: React.FC<SelectCreatableSearchableProps> = ({
 };
 
 export default SelectCreatableSearchable;
+export type {SelectCreatableSearchableProps}

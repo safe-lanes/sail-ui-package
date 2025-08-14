@@ -1,5 +1,4 @@
-import { Badge } from './Badge';
+import { Badge,BadgeProps,BadgeVariants } from './Badge';
 
-export { BadgeVariants } from './Badge';
-
-export default Badge;
+export default {BadgeVariants,Badge};
+export type {BadgeProps}

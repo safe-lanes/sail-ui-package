@@ -1,1 +1,3 @@
-export { ScrollArea, ScrollBar } from './Scroll-area';
+import { ScrollArea, ScrollBar } from "./Scroll-area";
+
+export default { ScrollArea, ScrollBar } 

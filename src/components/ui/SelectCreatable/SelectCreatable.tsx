@@ -27,3 +27,4 @@ const SelectCreatable: React.FC<SelectCreatableProps> = ({
 };
 
 export default SelectCreatable;
+export type {SelectCreatableProps}

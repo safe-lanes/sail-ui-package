@@ -1,4 +1,6 @@
-export {
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue } from "./Select";
+
+export default {
   Select,
   SelectGroup,
   SelectValue,
@@ -9,4 +11,4 @@ export {
   SelectSeparator,
   SelectScrollUpButton,
   SelectScrollDownButton,
-} from './Select';
+} 

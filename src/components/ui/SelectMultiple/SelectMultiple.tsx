@@ -27,3 +27,4 @@ const SelectMultiple: React.FC<SelectMultipleProps> = ({
 };
 
 export default SelectMultiple;
+export type {SelectMultipleProps}

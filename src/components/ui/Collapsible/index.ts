@@ -1,4 +1,3 @@
-import { Collapsible } from './Collapsible';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './Collapsible';
 
-export { Collapsible, CollapsibleTrigger, CollapsibleContent } from './Collapsible';
-export default Collapsible;
+export default { Collapsible, CollapsibleTrigger, CollapsibleContent } ;

@@ -12,7 +12,8 @@ import {
   AlertDialogCancel,
 } from './Alert-dialog';
 
-export {
+export default {
+  AlertDialog,
   AlertDialogPortal,
   AlertDialogOverlay,
   AlertDialogTrigger,
@@ -24,5 +25,3 @@ export {
   AlertDialogAction,
   AlertDialogCancel,
 };
-
-export default AlertDialog;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '../../../lib/utils';
 
-export interface TitleProps {
+ interface TitleProps {
   title: string;
   children?: React.ReactNode;
   className?: string;
@@ -18,3 +18,6 @@ export function Title({ title, children, className }: TitleProps) {
     </>
   );
 }
+
+export default Title;
+export type {TitleProps};

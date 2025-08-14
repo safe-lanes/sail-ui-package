@@ -7,10 +7,10 @@ import { useIsMobile } from '../../../hooks/use-mobile';
 import { cn } from '../../../lib/utils';
 import { Button } from '../../ui/Button/Button';
 import { Input } from '../../ui/Input/Input';
-import { Separator } from '../../ui/Separator';
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '../../ui/Sheet';
-import { Skeleton } from '../../ui/Skeleton';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../ui/Tooltip';
+import { Separator } from '../../ui/Separator/Separator';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '../../ui/Sheet/Sheet';
+import { Skeleton } from '../../ui/Skeleton/Skeleton';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../ui/Tooltip/Tooltip';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;

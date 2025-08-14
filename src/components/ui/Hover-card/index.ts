@@ -1,5 +1,3 @@
-import { HoverCard } from './Hover-card';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from './Hover-card';
 
-export { HoverCard, HoverCardTrigger, HoverCardContent } from './Hover-card';
-
-export default HoverCard;
+export default { HoverCard, HoverCardTrigger, HoverCardContent } 

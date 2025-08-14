@@ -1,1 +1,3 @@
-export { AspectRatio } from './Aspect-ratio';
+import { AspectRatio } from "./Aspect-ratio";
+
+export default { AspectRatio };

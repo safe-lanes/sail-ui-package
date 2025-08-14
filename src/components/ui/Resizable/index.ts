@@ -1,1 +1,3 @@
-export { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './Resizable';
+import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "./Resizable";
+
+export default { ResizablePanelGroup, ResizablePanel, ResizableHandle };

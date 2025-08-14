@@ -1,1 +1,3 @@
-export { Toggle, toggleVariants } from './Toggle';
+import { Toggle, toggleVariants } from "./Toggle";
+
+export default { Toggle, toggleVariants };

@@ -1,3 +1,3 @@
-import { Accordion } from './Accordion';
-export { AccordionItem, AccordionTrigger, AccordionContent } from './Accordion';
-export default Accordion;
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './Accordion';
+
+export default { Accordion, AccordionItem, AccordionTrigger, AccordionContent };

@@ -1,3 +1,2 @@
-import { Alert } from './Alert';
-export { Alert, AlertTitle, AlertDescription } from './Alert';
-export default Alert;
+import { Alert,AlertTitle, AlertDescription } from './Alert';
+export default { Alert , AlertTitle, AlertDescription };

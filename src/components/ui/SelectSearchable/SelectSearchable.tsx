@@ -27,3 +27,4 @@ const SelectSearchable: React.FC<SelectSearchableProps> = ({
 };
 
 export default SelectSearchable;
+export type {SelectSearchableProps}

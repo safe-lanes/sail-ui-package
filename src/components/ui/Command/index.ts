@@ -1,6 +1,6 @@
-import { Command } from './Command';
+import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from './Command';
 
-export {
+export default {
   Command,
   CommandDialog,
   CommandInput,
@@ -10,6 +10,4 @@ export {
   CommandItem,
   CommandShortcut,
   CommandSeparator,
-} from './Command';
-
-export default Command;
+} ;

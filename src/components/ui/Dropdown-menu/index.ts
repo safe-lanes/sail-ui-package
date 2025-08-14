@@ -1,6 +1,6 @@
-import { DropdownMenu } from './Dropdown-menu';
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from './Dropdown-menu';
 
-export {
+export default {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
@@ -16,6 +16,4 @@ export {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuRadioGroup,
-} from './Dropdown-menu';
-
-export default DropdownMenu;
+} ;

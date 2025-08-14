@@ -1,1 +1,3 @@
-export { ToggleGroup, ToggleGroupItem } from './Toggle-group';
+import { ToggleGroup, ToggleGroupItem } from "./Toggle-group";
+
+export default { ToggleGroup, ToggleGroupItem } ;

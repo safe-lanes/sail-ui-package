@@ -1,4 +1,3 @@
-import { InputOTP } from './Input-otp';
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from './Input-otp';
 
-export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from './Input-otp';
-export default InputOTP;
+export default { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator };

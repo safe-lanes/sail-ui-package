@@ -1,6 +1,6 @@
-import { Form } from './Form';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, useFormField } from './Form';
 
-export {
+export default {
   useFormField,
   Form,
   FormItem,
@@ -9,6 +9,4 @@ export {
   FormDescription,
   FormMessage,
   FormField,
-} from './Form';
-
-export default Form;
+} ;

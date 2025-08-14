@@ -25,3 +25,4 @@ const SelectBasic: React.FC<SelectBasicProps> = ({ options, value, onChange, pla
 };
 
 export default SelectBasic;
+export type {SelectBasicProps}

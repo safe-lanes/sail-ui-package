@@ -1,4 +1,6 @@
-export {
+import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "./Table";
+
+export default {
   Table,
   TableHeader,
   TableBody,
@@ -7,4 +9,4 @@ export {
   TableRow,
   TableCell,
   TableCaption,
-} from './Table';
+};

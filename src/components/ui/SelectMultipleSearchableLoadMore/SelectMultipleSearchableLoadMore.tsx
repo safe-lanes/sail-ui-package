@@ -30,3 +30,4 @@ const SelectMultipleSearchableLoadMore: React.FC<SelectMultipleSearchableLoadMor
 };
 
 export default SelectMultipleSearchableLoadMore;
+export type {SelectMultipleSearchableLoadMoreProps}

@@ -28,3 +28,4 @@ const SelectSearchableLoadMore: React.FC<SelectSearchableLoadMoreProps> = ({
 };
 
 export default SelectSearchableLoadMore;
+export type {SelectSearchableLoadMoreProps}
