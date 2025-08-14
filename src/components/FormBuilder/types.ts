@@ -25,7 +25,14 @@ export type FieldType =
   | 'select-multiple'
   | 'select-multiple-searchable'
   | 'select-creatable-multiple'
-  | 'select-load-more';
+  | 'select-load-more'
+  | 'radio'
+  | 'radio-group'
+  | 'button-group'
+  | 'switch'
+  | 'date'
+  | 'file';
+  ;
 export interface ShowIf {
   field: string;
   value: unknown;

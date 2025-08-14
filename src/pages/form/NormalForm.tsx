@@ -34,6 +34,7 @@ export default function NormalForm() {
       },
       {
         title: 'Extra Inputs',
+         grid: { columns: 2, gap: '2rem' },
         fields: [
           {
             name: 'companyName',
@@ -45,7 +46,7 @@ export default function NormalForm() {
           {
             name: 'gender',
             label: 'Gender',
-            type: 'radio',
+            type: 'radio-group',
             options: [
               { label: 'Male', value: 'male' },
               { label: 'Female', value: 'female' },

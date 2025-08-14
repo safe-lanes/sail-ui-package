@@ -184,6 +184,169 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
             </div>
           );
 
+      case 'checkbox-group':
+  return (
+    <div key={name} className="mb-4">
+      {baseLabel}
+      <div className="flex flex-col gap-2">
+        {f.options?.map((opt) => {
+          const isChecked = Array.isArray(value) && value.includes(opt.value);
+          return (
+            <label
+              key={opt.value}
+              className="flex items-center gap-2 cursor-pointer"
+            >
+              <Input
+              className="h-4 w-4"
+                type="checkbox"
+                name={`${name}[]`}
+                value={opt.value}
+                checked={isChecked}
+                onChange={(e) => {
+                  const checked = e.target.checked;
+                  let updated: unknown[] = Array.isArray(value) ? [...value] : [];
+                  if (checked) {
+                    updated.push(opt.value);
+                  } else {
+                    updated = updated.filter((v) => v !== opt.value);
+                  }
+                  handleChange(name, updated);
+                }}
+              />
+              <span>{opt.label}</span>
+            </label>
+          );
+        })}
+      </div>
+      {renderError(f, value)}
+    </div>
+  );
+
+
+        case 'radio':
+          return (
+            <div key={name} className="mb-4">
+              {baseLabel}
+              <Input
+                id={name}
+                name={name}
+                type="radio"
+                checked={!!value}
+                onChange={(e) => handleChange(name, e.target.checked)}
+                {...rest}
+              />
+              {renderError(f, value)}
+            </div>
+          );
+
+        case 'radio-group':
+          return (
+            <div key={name} className="mb-4">
+              {baseLabel}
+              <div className="flex flex-col gap-2">
+                {f.options?.map((opt) => (
+                  <label key={opt.value} className="flex items-center gap-2">
+                    <Input
+                     className="h-4 w-4"
+                      type="radio"
+                      name={name}
+                      value={opt.value}
+                      checked={value === opt.value}
+                      onChange={() => handleChange(name, opt.value)}
+                    />
+                    {opt.label}
+                  </label>
+                ))}
+              </div>
+              {renderError(f, value)}
+            </div>
+          );
+
+        case 'button-group':
+          return (
+            <div key={name} className="mb-4">
+              {baseLabel}
+              <div className="flex flex-wrap gap-2">
+                {f.options?.map((opt) => {
+                  const isSelected = f.multiple
+                    ? Array.isArray(value) && value.includes(opt.value)
+                    : value === opt.value;
+                  return (
+                    <Button
+                      key={opt.value}
+                      type="button"
+                      className={`px-4 py-2 rounded border ${isSelected ? 'bg-blue-600 text-white' : 'bg-gray-200'
+                        }`}
+                      onClick={() => {
+                        if (f.multiple) {
+                          const arr = Array.isArray(value) ? [...value] : [];
+                          if (arr.includes(opt.value)) {
+                            handleChange(
+                              name,
+                              arr.filter((v) => v !== opt.value)
+                            );
+                          } else {
+                            handleChange(name, [...arr, opt.value]);
+                          }
+                        } else {
+                          handleChange(name, opt.value);
+                        }
+                      }}
+                    >
+                      {opt.label}
+                    </Button>
+                  );
+                })}
+              </div>
+              {renderError(f, value)}
+            </div>
+          );
+        case 'switch':
+          return (
+            <div key={name} className="mb-4 flex items-center gap-2">
+              {baseLabel}
+              <Input
+                type="checkbox"
+                className="toggle toggle-primary"
+                checked={!!value}
+                onChange={(e) => handleChange(name, e.target.checked)}
+                {...rest}
+              />
+              {renderError(f, value)}
+            </div>
+          );
+
+        case 'date':
+          return (
+            <div key={name} className="mb-4">
+              {baseLabel}
+              <Input
+                id={name}
+                name={name}
+                type="date"
+                value={value as string}
+                onChange={(e) => handleChange(name, e.target.value)}
+                {...rest}
+              />
+              {renderError(f, value)}
+            </div>
+          );
+
+        case 'file':
+          return (
+            <div key={name} className="mb-4">
+              {baseLabel}
+              <Input
+                id={name}
+                name={name}
+                type="file"
+                onChange={(e) => handleChange(name, e.target.files?.[0] || null)}
+                {...rest}
+              />
+              {renderError(f, value)}
+            </div>
+          );
+
         default:
           return (
             <div key={name} className="mb-4">
@@ -271,9 +434,8 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
           className={
             steps[currentStep]?.grid?.responsive
               ? 'grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
-              : `grid gap-[${steps[currentStep]?.grid?.gap || '1rem'}] grid-cols-${
-                  steps[currentStep]?.grid?.columns || 1
-                }`
+              : `grid gap-[${steps[currentStep]?.grid?.gap || '1rem'}] grid-cols-${steps[currentStep]?.grid?.columns || 1
+              }`
           }
           style={{
             gap: steps[currentStep]?.grid?.gap || '1rem',
