@@ -27,3 +27,15 @@ export interface FormConfig {
     stepperDirection?: 'horizontal' | 'vertical';
     steps: StepConfig[];
 }
+export interface FormBuilderProps {
+    config: FormConfig;
+    onSubmit: (data: Record<string, any>) => void;
+    stepperOnly?: boolean;
+    formOnly?: boolean;
+}
+export interface StepperProps {
+    steps: StepConfig[];
+    current: number;
+    direction?: 'vertical' | 'horizontal';
+    onStepClick?: (index: number) => void;
+}

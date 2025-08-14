@@ -1,6 +1,6 @@
 import { Card } from '../../components/ui/Card';
 import { Input } from '../../components/ui/Input';
-import Label from '../../components/ui/Label';
+import { Label } from '../../components/ui/Label';
 import { Switch } from '../../components/ui/Switch';
 
 export default function FormCheckboxRadio() {

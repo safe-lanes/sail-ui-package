@@ -1,3 +1,2 @@
-import { Badge } from './Badge';
-export { BadgeVariants } from './Badge';
-export default Badge;
+export { Badge, BadgeVariants } from './Badge';
+export type { BadgeProps } from './Badge';

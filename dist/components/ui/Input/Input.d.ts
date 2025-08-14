@@ -1,5 +1,5 @@
 import * as React from 'react';
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     label?: string;
     helperText?: string;
     error?: string;
@@ -10,3 +10,4 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 }
 declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 export { Input };
+export type { InputProps };

@@ -3,14 +3,14 @@ import AsyncSelect from 'react-select/async';
 import { MultiValue } from 'react-select';
 import { OptionType } from '../SelectBasic/SelectBasic';
 
-interface SelectMultipleSearchableLoadMoreProps {
+export interface SelectMultipleSearchableLoadMoreProps {
   loadOptions: (inputValue: string, callback: (options: OptionType[]) => void) => void;
   value?: OptionType[];
   onChange: (value: MultiValue<OptionType>) => void;
   placeholder?: string;
 }
 
-const SelectMultipleSearchableLoadMore: React.FC<SelectMultipleSearchableLoadMoreProps> = ({
+export const SelectMultipleSearchableLoadMore: React.FC<SelectMultipleSearchableLoadMoreProps> = ({
   loadOptions,
   value,
   onChange,
@@ -28,6 +28,3 @@ const SelectMultipleSearchableLoadMore: React.FC<SelectMultipleSearchableLoadMor
     />
   );
 };
-
-export default SelectMultipleSearchableLoadMore;
-export type {SelectMultipleSearchableLoadMoreProps}

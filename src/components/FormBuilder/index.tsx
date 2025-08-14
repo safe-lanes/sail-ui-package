@@ -1,3 +1,10 @@
 export { FormBuilder } from './FormBuilder';
-// eslint-disable-next-line react-refresh/only-export-components
-export * from './types';
+export type {
+  FormConfig,
+  FieldConfig,
+  StepConfig,
+  FieldType,
+  ShowIf,
+  FormBuilderProps,
+  StepperProps,
+} from './types';

@@ -10,8 +10,8 @@ import {
   Upload,
   BellIcon,
 } from 'lucide-react';
-import Avatar, { AvatarFallback, AvatarImage } from '../../components/ui/Avatar';
-import Badge from '../../components/ui/Badge';
+import { Avatar, AvatarFallback, AvatarImage } from '../../components/ui/Avatar';
+import { Badge } from '../../components/ui/Badge';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 

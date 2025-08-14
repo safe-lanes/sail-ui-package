@@ -1,16 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import Stepper from './Stepper';
-import { FormConfig, FieldConfig } from './types';
+import { FieldConfig, FormBuilderProps } from './types';
 import { ToastContainer, toast } from 'react-toastify';
+import { Input } from '../ui/Input';
 
-interface Props {
-  config: FormConfig;
-  onSubmit: (data: Record<string, any>) => void;
-  stepperOnly?: boolean;
-  formOnly?: boolean;
-}
-
-export const FormBuilder: React.FC<Props> = ({ config, onSubmit }) => {
+export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [data, setData] = useState<Record<string, any>>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
@@ -153,18 +147,14 @@ export const FormBuilder: React.FC<Props> = ({ config, onSubmit }) => {
 
         default:
           return (
-            <div key={f.name} className="mb-4">
-              {baseLabel}
-              <input
-                id={f.name}
-                type={f.type}
-                value={value}
-                placeholder={f.placeholder}
-                onChange={(e) => handleChange(f.name, e.target.value)}
-                className="w-full border rounded p-2"
-              />
-              {showError && <div className="text-red-500 text-sm mt-1">{f.label} is required</div>}
-            </div>
+            <Input
+              {...f}
+              value={value}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                handleChange(f.name, e.target.value)
+              }
+              error={showError ? `${f.label} is required` : undefined}
+            />
           );
       }
     },

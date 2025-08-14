@@ -1,7 +1,4 @@
-import { Drawer } from "vaul";
-import { DrawerPortal, DrawerOverlay, DrawerTrigger, DrawerClose, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription } from "./Drawer";
-
-export default {
+export {
   Drawer,
   DrawerPortal,
   DrawerOverlay,
@@ -12,4 +9,4 @@ export default {
   DrawerFooter,
   DrawerTitle,
   DrawerDescription,
-} ;
+} from './Drawer';

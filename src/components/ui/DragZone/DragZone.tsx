@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDropzone } from 'react-dropzone';
 
-interface DragZoneProps {
+export interface DragZoneProps {
   onDrop: (acceptedFiles: File[]) => void;
 }
 
-const DragZone: React.FC<DragZoneProps> = ({ onDrop }) => {
+export const DragZone: React.FC<DragZoneProps> = ({ onDrop }) => {
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
@@ -18,5 +18,3 @@ const DragZone: React.FC<DragZoneProps> = ({ onDrop }) => {
     </div>
   );
 };
-
-export default DragZone;

@@ -95,14 +95,6 @@ export const navItems: NavItem[] = [
     isActive: false,
     badge: 'BETA',
   },
-  {
-    id: 'demo',
-    title: 'Demo',
-    icon: Settings,
-    link: '/custom',
-    isActive: false,
-    badge: 'BETA',
-  },
 ];
 
 export const modulesData: Module[] = [

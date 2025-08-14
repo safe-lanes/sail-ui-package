@@ -10,3 +10,4 @@ export declare const StandardFormPopup: React.ForwardRefExoticComponent<FormPopu
 declare const FormPopupOverlay: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 declare const FormPopupContent: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 export { StandardFormPopup as FormPopup, FormPopupOverlay, FormPopupContent };
+export type { FormPopupProps };

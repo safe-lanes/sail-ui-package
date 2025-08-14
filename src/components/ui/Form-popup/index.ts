@@ -1,4 +1,2 @@
-import { StandardFormPopup, FormPopup, FormPopupOverlay, FormPopupContent, FormPopupProps } from "./Form-popup";
-
-export default {FormPopup, StandardFormPopup, FormPopupOverlay, FormPopupContent };
-export  type {FormPopupProps}
+export { StandardFormPopup, FormPopup, FormPopupOverlay, FormPopupContent } from './Form-popup';
+export type { FormPopupProps } from './Form-popup';

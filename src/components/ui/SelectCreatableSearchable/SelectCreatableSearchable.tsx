@@ -3,14 +3,14 @@ import CreatableSelect from 'react-select/creatable';
 import { SingleValue } from 'react-select';
 import { OptionType } from '../SelectBasic/SelectBasic';
 
-interface SelectCreatableSearchableProps {
+export interface SelectCreatableSearchableProps {
   options: OptionType[];
   value?: OptionType | null;
   onChange: (value: SingleValue<OptionType>) => void;
   placeholder?: string;
 }
 
-const SelectCreatableSearchable: React.FC<SelectCreatableSearchableProps> = ({
+export const SelectCreatableSearchable: React.FC<SelectCreatableSearchableProps> = ({
   options,
   value,
   onChange,
@@ -26,6 +26,3 @@ const SelectCreatableSearchable: React.FC<SelectCreatableSearchableProps> = ({
     />
   );
 };
-
-export default SelectCreatableSearchable;
-export type {SelectCreatableSearchableProps}

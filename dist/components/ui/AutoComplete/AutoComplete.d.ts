@@ -1,7 +1,6 @@
 import React from 'react';
-interface AutoCompleteProps {
+export interface AutoCompleteProps {
     suggestions: string[];
     onSelect: (value: string) => void;
 }
-declare const AutoComplete: React.FC<AutoCompleteProps>;
-export default AutoComplete;
+export declare const AutoComplete: React.FC<AutoCompleteProps>;

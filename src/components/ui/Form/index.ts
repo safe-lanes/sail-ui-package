@@ -1,12 +1,10 @@
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, useFormField } from './Form';
-
-export default {
-  useFormField,
+export {
   Form,
-  FormItem,
-  FormLabel,
   FormControl,
   FormDescription,
-  FormMessage,
   FormField,
-} ;
+  FormItem,
+  FormLabel,
+  FormMessage,
+  useFormField,
+} from './Form';

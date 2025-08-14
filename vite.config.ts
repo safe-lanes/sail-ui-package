@@ -20,12 +20,11 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: (id) => id === 'react' || id === 'react-dom' || id.startsWith('@radix-ui/'),
+      external: (id) => id === 'react' || id === 'react-dom' || id.startsWith('@radix-ui/*'),
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          '@radix-ui/react-slot': 'ReactSlot',
         },
       },
     },

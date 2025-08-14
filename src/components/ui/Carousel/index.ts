@@ -1,12 +1,8 @@
-import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './Carousel';
-
-export default {
-
+export {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
-};
-export type {CarouselApi}
-
+  CarouselPrevious,
+} from './Carousel';
+export type { CarouselApi } from './Carousel';

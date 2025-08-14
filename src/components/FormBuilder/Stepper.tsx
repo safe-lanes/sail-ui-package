@@ -1,15 +1,13 @@
 import React from 'react';
 import clsx from 'clsx';
-import { StepConfig } from './types';
+import { StepperProps } from './types';
 
-interface Props {
-  steps: StepConfig[];
-  current: number;
-  direction?: 'vertical' | 'horizontal';
-  onStepClick?: (index: number) => void;
-}
-
-const Stepper: React.FC<Props> = ({ steps, current, direction = 'vertical', onStepClick }) => {
+const Stepper: React.FC<StepperProps> = ({
+  steps,
+  current,
+  direction = 'vertical',
+  onStepClick,
+}) => {
   const isVertical = direction === 'vertical';
 
   return (

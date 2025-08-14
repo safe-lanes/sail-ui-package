@@ -1,2 +1,2 @@
 export { FormBuilder } from './FormBuilder';
-export * from './types';
+export type { FormConfig, FieldConfig, StepConfig, FieldType, ShowIf, FormBuilderProps, StepperProps, } from './types';

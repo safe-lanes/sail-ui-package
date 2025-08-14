@@ -6,7 +6,7 @@ export interface OptionType {
   label: string;
 }
 
-interface SelectBasicProps {
+export interface SelectBasicProps {
   options: OptionType[];
   value?: OptionType | null;
   onChange: (value: SingleValue<OptionType>) => void;
@@ -24,5 +24,4 @@ const SelectBasic: React.FC<SelectBasicProps> = ({ options, value, onChange, pla
   );
 };
 
-export default SelectBasic;
-export type {SelectBasicProps}
+export { SelectBasic };

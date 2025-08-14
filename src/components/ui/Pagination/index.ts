@@ -1,6 +1,4 @@
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "./Pagination";
-
-export default{
+export {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
@@ -8,4 +6,4 @@ export default{
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} ;
+} from './Pagination';

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-interface AutoCompleteProps {
+export interface AutoCompleteProps {
   suggestions: string[];
   onSelect: (value: string) => void;
 }
 
-const AutoComplete: React.FC<AutoCompleteProps> = ({ suggestions, onSelect }) => {
+export const AutoComplete: React.FC<AutoCompleteProps> = ({ suggestions, onSelect }) => {
   const [input, setInput] = useState('');
   const [filtered, setFiltered] = useState<string[]>([]);
 
@@ -43,6 +43,3 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({ suggestions, onSelect }) =>
     </div>
   );
 };
-
-export default {AutoComplete};
-export type { AutoCompleteProps }

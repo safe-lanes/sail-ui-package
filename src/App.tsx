@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { Routes, Route } from 'react-router-dom';
 import { SideBar } from './components/layout/NavBar/Sidebar';
 import HeaderExample from './pages/navbar/HeaderExample';
 import { sidebarItems } from './utils/sideBarData';
@@ -23,7 +22,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <Router>
+    <>
       <div className="min-h-screen bg-gray-100 flex flex-col">
         {/* Header */}
         <HeaderExample />
@@ -48,7 +47,7 @@ const App: React.FC = () => {
               <div className="bg-white rounded-lg shadow-sm p-6">
                 <Routes>
                   <Route
-                    path="/forms"
+                    path="/"
                     element={
                       <Card className="my-3 p-2">
                         <NormalForm />
@@ -67,7 +66,7 @@ const App: React.FC = () => {
           </main>
         </div>
       </div>
-    </Router>
+    </>
   );
 };
 

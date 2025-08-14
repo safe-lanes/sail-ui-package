@@ -1,3 +1,1 @@
-import { Form } from './Form';
-export { useFormField, Form, FormItem, FormLabel, FormControl, FormDescription, FormMessage, FormField, } from './Form';
-export default Form;
+export { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, useFormField, } from './Form';

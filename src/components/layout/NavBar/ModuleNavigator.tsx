@@ -1,6 +1,6 @@
 // ModuleNavigator.tsx
 import React, { useState } from 'react';
-import Dialog, { DialogContent, DialogHeader, DialogTitle } from '../../ui/Dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../../ui/Dialog';
 import { Button } from '../../ui/Button';
 
 export interface Module {

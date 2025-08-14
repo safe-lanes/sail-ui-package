@@ -1,3 +1,1 @@
-import { Avatar } from './Avatar';
-export { AvatarImage, AvatarFallback } from './Avatar';
-export default Avatar;
+export { Avatar, AvatarFallback, AvatarImage } from './Avatar';

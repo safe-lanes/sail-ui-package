@@ -1,6 +1,4 @@
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger } from './Dialog';
-
-export default {
+export {
   Dialog,
   DialogPortal,
   DialogOverlay,
@@ -11,4 +9,4 @@ export default {
   DialogFooter,
   DialogTitle,
   DialogDescription,
-} ;
+} from './Dialog';

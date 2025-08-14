@@ -77,4 +77,4 @@ const FormPopupContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<H
 FormPopupContent.displayName = 'FormPopupContent';
 
 export { StandardFormPopup as FormPopup, FormPopupOverlay, FormPopupContent };
-export type {FormPopupProps}
+export type { FormPopupProps };

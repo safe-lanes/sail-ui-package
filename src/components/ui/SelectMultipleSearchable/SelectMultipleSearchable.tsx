@@ -2,14 +2,14 @@ import React from 'react';
 import Select, { MultiValue } from 'react-select';
 import { OptionType } from '../SelectBasic/SelectBasic';
 
-interface SelectMultipleSearchableProps {
+export interface SelectMultipleSearchableProps {
   options: OptionType[];
   value?: OptionType[];
   onChange: (value: MultiValue<OptionType>) => void;
   placeholder?: string;
 }
 
-const SelectMultipleSearchable: React.FC<SelectMultipleSearchableProps> = ({
+export const SelectMultipleSearchable: React.FC<SelectMultipleSearchableProps> = ({
   options,
   value,
   onChange,
@@ -26,6 +26,3 @@ const SelectMultipleSearchable: React.FC<SelectMultipleSearchableProps> = ({
     />
   );
 };
-
-export default SelectMultipleSearchable;
-export type {SelectMultipleSearchableProps}

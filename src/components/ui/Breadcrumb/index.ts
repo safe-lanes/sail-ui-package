@@ -1,12 +1,4 @@
-import {   Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-  BreadcrumbEllipsis, } from './Breadcrumb';
-
-export default {
+export {
   Breadcrumb,
   BreadcrumbList,
   BreadcrumbItem,
@@ -14,4 +6,4 @@ export default {
   BreadcrumbPage,
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
-} ;
+} from './Breadcrumb';

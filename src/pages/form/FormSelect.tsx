@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import SelectBasic from '../../components/ui/SelectBasic/SelectBasic';
-import SelectSearchable from '../../components/ui/SelectSearchable/SelectSearchable';
-import SelectMultiple from '../../components/ui/SelectMultiple/SelectMultiple';
-import SelectMultipleSearchable from '../../components/ui/SelectMultipleSearchable/SelectMultipleSearchable';
-import SelectCreatable from '../../components/ui/SelectCreatable/SelectCreatable';
-import SelectCreatableSearchable from '../../components/ui/SelectCreatableSearchable/SelectCreatableSearchable';
-import SelectSearchableLoadMore from '../../components/ui/SelectSearchableLoadMore/SelectSearchableLoadMore';
-import SelectMultipleSearchableLoadMore from '../../components/ui/SelectMultipleSearchableLoadMore/SelectMultipleSearchableLoadMore';
-import DragZone from '../../components/ui/DragZone/DragZone';
-import AutoComplete from '../../components/ui/AutoComplete/AutoComplete';
 import { Card } from '../../components/ui/Card';
+import { SelectBasic } from '../../components/ui/SelectBasic';
+import { SelectSearchable } from '../../components/ui/SelectSearchable';
+import { SelectMultiple } from '../../components/ui/SelectMultiple';
+import { SelectMultipleSearchable } from '../../components/ui/SelectMultipleSearchable';
+import { SelectCreatable } from '../../components/ui/SelectCreatable';
+import { SelectCreatableSearchable } from '../../components/ui/SelectCreatableSearchable';
+import { SelectSearchableLoadMore } from '../../components/ui/SelectSearchableLoadMore';
+import { SelectMultipleSearchableLoadMore } from '../../components/ui/SelectMultipleSearchableLoadMore';
+import { DragZone } from '../../components/ui/DragZone';
+import { AutoComplete } from '../../components/ui/AutoComplete';
 
 type OptionType = {
   value: string;
