@@ -78,5 +78,5 @@ MIT
 
 A big thanks to all who helped build this UI library!
 
-<!-- CONTRIBUTORS:START -->
-<!-- CONTRIBUTORS:END -->
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
