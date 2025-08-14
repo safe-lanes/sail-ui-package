@@ -19,13 +19,13 @@ export type FieldType =
   | 'checkbox'
   | 'radio'
   | 'switch'
-  | "select-basic"
-  | "select-searchable"
-  | "select-creatable"
-  | "select-multiple"
-  | "select-multiple-searchable"
-  | "select-creatable-multiple"
-  | "select-load-more";
+  | 'select-basic'
+  | 'select-searchable'
+  | 'select-creatable'
+  | 'select-multiple'
+  | 'select-multiple-searchable'
+  | 'select-creatable-multiple'
+  | 'select-load-more';
 export interface ShowIf {
   field: string;
   value: unknown;
@@ -42,15 +42,7 @@ export interface FieldConfig {
   errorMessage?: string;
   className?: string;
   [key: string]: unknown;
-
 }
-
-export interface StepConfig {
-  title: string;
-  description?: string;
-  fields: FieldConfig[];
-}
-
 export interface FormConfig {
   type?: 'stepper' | 'normal' | 'both';
   stepperPosition: 'top' | 'bottom' | 'left' | 'center' | 'right';
@@ -72,3 +64,15 @@ export interface StepperProps {
   direction?: 'vertical' | 'horizontal';
   onStepClick?: (index: number) => void;
 }
+
+// in types.ts
+export type StepConfig = {
+  title: string;
+  description?: string;
+  fields: FieldConfig[];
+  grid?: {
+    columns?: number; // default 1
+    gap?: string; // default "1rem"
+    responsive?: boolean; // default false
+  };
+};

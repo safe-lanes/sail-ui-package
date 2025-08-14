@@ -10,16 +10,17 @@ export default function NormalForm() {
     steps: [
       {
         title: 'Basic inputs',
+        grid: { columns: 2, gap: '2rem' },
         fields: [
           { name: 'firstName', label: 'First Name', type: 'text', required: true },
           { name: 'lastName', label: 'Last Name', type: 'text', required: true },
           { name: 'password', label: 'Password', type: 'password', required: true },
           { name: 'age', label: 'Age', type: 'number', min: 0, max: 100 },
-
         ],
       },
       {
         title: 'Inputs',
+        grid: { columns: 3, gap: '2rem' },
         fields: [
           { name: 'dob', label: 'Date of Birth', type: 'date' },
           { name: 'time', label: 'Preferred Time', type: 'time' },
@@ -94,7 +95,7 @@ export default function NormalForm() {
             label: 'Search',
             type: 'search',
           },
-        ]
+        ],
       },
       {
         title: 'Contact Info',

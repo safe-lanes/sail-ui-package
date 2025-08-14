@@ -4,8 +4,6 @@ import { DragZone } from '../../components/ui/DragZone';
 import { AutoComplete } from '../../components/ui/AutoComplete';
 import { CommonSelect, OptionType } from '../../components/ui/Common-Select';
 
-
-
 const options: OptionType[] = [
   { value: 'apple', label: 'Apple' },
   { value: 'banana', label: 'Banana' },

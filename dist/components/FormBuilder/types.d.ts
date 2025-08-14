@@ -1,7 +1,7 @@
-export type FieldType = 'text' | 'email' | 'tel' | 'number' | 'checkbox' | 'select' | 'textarea' | 'password' | 'date';
+export type FieldType = 'text' | 'email' | 'tel' | 'number' | 'checkbox' | 'textarea' | 'password' | 'date' | 'time' | 'datetime-local' | 'color' | 'file' | 'image' | 'url' | 'search' | 'range' | 'checkbox-group' | 'checkbox' | 'radio' | 'switch' | 'select-basic' | 'select-searchable' | 'select-creatable' | 'select-multiple' | 'select-multiple-searchable' | 'select-creatable-multiple' | 'select-load-more';
 export interface ShowIf {
     field: string;
-    value: any;
+    value: unknown;
 }
 export interface FieldConfig {
     name: string;
@@ -14,11 +14,9 @@ export interface FieldConfig {
     }[];
     showIf?: ShowIf;
     placeholder?: string;
-}
-export interface StepConfig {
-    title: string;
-    description?: string;
-    fields: FieldConfig[];
+    errorMessage?: string;
+    className?: string;
+    [key: string]: unknown;
 }
 export interface FormConfig {
     type?: 'stepper' | 'normal' | 'both';
@@ -29,7 +27,7 @@ export interface FormConfig {
 }
 export interface FormBuilderProps {
     config: FormConfig;
-    onSubmit: (data: Record<string, any>) => void;
+    onSubmit: (data: Record<string, unknown>) => void;
     stepperOnly?: boolean;
     formOnly?: boolean;
 }
@@ -39,3 +37,13 @@ export interface StepperProps {
     direction?: 'vertical' | 'horizontal';
     onStepClick?: (index: number) => void;
 }
+export type StepConfig = {
+    title: string;
+    description?: string;
+    fields: FieldConfig[];
+    grid?: {
+        columns?: number;
+        gap?: string;
+        responsive?: boolean;
+    };
+};

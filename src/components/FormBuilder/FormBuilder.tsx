@@ -18,20 +18,21 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
   const buttonAlignment = config.buttonAlignment || 'right';
   const stepType = config.type || 'both';
 
-  const renderError = useCallback((f: FieldConfig, value: unknown) => {
-    const hasError =
-      f.required &&
-      touched[f.name] &&
-      (value === '' || value === undefined || value === null);
+  const renderError = useCallback(
+    (f: FieldConfig, value: unknown) => {
+      const hasError =
+        f.required && touched[f.name] && (value === '' || value === undefined || value === null);
 
-    if (!hasError) return null;
+      if (!hasError) return null;
 
-    return (
-      <div className="text-red-500 text-sm mt-1">
-        {f.errorMessage || `${f.label} is required`}
-      </div>
-    );
-  }, [touched]);
+      return (
+        <div className="text-red-500 text-sm mt-1">
+          {f.errorMessage || `${f.label} is required`}
+        </div>
+      );
+    },
+    [touched],
+  );
 
   const validateStep = useCallback(
     (stepIndex: number) => {
@@ -60,9 +61,8 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
       }
       return isValid;
     },
-    [data, steps]
+    [data, steps],
   );
-
 
   // Handle going to next step or submit
   const handleNext = useCallback(() => {
@@ -80,12 +80,20 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
   const handleStepClick = useCallback(
     (targetStep: number) => {
       if (targetStep < currentStep) {
-        // Allow going back freely
+        // Going back — no validation
         setCurrentStep(targetStep);
         return;
       }
-      // Validate current step before moving forward
-      if (!validateStep(currentStep)) return;
+
+      // Going forward — validate each step along the way
+      for (let i = currentStep; i < targetStep; i++) {
+        if (!validateStep(i)) {
+          // Stop at the first invalid step
+          setCurrentStep(i);
+          return;
+        }
+      }
+
       setCurrentStep(targetStep);
     },
     [currentStep, validateStep],
@@ -137,20 +145,20 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
             </div>
           );
 
-        case "select-basic":
-        case "select-searchable":
-        case "select-creatable":
-        case "select-multiple":
-        case "select-multiple-searchable":
-        case "select-creatable-multiple":
-        case "select-load-more":
+        case 'select-basic':
+        case 'select-searchable':
+        case 'select-creatable':
+        case 'select-multiple':
+        case 'select-multiple-searchable':
+        case 'select-creatable-multiple':
+        case 'select-load-more':
           return (
             <div key={name} className="mb-4">
               {baseLabel}
               <CommonSelect
                 name={name}
                 variant={type}
-                value={value === '' ? undefined : value as unknown as OptionType}
+                value={value === '' ? undefined : (value as unknown as OptionType)}
                 onChange={(val) => handleChange(name, val)}
                 {...rest}
               />
@@ -169,7 +177,9 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
                 onChange={(e) => handleChange(name, e.target.checked)}
                 {...rest}
               />
-              <label htmlFor={name} className="ml-2">{label}</label>
+              <label htmlFor={name} className="ml-2">
+                {label}
+              </label>
               {renderError(f, value)}
             </div>
           );
@@ -193,7 +203,6 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
     },
     [data, handleChange, isVisible, renderError],
   );
-
 
   // Buttons component for navigation with alignment
   const Buttons: React.FC<{
@@ -256,7 +265,24 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
         {steps[currentStep].description && (
           <p className="text-sm text-gray-500 mb-4">{steps[currentStep].description}</p>
         )}
-        {steps[currentStep].fields.map(renderField)}
+
+        {/* GRID WRAPPER */}
+        <div
+          className={
+            steps[currentStep]?.grid?.responsive
+              ? 'grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
+              : `grid gap-[${steps[currentStep]?.grid?.gap || '1rem'}] grid-cols-${
+                  steps[currentStep]?.grid?.columns || 1
+                }`
+          }
+          style={{
+            gap: steps[currentStep]?.grid?.gap || '1rem',
+            gridTemplateColumns: `repeat(${steps[currentStep]?.grid?.columns || 1}, 1fr)`,
+          }}
+        >
+          {steps[currentStep].fields.map(renderField)}
+        </div>
+
         <Buttons lastStep={currentStep === steps.length - 1} />
       </div>
     );
