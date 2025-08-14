@@ -9,7 +9,7 @@ import SelectSearchableLoadMore from '../../components/ui/SelectSearchableLoadMo
 import SelectMultipleSearchableLoadMore from '../../components/ui/SelectMultipleSearchableLoadMore/SelectMultipleSearchableLoadMore';
 import DragZone from '../../components/ui/DragZone/DragZone';
 import AutoComplete from '../../components/ui/AutoComplete/AutoComplete';
-import Card from '../../components/ui/Card';
+import { Card } from '../../components/ui/Card';
 
 type OptionType = {
   value: string;

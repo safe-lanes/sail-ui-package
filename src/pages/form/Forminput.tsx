@@ -1,5 +1,3 @@
-import Input from '../../components/ui/Input';
-import Card from '../../components/ui/Card';
 import {
   Mail,
   Search,
@@ -13,6 +11,8 @@ import {
   Upload,
 } from 'lucide-react';
 import { Textarea } from '../../components/ui/Textarea';
+import { Card } from '../../components/ui/Card';
+import { Input } from '../../components/ui/Input';
 
 export default function Forminput() {
   return (
