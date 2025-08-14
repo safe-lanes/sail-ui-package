@@ -1,4 +1,4 @@
-import { Dialog } from "./Dialog";
+import { Dialog } from './Dialog';
 
 export {
   DialogPortal,
@@ -10,6 +10,6 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
-} from "./Dialog";
+} from './Dialog';
 
 export default Dialog;

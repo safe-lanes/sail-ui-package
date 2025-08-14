@@ -59,6 +59,7 @@ npm run build:lib
 ```
 
 This will create a `dist` folder with:
+
 - ESM and CJS modules
 - TypeScript declarations
 - Bundled CSS styles

@@ -1,7 +1,7 @@
-import React from "react";
-import AsyncSelect from "react-select/async";
-import { MultiValue } from "react-select";
-import { OptionType } from "../SelectBasic/SelectBasic";
+import React from 'react';
+import AsyncSelect from 'react-select/async';
+import { MultiValue } from 'react-select';
+import { OptionType } from '../SelectBasic/SelectBasic';
 
 interface SelectMultipleSearchableLoadMoreProps {
   loadOptions: (inputValue: string, callback: (options: OptionType[]) => void) => void;
@@ -10,7 +10,12 @@ interface SelectMultipleSearchableLoadMoreProps {
   placeholder?: string;
 }
 
-const SelectMultipleSearchableLoadMore: React.FC<SelectMultipleSearchableLoadMoreProps> = ({ loadOptions, value, onChange, placeholder }) => {
+const SelectMultipleSearchableLoadMore: React.FC<SelectMultipleSearchableLoadMoreProps> = ({
+  loadOptions,
+  value,
+  onChange,
+  placeholder,
+}) => {
   return (
     <AsyncSelect
       cacheOptions
@@ -19,7 +24,7 @@ const SelectMultipleSearchableLoadMore: React.FC<SelectMultipleSearchableLoadMor
       isMulti
       value={value}
       onChange={onChange}
-      placeholder={placeholder || "Search & select multiple with load more..."}
+      placeholder={placeholder || 'Search & select multiple with load more...'}
     />
   );
 };

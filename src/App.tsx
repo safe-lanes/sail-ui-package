@@ -1,21 +1,21 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { SideBar } from "./components/layout/NavBar/Sidebar";
-import HeaderExample from "./pages/navbar/HeaderExample";
-import { sidebarItems } from "./utils/sideBarData";
-import { Card } from "./components/ui/Card/Card";
-import NormalForm from "./pages/form/NormalForm";
-import { Title } from "./components/ui/Title/Title";
-import Forminput from "./pages/form/Forminput";
-import FormButtons from "./pages/form/FormButtons";
-import FormCheckboxRadio from "./pages/form/FormCheckboxRadio";
-import FormAlertDialog from "./pages/form/FormAlertDialog";
-import FormSelect from "./pages/form/FormSelect";
+import { SideBar } from './components/layout/NavBar/Sidebar';
+import HeaderExample from './pages/navbar/HeaderExample';
+import { sidebarItems } from './utils/sideBarData';
+import { Card } from './components/ui/Card/Card';
+import NormalForm from './pages/form/NormalForm';
+import { Title } from './components/ui/Title/Title';
+import Forminput from './pages/form/Forminput';
+import FormButtons from './pages/form/FormButtons';
+import FormCheckboxRadio from './pages/form/FormCheckboxRadio';
+import FormAlertDialog from './pages/form/FormAlertDialog';
+import FormSelect from './pages/form/FormSelect';
 
 const App: React.FC = () => {
   const handleSidebarClick = (item: any) => {
-    console.log("Sidebar item clicked:", item);
+    console.log('Sidebar item clicked:', item);
     // If sidebar items have `link`, navigation will be handled by NavLink or useNavigate
   };
 
@@ -30,14 +30,14 @@ const App: React.FC = () => {
           <SideBar
             items={sidebarItems}
             onItemClick={handleSidebarClick}
-            currentLink={""}
+            currentLink={''}
             allowedLinks={[]}
           />
 
           {/* Main area changes based on route */}
           <main className="flex-1 overflow-auto ml-20">
             <div className="w-full">
-              <Title title={"Main Content Area"} className="mt-4 mr-4">
+              <Title title={'Main Content Area'} className="mt-4 mr-4">
                 <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
                   Custom Action
                 </button>
@@ -52,36 +52,11 @@ const App: React.FC = () => {
                       </Card>
                     }
                   />
-                  <Route
-                    path="/inputs"
-                    element={
-                        <Forminput />
-                    }
-                  />
-                   <Route
-                    path="/buttons"
-                    element={
-                        <FormButtons />
-                    }
-                  />
-                   <Route
-                    path="/checkboxes"
-                    element={
-                        <FormCheckboxRadio />
-                    }
-                  />
-                    <Route
-                    path="/alert"
-                    element={
-                        <FormAlertDialog />
-                    }
-                  />
-                    <Route
-                    path="/select"
-                    element={
-                        <FormSelect />
-                    }
-                  />
+                  <Route path="/inputs" element={<Forminput />} />
+                  <Route path="/buttons" element={<FormButtons />} />
+                  <Route path="/checkboxes" element={<FormCheckboxRadio />} />
+                  <Route path="/alert" element={<FormAlertDialog />} />
+                  <Route path="/select" element={<FormSelect />} />
                   {/* You can keep adding more routes here */}
                 </Routes>
               </div>

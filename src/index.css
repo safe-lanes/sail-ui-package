@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Mulish:700,400|Roboto:400,700");
+@import url('https://fonts.googleapis.com/css?family=Mulish:700,400|Roboto:400,700');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,9 +26,9 @@
     --card-foreground: 222.2 47.4% 11.2%;
 
     /* --primary: 222.2 47.4% 11.2%; */
-       --primary: 199 80% 53%; /* HSL for #0EA5E9 */
+    --primary: 199 80% 53%; /* HSL for #0EA5E9 */
     --primary-foreground: 210 40% 98%;
- 
+
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
@@ -84,6 +84,8 @@
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import Select, { SingleValue } from "react-select";
+import React from 'react';
+import Select, { SingleValue } from 'react-select';
 
 export interface OptionType {
   value: string;
@@ -19,7 +19,7 @@ const SelectBasic: React.FC<SelectBasicProps> = ({ options, value, onChange, pla
       options={options}
       value={value}
       onChange={onChange}
-      placeholder={placeholder || "Select..."}
+      placeholder={placeholder || 'Select...'}
     />
   );
 };

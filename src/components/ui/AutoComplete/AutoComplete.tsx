@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 interface AutoCompleteProps {
   suggestions: string[];
@@ -6,13 +6,13 @@ interface AutoCompleteProps {
 }
 
 const AutoComplete: React.FC<AutoCompleteProps> = ({ suggestions, onSelect }) => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [filtered, setFiltered] = useState<string[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInput(value);
-    setFiltered(suggestions.filter(item => item.toLowerCase().includes(value.toLowerCase())));
+    setFiltered(suggestions.filter((item) => item.toLowerCase().includes(value.toLowerCase())));
   };
 
   return (

@@ -1,6 +1,6 @@
-import React from "react";
-import Select, { MultiValue } from "react-select";
-import { OptionType } from "../SelectBasic/SelectBasic";
+import React from 'react';
+import Select, { MultiValue } from 'react-select';
+import { OptionType } from '../SelectBasic/SelectBasic';
 
 interface SelectMultipleProps {
   options: OptionType[];
@@ -9,14 +9,19 @@ interface SelectMultipleProps {
   placeholder?: string;
 }
 
-const SelectMultiple: React.FC<SelectMultipleProps> = ({ options, value, onChange, placeholder }) => {
+const SelectMultiple: React.FC<SelectMultipleProps> = ({
+  options,
+  value,
+  onChange,
+  placeholder,
+}) => {
   return (
     <Select
       options={options}
       value={value}
       onChange={onChange}
       isMulti
-      placeholder={placeholder || "Select multiple..."}
+      placeholder={placeholder || 'Select multiple...'}
     />
   );
 };

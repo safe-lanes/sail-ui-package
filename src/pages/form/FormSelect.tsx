@@ -1,15 +1,15 @@
-import { useState } from "react";
-import SelectBasic from "../../components/ui/SelectBasic/SelectBasic";
-import SelectSearchable from "../../components/ui/SelectSearchable/SelectSearchable";
-import SelectMultiple from "../../components/ui/SelectMultiple/SelectMultiple";
-import SelectMultipleSearchable from "../../components/ui/SelectMultipleSearchable/SelectMultipleSearchable";
-import SelectCreatable from "../../components/ui/SelectCreatable/SelectCreatable";
-import SelectCreatableSearchable from "../../components/ui/SelectCreatableSearchable/SelectCreatableSearchable";
-import SelectSearchableLoadMore from "../../components/ui/SelectSearchableLoadMore/SelectSearchableLoadMore";
-import SelectMultipleSearchableLoadMore from "../../components/ui/SelectMultipleSearchableLoadMore/SelectMultipleSearchableLoadMore";
-import DragZone from "../../components/ui/DragZone/DragZone";
-import AutoComplete from "../../components/ui/AutoComplete/AutoComplete";
-import Card from "../../components/ui/Card";
+import { useState } from 'react';
+import SelectBasic from '../../components/ui/SelectBasic/SelectBasic';
+import SelectSearchable from '../../components/ui/SelectSearchable/SelectSearchable';
+import SelectMultiple from '../../components/ui/SelectMultiple/SelectMultiple';
+import SelectMultipleSearchable from '../../components/ui/SelectMultipleSearchable/SelectMultipleSearchable';
+import SelectCreatable from '../../components/ui/SelectCreatable/SelectCreatable';
+import SelectCreatableSearchable from '../../components/ui/SelectCreatableSearchable/SelectCreatableSearchable';
+import SelectSearchableLoadMore from '../../components/ui/SelectSearchableLoadMore/SelectSearchableLoadMore';
+import SelectMultipleSearchableLoadMore from '../../components/ui/SelectMultipleSearchableLoadMore/SelectMultipleSearchableLoadMore';
+import DragZone from '../../components/ui/DragZone/DragZone';
+import AutoComplete from '../../components/ui/AutoComplete/AutoComplete';
+import Card from '../../components/ui/Card';
 
 type OptionType = {
   value: string;
@@ -17,18 +17,15 @@ type OptionType = {
 };
 
 const options: OptionType[] = [
-  { value: "apple", label: "Apple" },
-  { value: "banana", label: "Banana" },
-  { value: "cherry", label: "Cherry" },
+  { value: 'apple', label: 'Apple' },
+  { value: 'banana', label: 'Banana' },
+  { value: 'cherry', label: 'Cherry' },
 ];
 
-const loadMoreOptions = (
-  inputValue: string,
-  callback: (opts: OptionType[]) => void
-) => {
+const loadMoreOptions = (inputValue: string, callback: (opts: OptionType[]) => void) => {
   setTimeout(() => {
     const filtered = options.filter((opt) =>
-      opt.label.toLowerCase().includes(inputValue.toLowerCase())
+      opt.label.toLowerCase().includes(inputValue.toLowerCase()),
     );
     callback(filtered);
   }, 500);
@@ -36,37 +33,27 @@ const loadMoreOptions = (
 
 export default function FormSelect() {
   const [basicValue, setBasicValue] = useState<OptionType | null>(null);
-  const [searchableValue, setSearchableValue] = useState<OptionType | null>(
-    null
-  );
+  const [searchableValue, setSearchableValue] = useState<OptionType | null>(null);
   const [multiValue, setMultiValue] = useState<OptionType[]>([]);
   const [multiSearchValue, setMultiSearchValue] = useState<OptionType[]>([]);
   const [creatableValue, setCreatableValue] = useState<OptionType | null>(null);
-  const [creatableSearchValue, setCreatableSearchValue] = useState<
-    OptionType | null
-  >(null);
+  const [creatableSearchValue, setCreatableSearchValue] = useState<OptionType | null>(null);
   const [loadMoreValue, setLoadMoreValue] = useState<OptionType | null>(null);
   const [multiLoadMoreValue, setMultiLoadMoreValue] = useState<OptionType[]>([]);
 
   const demoList = [
     {
-      label: "Select Basic",
+      label: 'Select Basic',
+      element: <SelectBasic options={options} value={basicValue} onChange={setBasicValue} />,
+    },
+    {
+      label: 'Select Searchable',
       element: (
-        <SelectBasic options={options} value={basicValue} onChange={setBasicValue} />
+        <SelectSearchable options={options} value={searchableValue} onChange={setSearchableValue} />
       ),
     },
     {
-      label: "Select Searchable",
-      element: (
-        <SelectSearchable
-          options={options}
-          value={searchableValue}
-          onChange={setSearchableValue}
-        />
-      ),
-    },
-    {
-      label: "Select Multiple",
+      label: 'Select Multiple',
       element: (
         <SelectMultiple
           options={options}
@@ -76,7 +63,7 @@ export default function FormSelect() {
       ),
     },
     {
-      label: "Select Multiple Searchable",
+      label: 'Select Multiple Searchable',
       element: (
         <SelectMultipleSearchable
           options={options}
@@ -86,17 +73,13 @@ export default function FormSelect() {
       ),
     },
     {
-      label: "Select Creatable",
+      label: 'Select Creatable',
       element: (
-        <SelectCreatable
-          options={options}
-          value={creatableValue}
-          onChange={setCreatableValue}
-        />
+        <SelectCreatable options={options} value={creatableValue} onChange={setCreatableValue} />
       ),
     },
     {
-      label: "Select Creatable Searchable",
+      label: 'Select Creatable Searchable',
       element: (
         <SelectCreatableSearchable
           options={options}
@@ -106,7 +89,7 @@ export default function FormSelect() {
       ),
     },
     {
-      label: "Select Searchable with Load More",
+      label: 'Select Searchable with Load More',
       element: (
         <SelectSearchableLoadMore
           loadOptions={loadMoreOptions}
@@ -116,7 +99,7 @@ export default function FormSelect() {
       ),
     },
     {
-      label: "Select Multiple Searchable with Load More",
+      label: 'Select Multiple Searchable with Load More',
       element: (
         <SelectMultipleSearchableLoadMore
           loadOptions={loadMoreOptions}
@@ -126,17 +109,15 @@ export default function FormSelect() {
       ),
     },
     {
-      label: "Drag & Drop Zone",
-      element: (
-        <DragZone onDrop={(files: any) => console.log("Dropped files:", files)} />
-      ),
+      label: 'Drag & Drop Zone',
+      element: <DragZone onDrop={(files: any) => console.log('Dropped files:', files)} />,
     },
     {
-      label: "Autocomplete",
+      label: 'Autocomplete',
       element: (
         <AutoComplete
-          suggestions={["Red", "Green", "Blue", "Yellow"]}
-          onSelect={(v) => console.log("Selected:", v)}
+          suggestions={['Red', 'Green', 'Blue', 'Yellow']}
+          onSelect={(v) => console.log('Selected:', v)}
         />
       ),
     },
@@ -144,9 +125,7 @@ export default function FormSelect() {
 
   return (
     <Card className="p-6">
-      <h2 className="text-2xl font-semibold text-slate-900 mb-6">
-        Dropdown & Upload Components
-      </h2>
+      <h2 className="text-2xl font-semibold text-slate-900 mb-6">Dropdown & Upload Components</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {demoList.map((demo, i) => (
           <div key={i} className="space-y-2">

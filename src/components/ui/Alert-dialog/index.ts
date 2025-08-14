@@ -10,7 +10,7 @@ import {
   AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
-} from "./Alert-dialog";
+} from './Alert-dialog';
 
 export {
   AlertDialogPortal,

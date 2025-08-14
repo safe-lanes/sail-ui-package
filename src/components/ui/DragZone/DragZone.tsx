@@ -1,5 +1,5 @@
-import React from "react";
-import { useDropzone } from "react-dropzone";
+import React from 'react';
+import { useDropzone } from 'react-dropzone';
 
 interface DragZoneProps {
   onDrop: (acceptedFiles: File[]) => void;

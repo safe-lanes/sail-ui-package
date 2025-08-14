@@ -1,7 +1,7 @@
-import React from "react";
-import CreatableSelect from "react-select/creatable";
-import { SingleValue } from "react-select"
-import { OptionType } from "../SelectBasic/SelectBasic";
+import React from 'react';
+import CreatableSelect from 'react-select/creatable';
+import { SingleValue } from 'react-select';
+import { OptionType } from '../SelectBasic/SelectBasic';
 
 interface SelectCreatableSearchableProps {
   options: OptionType[];
@@ -10,14 +10,19 @@ interface SelectCreatableSearchableProps {
   placeholder?: string;
 }
 
-const SelectCreatableSearchable: React.FC<SelectCreatableSearchableProps> = ({ options, value, onChange, placeholder }) => {
+const SelectCreatableSearchable: React.FC<SelectCreatableSearchableProps> = ({
+  options,
+  value,
+  onChange,
+  placeholder,
+}) => {
   return (
     <CreatableSelect
       options={options}
       value={value}
       onChange={onChange}
       isSearchable
-      placeholder={placeholder || "Search, create or select..."}
+      placeholder={placeholder || 'Search, create or select...'}
     />
   );
 };

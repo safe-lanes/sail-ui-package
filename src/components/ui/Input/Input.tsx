@@ -1,8 +1,7 @@
-import * as React from "react";
-import { cn } from  "../../../lib/utils";
+import * as React from 'react';
+import { cn } from '../../../lib/utils';
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   helperText?: string;
   error?: string;
@@ -16,7 +15,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
-      type = "text",
+      type = 'text',
       label,
       helperText,
       error,
@@ -26,43 +25,31 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       buttonIcon,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <div className="w-full">
-        {label && (
-          <label className="mb-1 block text-sm font-medium text-foreground">
-            {label}
-          </label>
-        )}
+        {label && <label className="mb-1 block text-sm font-medium text-foreground">{label}</label>}
 
         {topIcon && <div className="flex justify-center mb-2">{topIcon}</div>}
 
         <div className="relative flex items-center">
-          {leftIcon && (
-            <span className="absolute left-3 text-muted-foreground">
-              {leftIcon}
-            </span>
-          )}
+          {leftIcon && <span className="absolute left-3 text-muted-foreground">{leftIcon}</span>}
 
           <input
             type={type}
             className={cn(
-              "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-              leftIcon ? "pl-10" : "",
-              rightIcon ? "pr-10" : "",
-              error ? "border-destructive focus-visible:ring-destructive" : "",
-              className
+              'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
+              leftIcon ? 'pl-10' : '',
+              rightIcon ? 'pr-10' : '',
+              error ? 'border-destructive focus-visible:ring-destructive' : '',
+              className,
             )}
             ref={ref}
             {...props}
           />
 
-          {rightIcon && (
-            <span className="absolute right-3 text-muted-foreground">
-              {rightIcon}
-            </span>
-          )}
+          {rightIcon && <span className="absolute right-3 text-muted-foreground">{rightIcon}</span>}
 
           {buttonIcon && (
             <button
@@ -81,9 +68,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         ) : null}
       </div>
     );
-  }
+  },
 );
 
-Input.displayName = "Input";
+Input.displayName = 'Input';
 
 export { Input };

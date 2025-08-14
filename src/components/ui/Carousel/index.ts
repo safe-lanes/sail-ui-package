@@ -7,6 +7,6 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-}  from './Carousel';
+} from './Carousel';
 
 export default Carousel;

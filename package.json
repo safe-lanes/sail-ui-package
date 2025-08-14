@@ -1,8 +1,9 @@
 {
+  "type": "module",
   "name": "sail-ui-package",
   "version": "1.0.0",
-  "description": "A modern React component library built with Vite and Tailwind CSS",
-  "type": "module",
+  "description": "A UI component library for Safe Lanes Consultants Pte Ltd",
+  "author": "Safe Lanes Consultants Pte Ltd",
   "main": "./dist/index.cjs",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
@@ -18,9 +19,9 @@
   "files": [
     "dist"
   ],
- "sideEffects": [
-  "./dist/style.css"
-],
+  "sideEffects": [
+    "./dist/style.css"
+  ],
   "engines": {
     "node": ">=18"
   },
@@ -28,8 +29,10 @@
     "dev": "vite",
     "build": "vite build && tsc --emitDeclarationOnly",
     "build:lib": "vite build && tsc --emitDeclarationOnly",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "lint": "eslint src --ext .ts,.tsx",
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "format:check": "prettier --check src"
   },
   "keywords": [
     "react",
@@ -38,8 +41,6 @@
     "tailwind",
     "typescript"
   ],
-  "author": "sail-ui-package",
-  "license": "MIT",
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
@@ -104,11 +105,21 @@
     "globals": "^15.9.0",
     "lucide-react": "^0.539.0",
     "postcss": "^8.4.35",
+    "prettier": "^3.6.2",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
     "vite": "^5.4.2"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/safe-lanes/sail-ui-package",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/safe-lanes/sail-ui-package.git"
+  },
+  "bugs": {
+    "url": "https://github.com/safe-lanes/sail-ui-package/issues"
   }
 }

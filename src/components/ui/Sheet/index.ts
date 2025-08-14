@@ -1,4 +1,3 @@
-
 export {
   Sheet,
   SheetPortal,
@@ -9,5 +8,5 @@ export {
   SheetHeader,
   SheetFooter,
   SheetTitle,
-  SheetDescription } from './Sheet';
-
+  SheetDescription,
+} from './Sheet';

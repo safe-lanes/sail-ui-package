@@ -1,6 +1,6 @@
-import React from "react";
-import Select, { SingleValue } from "react-select";
-import { OptionType } from "../SelectBasic/SelectBasic"
+import React from 'react';
+import Select, { SingleValue } from 'react-select';
+import { OptionType } from '../SelectBasic/SelectBasic';
 
 interface SelectSearchableProps {
   options: OptionType[];
@@ -9,14 +9,19 @@ interface SelectSearchableProps {
   placeholder?: string;
 }
 
-const SelectSearchable: React.FC<SelectSearchableProps> = ({ options, value, onChange, placeholder }) => {
+const SelectSearchable: React.FC<SelectSearchableProps> = ({
+  options,
+  value,
+  onChange,
+  placeholder,
+}) => {
   return (
     <Select
       options={options}
       value={value}
       onChange={onChange}
       isSearchable
-      placeholder={placeholder || "Search..."}
+      placeholder={placeholder || 'Search...'}
     />
   );
 };
