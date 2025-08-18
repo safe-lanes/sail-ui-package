@@ -61,7 +61,7 @@ const App: React.FC = () => {
                   <Route path="/alert" element={<FormAlertDialog />} />
                   <Route path="/select" element={<FormSelect />} />
                   <Route path="/spinnersModal" element={<FormSpinnersCollapse />} />
-                  
+
                   {/* You can keep adding more routes here */}
                 </Routes>
               </div>

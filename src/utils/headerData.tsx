@@ -59,7 +59,7 @@ export const navItems: NavItem[] = [
     link: '/select',
     isActive: false,
   },
-   {
+  {
     id: 'Spinners',
     title: 'Spinners',
     icon: Users,

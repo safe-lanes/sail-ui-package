@@ -1,4 +1,4 @@
-export type FieldType = 'text' | 'email' | 'tel' | 'number' | 'checkbox' | 'textarea' | 'password' | 'date' | 'time' | 'datetime-local' | 'color' | 'file' | 'image' | 'url' | 'search' | 'range' | 'checkbox-group' | 'checkbox' | 'radio' | 'switch' | 'select-basic' | 'select-searchable' | 'select-creatable' | 'select-multiple' | 'select-multiple-searchable' | 'select-creatable-multiple' | 'select-load-more';
+export type FieldType = 'text' | 'email' | 'tel' | 'number' | 'checkbox' | 'textarea' | 'password' | 'date' | 'time' | 'datetime-local' | 'color' | 'file' | 'image' | 'url' | 'search' | 'range' | 'checkbox-group' | 'checkbox' | 'radio' | 'switch' | 'select-basic' | 'select-searchable' | 'select-creatable' | 'select-multiple' | 'select-multiple-searchable' | 'select-creatable-multiple' | 'select-load-more' | 'radio' | 'radio-group' | 'button-group' | 'switch' | 'date' | 'file';
 export interface ShowIf {
     field: string;
     value: unknown;
@@ -16,6 +16,9 @@ export interface FieldConfig {
     placeholder?: string;
     errorMessage?: string;
     className?: string;
+    layout?: 'row' | 'column' | 'grid';
+    columns?: number;
+    gap?: string;
     [key: string]: unknown;
 }
 export interface FormConfig {

@@ -6,9 +6,9 @@ on:
   workflow_dispatch: # Allows manual trigger
 
 permissions:
-  contents: write       # Allow committing or creating PRs
-  pull-requests: write  # Allow creating PRs if branch protection
-  issues: read          # Required by the action
+  contents: write # Allow committing or creating PRs
+  pull-requests: write # Allow creating PRs if branch protection
+  issues: read # Required by the action
 
 jobs:
   update-contributors:
@@ -26,7 +26,7 @@ jobs:
           readme_path: README.md
           collaborators: direct
           auto_detect_branch_protection: true
-          pr_title_on_protected: "docs(contributors): update contributors list"
-          commit_message: "docs: update contributors list"
+          pr_title_on_protected: 'docs(contributors): update contributors list'
+          commit_message: 'docs: update contributors list'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

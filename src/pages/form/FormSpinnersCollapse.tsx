@@ -1,42 +1,55 @@
-import { Button } from "../../components/ui/Button";
-import { Card } from "../../components/ui/Card";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../../components/ui/Collapsible";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../../components/ui/Dialog";
-import { Spinner } from "../../components/ui/Spinner";
-import NormalForm from "./NormalForm";
+import { Button } from '../../components/ui/Button';
+import { Card } from '../../components/ui/Card';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '../../components/ui/Collapsible';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '../../components/ui/Dialog';
+import { Spinner } from '../../components/ui/Spinner';
+import NormalForm from './NormalForm';
 
 export default function FormSpinnersCollapse() {
   return (
     <>
-     {/* Spinners & Modal Section */}
-        <div className="grid md:grid-cols-2 gap-8">
-          <Card>
-            <h2 className="text-2xl font-semibold text-slate-900 mb-6">Spinners</h2>
-            <div className="flex items-center gap-4">
-              <Spinner size="sm" />
-              <Spinner size="md" />
-              <Spinner size="lg" />
-              <Spinner color="secondary" />
-            </div>
-          </Card>
+      {/* Spinners & Modal Section */}
+      <div className="grid md:grid-cols-2 gap-8">
+        <Card>
+          <h2 className="text-2xl font-semibold text-slate-900 mb-6">Spinners</h2>
+          <div className="flex items-center gap-4">
+            <Spinner size="sm" />
+            <Spinner size="md" />
+            <Spinner size="lg" />
+            <Spinner color="secondary" />
+          </div>
+        </Card>
 
-          <Card>
-            <h2 className="text-2xl font-semibold text-slate-900 mb-6">Modal</h2>
-            <div className="p-8">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="default">Open Dialog</Button>
-                </DialogTrigger>
-                <DialogContent>
-                  {/* <DialogHeader>
+        <Card>
+          <h2 className="text-2xl font-semibold text-slate-900 mb-6">Modal</h2>
+          <div className="p-8">
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="default">Open Dialog</Button>
+              </DialogTrigger>
+              <DialogContent>
+                {/* <DialogHeader>
                     <DialogTitle>Profile Update</DialogTitle>
                     <DialogDescription>
                       Make changes to your profile here. Click save when you’re done.
                     </DialogDescription>
                   </DialogHeader> */}
 
-                  {/* Example Form Content */}
-                  {/* <div className="space-y-4">
+                {/* Example Form Content */}
+                {/* <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium">Name</label>
                       <input
@@ -54,35 +67,34 @@ export default function FormSpinnersCollapse() {
                       />
                     </div>
                   </div> */}
-                  <NormalForm/>
+                <NormalForm />
 
-                  <DialogFooter>
-                    <DialogClose asChild>
-                      <Button variant="outline">Cancel</Button>
-                    </DialogClose>
-                    <Button variant="default">Save Changes</Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-            </div>
-          </Card>
-        </div>
+                <DialogFooter>
+                  <DialogClose asChild>
+                    <Button variant="outline">Cancel</Button>
+                  </DialogClose>
+                  <Button variant="default">Save Changes</Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </div>
+        </Card>
+      </div>
 
-               {/* Example Collapsible */}
-          <Collapsible>
-            <CollapsibleTrigger asChild>
-              <Button variant="outline">Toggle Details</Button>
-            </CollapsibleTrigger>
-            <CollapsibleContent>
-              <div className="mt-4 p-4 rounded-md border bg-sky-50 text-sky-800">
-                This is some collapsible content. You can put anything here —
-                text, images, or even forms.
-              </div>
-            </CollapsibleContent>
-          </Collapsible>
+      {/* Example Collapsible */}
+      <Collapsible>
+        <CollapsibleTrigger asChild>
+          <Button variant="outline">Toggle Details</Button>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <div className="mt-4 p-4 rounded-md border bg-sky-50 text-sky-800">
+            This is some collapsible content. You can put anything here — text, images, or even
+            forms.
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
 
-
-           {/* <h1>FormPopup:</h1>
+      {/* <h1>FormPopup:</h1>
         <div className="">
           <Button
             onClick={() => setOpen1(true)}
@@ -138,7 +150,7 @@ export default function FormSpinnersCollapse() {
           </FormPopup>
         </div> */}
 
-        {/* <h1>Pagination:</h1>
+      {/* <h1>Pagination:</h1>
         <div>
           <Pagination className="my-10">
             <PaginationPrevious
@@ -193,5 +205,5 @@ export default function FormSpinnersCollapse() {
           </Pagination>
         </div> */}
     </>
-  )
+  );
 }

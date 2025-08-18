@@ -184,15 +184,15 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
             </div>
           );
 
-        case "checkbox-group":
+        case 'checkbox-group':
           return (
             <div key={name} className="mb-4">
               {baseLabel}
               <div
                 className={
-                  f.layout === "grid"
+                  f.layout === 'grid'
                     ? `grid gap-${f.gap || 2} grid-cols-${f.columns || 2}`
-                    : f.layout === "row"
+                    : f.layout === 'row'
                       ? `flex flex-wrap gap-${f.gap || 2}`
                       : `flex flex-col gap-${f.gap || 2}`
                 }
@@ -200,10 +200,7 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
                 {f.options?.map((opt) => {
                   const isChecked = Array.isArray(value) && value.includes(opt.value);
                   return (
-                    <label
-                      key={opt.value}
-                      className="flex items-center gap-2 cursor-pointer"
-                    >
+                    <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
                       <Input
                         className="h-4 w-4"
                         type="checkbox"
@@ -246,24 +243,21 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
             </div>
           );
 
-        case "radio-group":
+        case 'radio-group':
           return (
             <div key={name} className="mb-4">
               {baseLabel}
               <div
                 className={
-                  f.layout === "grid"
+                  f.layout === 'grid'
                     ? `grid gap-${f.gap || 2} grid-cols-${f.columns || 2}`
-                    : f.layout === "row"
-                      ? "flex flex-wrap items-center gap-4"
-                      : "flex flex-col gap-2"
+                    : f.layout === 'row'
+                      ? 'flex flex-wrap items-center gap-4'
+                      : 'flex flex-col gap-2'
                 }
               >
                 {f.options?.map((opt) => (
-                  <label
-                    key={opt.value}
-                    className="flex items-center gap-2 cursor-pointer"
-                  >
+                  <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="radio"
                       className="h-4 w-4"
@@ -292,15 +286,16 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
                     <Button
                       key={opt.value}
                       type="button"
-                      className={`px-4 py-2 rounded border ${isSelected ? 'bg-blue-600 text-white' : 'bg-gray-200'
-                        }`}
+                      className={`px-4 py-2 rounded border ${
+                        isSelected ? 'bg-blue-600 text-white' : 'bg-gray-200'
+                      }`}
                       onClick={() => {
                         if (f.multiple) {
                           const arr = Array.isArray(value) ? [...value] : [];
                           if (arr.includes(opt.value)) {
                             handleChange(
                               name,
-                              arr.filter((v) => v !== opt.value)
+                              arr.filter((v) => v !== opt.value),
                             );
                           } else {
                             handleChange(name, [...arr, opt.value]);
@@ -451,8 +446,9 @@ export const FormBuilder: React.FC<FormBuilderProps> = ({ config, onSubmit }) =>
           className={
             steps[currentStep]?.grid?.responsive
               ? 'grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
-              : `grid gap-[${steps[currentStep]?.grid?.gap || '1rem'}] grid-cols-${steps[currentStep]?.grid?.columns || 1
-              }`
+              : `grid gap-[${steps[currentStep]?.grid?.gap || '1rem'}] grid-cols-${
+                  steps[currentStep]?.grid?.columns || 1
+                }`
           }
           style={{
             gap: steps[currentStep]?.grid?.gap || '1rem',
