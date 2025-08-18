@@ -11,6 +11,7 @@ import FormButtons from './pages/form/FormButtons';
 import FormCheckboxRadio from './pages/form/FormCheckboxRadio';
 import FormAlertDialog from './pages/form/FormAlertDialog';
 import FormSelect from './pages/form/FormSelect';
+import FormSpinnersCollapse from './pages/form/FormSpinnersCollapse';
 
 const App: React.FC = () => {
   // Define the type for sidebar items based on your sidebarItems structure
@@ -59,6 +60,8 @@ const App: React.FC = () => {
                   <Route path="/checkboxes" element={<FormCheckboxRadio />} />
                   <Route path="/alert" element={<FormAlertDialog />} />
                   <Route path="/select" element={<FormSelect />} />
+                  <Route path="/spinnersModal" element={<FormSpinnersCollapse />} />
+                  
                   {/* You can keep adding more routes here */}
                 </Routes>
               </div>

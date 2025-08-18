@@ -59,11 +59,11 @@ export const navItems: NavItem[] = [
     link: '/select',
     isActive: false,
   },
-  {
-    id: 'inspectors',
-    title: 'Inspectors',
+   {
+    id: 'Spinners',
+    title: 'Spinners',
     icon: Users,
-    link: '/inspectors',
+    link: '/spinnersModal',
     isActive: false,
   },
   {
