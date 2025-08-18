@@ -12,6 +12,7 @@ import FormCheckboxRadio from './pages/form/FormCheckboxRadio';
 import FormAlertDialog from './pages/form/FormAlertDialog';
 import FormSelect from './pages/form/FormSelect';
 import FormSpinnersCollapse from './pages/form/FormSpinnersCollapse';
+import AggridTable from './pages/Table/AggridTable';
 
 const App: React.FC = () => {
   // Define the type for sidebar items based on your sidebarItems structure
@@ -61,6 +62,7 @@ const App: React.FC = () => {
                   <Route path="/alert" element={<FormAlertDialog />} />
                   <Route path="/select" element={<FormSelect />} />
                   <Route path="/spinnersModal" element={<FormSpinnersCollapse />} />
+                  <Route path="/ag-grid" element={<AggridTable />} />
 
                   {/* You can keep adding more routes here */}
                 </Routes>
