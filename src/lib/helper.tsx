@@ -1,13 +1,13 @@
 import dayjs from "dayjs";
 
-export const dateViewFormate = (value) => {
+export const dateViewFormate = (value: string | number | Date | dayjs.Dayjs | null | undefined) => {
   if (!value) {
     return "";
   }
   return dayjs(value).format("dddd, MMMM D, YYYY h:mm A");
 };
 
-export const tableViewFormate = (value) => {
+export const tableViewFormate = (value: string | number | Date | dayjs.Dayjs | null | undefined) => {
   if (!value) {
     return "";
   }

@@ -1,8 +1,26 @@
-import { dateViewFormate } from "../../../lib/helpar";
+import React from "react";
+import { dateViewFormate } from "../../../lib/helper";
+
+type Options = Record<string, boolean>; // e.g. { isActive: true } → render Yes/No
+
+interface Row {
+  label: string;
+  value: React.ReactNode;
+}
+
+interface Section {
+  title: string;
+  rows: Row[];
+}
+
+interface TableSectionViewProps {
+  data?: Record<string, any>;
+  options?: Options;
+}
 
 // ✅ Convert dot-notation flat object → nested object
-const unflatten = (obj) => {
-  const result = {};
+const unflatten = (obj: Record<string, any>): Record<string, any> => {
+  const result: Record<string, any> = {};
   for (const [flatKey, value] of Object.entries(obj)) {
     const keys = flatKey.split(".");
     keys.reduce((acc, key, i) => {
@@ -18,7 +36,11 @@ const unflatten = (obj) => {
 };
 
 // ✅ Format values: boolean, null, date, image, fallback
-const formatValue = (value, key, options = {}) => {
+const formatValue = (
+  value: any,
+  key: string,
+  options: Options = {}
+): React.ReactNode => {
   const isBoolean = typeof value === "boolean";
   const useYesNo = key in options && isBoolean;
 
@@ -26,10 +48,11 @@ const formatValue = (value, key, options = {}) => {
   if (useYesNo) {
     return (
       <span
-        className={`inline-block px-2 py-1 text-xs rounded ${value
-          ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
-          : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
-          }`}
+        className={`inline-block px-2 py-1 text-xs rounded ${
+          value
+            ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
+            : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
+        }`}
       >
         {value ? "Yes" : "No"}
       </span>
@@ -67,10 +90,11 @@ const formatValue = (value, key, options = {}) => {
   if (isBoolean) {
     return (
       <span
-        className={`inline-block px-2 py-1 text-xs rounded ${value
-          ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
-          : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
-          }`}
+        className={`inline-block px-2 py-1 text-xs rounded ${
+          value
+            ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
+            : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
+        }`}
       >
         {value ? "Active" : "Inactive"}
       </span>
@@ -87,26 +111,31 @@ const formatValue = (value, key, options = {}) => {
 };
 
 // ✅ Label formatter: snake_case → Capitalized Words
-const formatLabel = (key) =>
+const formatLabel = (key: string): string =>
   key
     .replace(/_/g, " ")
     .replace(/([a-z])([A-Z])/g, "$1 $2")
     .replace(/\b\w/g, (l) => l.toUpperCase());
 
 // ✅ Filter keys that look like IDs
-const shouldDisplay = (key) => !/(^id$|_?id$|^id_|_id_|_?id_?$)/i.test(key);
+const shouldDisplay = (key: string): boolean =>
+  !/(^id$|_?id$|^id_|_id_|_?id_?$)/i.test(key);
 
 // ✅ Get non-object fields to show
-const extractFields = (obj = {}) =>
+const extractFields = (obj: Record<string, any> = {}): [string, any][] =>
   Object.entries(obj).filter(
     ([key, val]) => typeof val !== "object" && shouldDisplay(key)
   );
 
 // ✅ Recursive section builder
-const buildAutoSections = (data, parentKey = "Details", options = {}) => {
-  const sections = [];
+const buildAutoSections = (
+  data: Record<string, any>,
+  parentKey = "Details",
+  options: Options = {}
+): Section[] => {
+  const sections: Section[] = [];
 
-  const flatRows = extractFields(data).map(([key, val]) => ({
+  const flatRows: Row[] = extractFields(data).map(([key, val]) => ({
     label: formatLabel(key),
     value: formatValue(val, key, options),
   }));
@@ -131,7 +160,10 @@ const buildAutoSections = (data, parentKey = "Details", options = {}) => {
 };
 
 // ✅ Main Component
-export function TableSectionView({ data = {}, options = {} }) {
+export function TableSectionView({
+  data = {},
+  options = {},
+}: TableSectionViewProps) {
   const nestedData = unflatten(data);
   const sections = buildAutoSections(nestedData, "Details", options);
 
