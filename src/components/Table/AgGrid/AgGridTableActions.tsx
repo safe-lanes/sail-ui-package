@@ -118,5 +118,3 @@ export const AgGridTableActions: React.FC<AgGridTableActionsProps> = ({
     </div>
   );
 };
-
-export default AgGridTableActions;

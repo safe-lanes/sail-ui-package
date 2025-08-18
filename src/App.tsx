@@ -13,6 +13,7 @@ import FormAlertDialog from './pages/form/FormAlertDialog';
 import FormSelect from './pages/form/FormSelect';
 import FormSpinnersCollapse from './pages/form/FormSpinnersCollapse';
 import AggridTable from './pages/Table/AggridTable';
+import DatTablePage from './pages/Table/DatTablePage';
 
 const App: React.FC = () => {
   // Define the type for sidebar items based on your sidebarItems structure

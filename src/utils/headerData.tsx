@@ -74,10 +74,10 @@ export const navItems: NavItem[] = [
     isActive: false,
   },
   {
-    id: 'fleet-sharing',
-    title: 'Fleet Sharing',
+    id: 'data-table',
+    title: 'Data Table',
     icon: Share2,
-    link: '/fleet-sharing',
+    link: '/data-table',
     isActive: false,
   },
   {

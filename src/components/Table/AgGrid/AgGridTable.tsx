@@ -404,5 +404,3 @@ export const agGridUtils = {
     gridApi.deselectAll();
   }
 };
-
-export default AgGridTable;

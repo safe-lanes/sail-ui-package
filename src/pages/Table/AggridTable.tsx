@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import AgGridTable from "../../components/Table/AgGrid/AgGridTable";
+import { AgGridTable } from "../../components/Table/AgGrid/AgGridTable";
 import { Input } from "../../components/ui/Input";
 import tableData from "../../utils/tableData";
 // ✅ Utility to flatten nested objects
