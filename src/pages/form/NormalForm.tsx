@@ -182,10 +182,10 @@ export default function NormalForm() {
 
 
 
-      <TableSectionView
+      {/* <TableSectionView
         data={tableData[0]}
 
-      />
+      /> */}
       {/* Form Layout */}
 
       {/* <FormBuilder config={config} onSubmit={(data) => console.log(data)}  stepperOnly />

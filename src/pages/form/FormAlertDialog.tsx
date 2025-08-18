@@ -11,6 +11,8 @@ import {
 } from '../../components/ui/Alert-dialog';
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
+import { TableSectionView } from '../../components/Table/Section';
+import tableData from '../../utils/tableData';
 
 export default function FormAlertDialog() {
   return (
@@ -39,6 +41,12 @@ export default function FormAlertDialog() {
           </AlertDialog>
         </div>
       </Card>
+      <br />
+      <h1><b>Table View Section</b></h1>
+       <TableSectionView
+        data={tableData[0]}
+
+      />
     </>
   );
 }
