@@ -1,3 +1,4 @@
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '../../components/ui/Breadcrumb';
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
 import {
@@ -13,11 +14,26 @@ import {
   DialogTrigger,
 } from '../../components/ui/Dialog';
 import { Spinner } from '../../components/ui/Spinner';
-import NormalForm from './NormalForm';
 
 export default function FormSpinnersCollapse() {
   return (
     <>
+      {/* Breadcrumb Navigation */<h2 className="text-2xl font-semibold text-slate-900 mb-6">Breadcrumb</h2>}
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Components</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>UI Library</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
       {/* Spinners & Modal Section */}
       <div className="grid md:grid-cols-2 gap-8">
         <Card>
@@ -37,7 +53,7 @@ export default function FormSpinnersCollapse() {
               <DialogTrigger asChild>
                 <Button variant="default">Open Dialog</Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent width="max-w-2xl" height="h-[300px]">
                 {/* <DialogHeader>
                     <DialogTitle>Profile Update</DialogTitle>
                     <DialogDescription>
@@ -46,7 +62,7 @@ export default function FormSpinnersCollapse() {
                   </DialogHeader> */}
 
                 {/* Example Form Content */}
-                {/* <div className="space-y-4">
+                <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium">Name</label>
                       <input
@@ -63,8 +79,8 @@ export default function FormSpinnersCollapse() {
                         className="mt-1 block w-full rounded-md border px-3 py-2 text-sm"
                       />
                     </div>
-                  </div> */}
-                <NormalForm />
+                  </div>
+                {/* <NormalForm /> */}
 
                 <DialogFooter>
                   <DialogClose asChild>
