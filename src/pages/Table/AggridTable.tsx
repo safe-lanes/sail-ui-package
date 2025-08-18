@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import AgGridTable from "../../components/Table/AgGrid/AgGridTable";
 import { Input } from "../../components/ui/Input";
+import tableData from "../../utils/tableData";
 // ✅ Utility to flatten nested objects
 const flattenObject = (obj: any, parentKey = "", res: any = {}) => {
     for (let key in obj) {
@@ -18,12 +19,8 @@ const AgGridPlayground: React.FC = () => {
 
     // ✅ Fetch & prepare data
     useEffect(() => {
-        fetch("https://dummyjson.com/users")
-            .then((res) => res.json())
-            .then((res: any) => {
-                const flatRows = res.users.map((u: any) => flattenObject(u));
-                setRowData(flatRows);
-            });
+        const flatRows = tableData.map((u: any) => flattenObject(u));
+        setRowData(flatRows);
     }, []);
 
     // ✅ Dynamically build columnDefs
