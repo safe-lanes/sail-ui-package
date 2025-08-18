@@ -6,6 +6,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '../../components/ui/Collapsible';
+import { ConfirmationDialog } from '../../components/ui/Confirmation-dialog';
 import {
   Dialog,
   DialogClose,
@@ -217,6 +218,15 @@ export default function FormSpinnersCollapse() {
             />
           </Pagination>
         </div> */}
+
+      <Card>
+        <ConfirmationDialog
+          triggerLabel="Delete"
+          message="Are you sure you want to delete this record?"
+          onConfirm={() => console.log("Deleted!")}
+        />
+
+      </Card>
     </>
   );
 }
