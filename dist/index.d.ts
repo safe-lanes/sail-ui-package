@@ -54,3 +54,4 @@ export * from './components/layout/Menubar';
 export * from './components/layout/Sidebar';
 export * from './components/layout/Navigation-menu';
 export * from './components/layout/ModuleNavigator';
+export * from './components/layout/Header';
