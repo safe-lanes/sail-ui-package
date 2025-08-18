@@ -67,10 +67,10 @@ export const navItems: NavItem[] = [
     isActive: false,
   },
   {
-    id: 'history',
-    title: 'History',
+    id: 'aggrid',
+    title: 'Ag Grid',
     icon: Clock,
-    link: '/history',
+    link: '/ag-grid',
     isActive: false,
   },
   {

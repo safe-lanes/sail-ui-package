@@ -46,6 +46,9 @@
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
+    "ag-grid-community": "^34.1.1",
+    "ag-grid-enterprise": "^34.1.1",
+    "ag-grid-react": "^34.1.1",
     "cmdk": "^1.1.1",
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",
