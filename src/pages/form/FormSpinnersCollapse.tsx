@@ -1,4 +1,11 @@
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '../../components/ui/Breadcrumb';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '../../components/ui/Breadcrumb';
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
 import {
@@ -19,22 +26,26 @@ import { Spinner } from '../../components/ui/Spinner';
 export default function FormSpinnersCollapse() {
   return (
     <>
-      {/* Breadcrumb Navigation */<h2 className="text-2xl font-semibold text-slate-900 mb-6">Breadcrumb</h2>}
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Components</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>UI Library</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+      {
+        /* Breadcrumb Navigation */ <h2 className="text-2xl font-semibold text-slate-900 mb-6">
+          Breadcrumb
+        </h2>
+      }
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="#">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="#">Components</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>UI Library</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       {/* Spinners & Modal Section */}
       <div className="grid md:grid-cols-2 gap-8">
         <Card>
@@ -64,23 +75,23 @@ export default function FormSpinnersCollapse() {
 
                 {/* Example Form Content */}
                 <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium">Name</label>
-                      <input
-                        type="text"
-                        defaultValue="John Doe"
-                        className="mt-1 block w-full rounded-md border px-3 py-2 text-sm"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium">Email</label>
-                      <input
-                        type="email"
-                        defaultValue="john@example.com"
-                        className="mt-1 block w-full rounded-md border px-3 py-2 text-sm"
-                      />
-                    </div>
+                  <div>
+                    <label className="block text-sm font-medium">Name</label>
+                    <input
+                      type="text"
+                      defaultValue="John Doe"
+                      className="mt-1 block w-full rounded-md border px-3 py-2 text-sm"
+                    />
                   </div>
+                  <div>
+                    <label className="block text-sm font-medium">Email</label>
+                    <input
+                      type="email"
+                      defaultValue="john@example.com"
+                      className="mt-1 block w-full rounded-md border px-3 py-2 text-sm"
+                    />
+                  </div>
+                </div>
                 {/* <NormalForm /> */}
 
                 <DialogFooter>
@@ -223,9 +234,8 @@ export default function FormSpinnersCollapse() {
         <ConfirmationDialog
           triggerLabel="Delete"
           message="Are you sure you want to delete this record?"
-          onConfirm={() => console.log("Deleted!")}
+          onConfirm={() => console.log('Deleted!')}
         />
-
       </Card>
     </>
   );

@@ -45,12 +45,18 @@ const ConfirmationDialogContent = React.forwardRef<
 ));
 ConfirmationDialogContent.displayName = 'ConfirmationDialogContent';
 
-const ConfirmationDialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const ConfirmationDialogHeader = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
   <div className={cn('flex flex-col space-y-2 text-center sm:text-left', className)} {...props} />
 );
 ConfirmationDialogHeader.displayName = 'ConfirmationDialogHeader';
 
-const ConfirmationDialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const ConfirmationDialogFooter = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)}
     {...props}
@@ -126,7 +132,9 @@ const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
 }) => {
   return (
     <ConfirmationDialogRoot>
-      <ConfirmationDialogTrigger className={ButtonVariants()}>{triggerLabel}</ConfirmationDialogTrigger>
+      <ConfirmationDialogTrigger className={ButtonVariants()}>
+        {triggerLabel}
+      </ConfirmationDialogTrigger>
       <ConfirmationDialogContent width={width} height={height}>
         <ConfirmationDialogHeader>
           <ConfirmationDialogTitle>{title}</ConfirmationDialogTitle>

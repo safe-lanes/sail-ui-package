@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { FormBuilder } from '../../components/FormBuilder';
 import { FormConfig } from '../../components/FormBuilder/types';
-import tableData from '../../utils/tableData';
-import { TableSectionView } from '../../components/Table/Section';
 
 export default function NormalForm() {
   const [config, setConfig] = useState<FormConfig>({
@@ -179,8 +177,6 @@ export default function NormalForm() {
           </div>
         </div>
       </div>
-
-
 
       {/* <TableSectionView
         data={tableData[0]}

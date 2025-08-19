@@ -11,4 +11,4 @@ export {
   ConfirmationDialogDescription,
   ConfirmationDialogAction,
   ConfirmationDialogCancel,
-} from './Confirmation-dialog'
+} from './Confirmation-dialog';

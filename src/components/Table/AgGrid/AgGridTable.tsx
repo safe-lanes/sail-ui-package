@@ -6,7 +6,7 @@ import {
   GridApi,
   ModuleRegistry,
   GridOptions,
-  AllCommunityModule
+  AllCommunityModule,
 } from 'ag-grid-community';
 import {
   AllEnterpriseModule,
@@ -17,7 +17,6 @@ import {
   FiltersToolPanelModule,
   StatusBarModule,
   SideBarModule,
-  RangeSelectionModule,
   RowGroupingModule,
   AggregationModule,
   PivotModule,
@@ -30,14 +29,15 @@ import {
   ClipboardModule,
   AdvancedFilterModule,
   LicenseManager,
-  IntegratedChartsModule
+  IntegratedChartsModule,
+  CellSelectionModule,
 } from 'ag-grid-enterprise';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import "ag-grid-community/styles/ag-theme-balham.css";
-import "ag-grid-community/styles/ag-theme-material.css";
-import "ag-grid-community/styles/ag-theme-quartz.css";
-import "./ad-grid.css";
+import 'ag-grid-community/styles/ag-theme-balham.css';
+import 'ag-grid-community/styles/ag-theme-material.css';
+import 'ag-grid-community/styles/ag-theme-quartz.css';
+import './ad-grid.css';
 import { AgChartsEnterpriseModule } from 'ag-charts-enterprise';
 export interface AgGridTableProps {
   rowData: any[];
@@ -51,8 +51,8 @@ export interface AgGridTableProps {
   enableExport?: boolean;
   enableSideBar?: boolean;
   enableStatusBar?: boolean;
-  enableRowGrouping?: boolean;
-  enablePivoting?: boolean;
+  enableRowGroup?: boolean;
+  enablePivot?: boolean;
   enableAdvancedFilter?: boolean;
   rowSelection?: 'single' | 'multiple' | false;
   theme?: 'alpine' | 'balham' | 'material' | 'legacy';
@@ -69,30 +69,30 @@ export interface AgGridTableProps {
   licenseKey?: string;
 }
 ModuleRegistry.registerModules([
-      AllEnterpriseModule,
-      SetFilterModule,
-      MultiFilterModule,
-      MenuModule,
-      ColumnsToolPanelModule,
-      FiltersToolPanelModule,
-      StatusBarModule,
-      SideBarModule,
-      RangeSelectionModule,
-      RowGroupingModule,
-      AggregationModule,
-      PivotModule,
-      MasterDetailModule,
-      ViewportRowModelModule,
-      ServerSideRowModelModule,
-      InfiniteRowModelModule,
-      ExcelExportModule,
-      CsvExportModule,
-      ClipboardModule,
-      AdvancedFilterModule,
+  AllEnterpriseModule,
+  SetFilterModule,
+  MultiFilterModule,
+  MenuModule,
+  ColumnsToolPanelModule,
+  FiltersToolPanelModule,
+  StatusBarModule,
+  SideBarModule,
+  CellSelectionModule,
+  RowGroupingModule,
+  AggregationModule,
+  PivotModule,
+  MasterDetailModule,
+  ViewportRowModelModule,
+  ServerSideRowModelModule,
+  InfiniteRowModelModule,
+  ExcelExportModule,
+  CsvExportModule,
+  ClipboardModule,
+  AdvancedFilterModule,
   IntegratedChartsModule.with(AgChartsEnterpriseModule), // ✅ charts properly
-      AllCommunityModule
-    ]);
-    //LicenseManager.setLicenseKey('Using_this_{AG_Charts_and_AG_Grid}_Enterprise_key_{AG-090368}_in_excess_of_the_licence_granted_is_not_permitted___Please_report_misuse_to_legal@ag-grid.com___For_help_with_changing_this_key_please_contact_info@ag-grid.com___{Safe_Lanes_Consultants_Pte_Ltd}_is_granted_a_{Single_Application}_Developer_License_for_the_application_{SAIL}_only_for_{1}_Front-End_JavaScript_developer___All_Front-End_JavaScript_developers_working_on_{SAIL}_need_to_be_licensed___{SAIL}_has_been_granted_a_Deployment_License_Add-on_for_{1}_Production_Environment___This_key_works_with_{AG_Charts_and_AG_Grid}_Enterprise_versions_released_before_{23_September_2025}____[v3]_[0102]_MTc1ODU4MjAwMDAwMA==461929539170ec991c51dbb3cb8da123');
+  AllCommunityModule,
+]);
+//LicenseManager.setLicenseKey('Using_this_{AG_Charts_and_AG_Grid}_Enterprise_key_{AG-090368}_in_excess_of_the_licence_granted_is_not_permitted___Please_report_misuse_to_legal@ag-grid.com___For_help_with_changing_this_key_please_contact_info@ag-grid.com___{Safe_Lanes_Consultants_Pte_Ltd}_is_granted_a_{Single_Application}_Developer_License_for_the_application_{SAIL}_only_for_{1}_Front-End_JavaScript_developer___All_Front-End_JavaScript_developers_working_on_{SAIL}_need_to_be_licensed___{SAIL}_has_been_granted_a_Deployment_License_Add-on_for_{1}_Production_Environment___This_key_works_with_{AG_Charts_and_AG_Grid}_Enterprise_versions_released_before_{23_September_2025}____[v3]_[0102]_MTc1ODU4MjAwMDAwMA==461929539170ec991c51dbb3cb8da123');
 export const AgGridTable: React.FC<AgGridTableProps> = ({
   rowData,
   columnDefs,
@@ -105,8 +105,8 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
   enableExport = true,
   enableSideBar = true,
   enableStatusBar = true,
-  enableRowGrouping = false,
-  enablePivoting = true,
+  enableRowGroup = false,
+  enablePivot = true,
   enableAdvancedFilter = false,
   rowSelection = false,
   theme = 'alpine',
@@ -120,7 +120,7 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
   enableRangeSelection = false,
   enableCharts = false,
   suppressRowClickSelection = false,
-  licenseKey
+  licenseKey,
 }) => {
   const gridApiRef = useRef<GridApi | null>(null);
 
@@ -157,13 +157,16 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
   //   ]);
   // }, [licenseKey]);
 
-  const defaultColDef = useMemo(() => ({
-    sortable: true,
-    filter: true,
-    resizable: true,
-    menuTabs: ['filterMenuTab' as const, 'generalMenuTab' as const, 'columnsMenuTab' as const],
-    floatingFilter: false
-  }), []);
+  const defaultColDef = useMemo(
+    () => ({
+      sortable: true,
+      filter: true,
+      resizable: true,
+      menuTabs: ['filterMenuTab' as const, 'generalMenuTab' as const, 'columnsMenuTab' as const],
+      floatingFilter: false,
+    }),
+    [],
+  );
 
   const sideBar = useMemo(() => {
     if (!enableSideBar) return false;
@@ -176,22 +179,22 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
         iconKey: 'columns',
         toolPanel: 'agColumnsToolPanel',
         toolPanelParams: {
-          suppressRowGroups: !enableRowGrouping,
+          suppressRowGroups: !enableRowGroup,
           suppressValues: false,
-          suppressPivots: !enablePivoting,
-          suppressPivotMode: !enablePivoting,
+          suppressPivots: !enablePivot,
+          suppressPivotMode: !enablePivot,
           suppressColumnFilter: false,
           suppressColumnSelectAll: false,
-          suppressColumnExpandAll: false
-        }
+          suppressColumnExpandAll: false,
+        },
       },
       {
         id: 'filters',
         labelDefault: 'Filters',
         labelKey: 'filters',
         iconKey: 'filter',
-        toolPanel: 'agFiltersToolPanel'
-      }
+        toolPanel: 'agFiltersToolPanel',
+      },
     ];
 
     if (enableCharts) {
@@ -200,12 +203,12 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
         labelDefault: 'Charts',
         labelKey: 'charts',
         iconKey: 'chart',
-        toolPanel: 'agChartToolPanel' // ✅ Charts Tool Panel
+        toolPanel: 'agChartToolPanel', // ✅ Charts Tool Panel
       });
     }
 
     return { toolPanels: panels, defaultToolPanel: 'columns' };
-  }, [enableSideBar, enableRowGrouping, enablePivoting, enableCharts]);
+  }, [enableSideBar, enableRowGroup, enablePivot, enableCharts]);
 
   const statusBar = useMemo(() => {
     if (!enableStatusBar) return undefined;
@@ -214,49 +217,69 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
       statusPanels: [
         { statusPanel: 'agTotalAndFilteredRowCountComponent', align: 'left' as const },
         { statusPanel: 'agAggregationComponent', align: 'center' as const },
-        { statusPanel: 'agSelectedRowCountComponent', align: 'right' as const }
-      ]
+        { statusPanel: 'agSelectedRowCountComponent', align: 'right' as const },
+      ],
     };
   }, [enableStatusBar]);
 
   const rowSelectionConfig = useMemo(() => {
     if (rowSelection === false) return false;
-    return { mode: rowSelection === 'single' ? 'singleRow' : 'multiRow', enableClickSelection: true };
+    return {
+      mode: rowSelection === 'single' ? 'singleRow' : 'multiRow',
+      enableClickSelection: true,
+    };
   }, [rowSelection]);
 
-  const defaultGridOptions: Partial<GridOptions> = useMemo(() => ({
-    theme,
-    defaultColDef,
-    headerHeight: 50,
-    rowHeight: 50,
-    suppressHorizontalScroll: false,
-    animateRows,
-    rowSelection: rowSelectionConfig,
-    getRowStyle: () => ({ backgroundColor: 'white' }),
-    cellSelection: true,
-    enableAdvancedFilter,
-    sideBar,
-    statusBar,
-    allowContextMenuWithControlKey: true,
-    copyHeadersToClipboard: true,
-    copyGroupHeadersToClipboard: true,
-    enableCellTextSelection: true,
-    enableBrowserTooltips: false,
-    tooltipShowDelay: 2000,
-    rowGroupPanelShow: 'never',
-    pivotPanelShow: enablePivoting ? 'always' : 'never',
-    functionsReadOnly: false,
-    suppressAggFuncInHeader: false,
-    alwaysShowHorizontalScroll: false,
-    alwaysShowVerticalScroll: false,
-    suppressScrollOnNewData: true,
-    debug: false,
-    pagination,
-    paginationPageSize,
-    enableRangeSelection,
-    enableCharts,
-    suppressRowClickSelection
-  }), [theme, defaultColDef, animateRows, rowSelectionConfig, enableAdvancedFilter, sideBar, statusBar, enablePivoting, pagination, paginationPageSize, enableRangeSelection, enableCharts, suppressRowClickSelection]);
+  const defaultGridOptions: Partial<any> = useMemo(
+    () => ({
+      theme,
+      defaultColDef,
+      headerHeight: 50,
+      rowHeight: 50,
+      suppressHorizontalScroll: false,
+      animateRows,
+      rowSelection: rowSelectionConfig,
+      getRowStyle: () => ({ backgroundColor: 'white' }),
+      cellSelection: true,
+      enableAdvancedFilter,
+      sideBar,
+      statusBar,
+      allowContextMenuWithControlKey: true,
+      copyHeadersToClipboard: true,
+      copyGroupHeadersToClipboard: true,
+      enableCellTextSelection: true,
+      enableBrowserTooltips: false,
+      tooltipShowDelay: 2000,
+      rowGroupPanelShow: 'never',
+      pivotPanelShow: enablePivot ? 'always' : 'never',
+      functionsReadOnly: false,
+      suppressAggFuncInHeader: false,
+      alwaysShowHorizontalScroll: false,
+      alwaysShowVerticalScroll: false,
+      suppressScrollOnNewData: true,
+      debug: false,
+      pagination,
+      paginationPageSize,
+      enableRangeSelection,
+      enableCharts,
+      suppressRowClickSelection,
+    }),
+    [
+      theme,
+      defaultColDef,
+      animateRows,
+      rowSelectionConfig,
+      enableAdvancedFilter,
+      sideBar,
+      statusBar,
+      enablePivot,
+      pagination,
+      paginationPageSize,
+      enableRangeSelection,
+      enableCharts,
+      suppressRowClickSelection,
+    ],
+  );
 
   const dynamicHeight = useMemo(() => {
     if (!autoHeight) return height;
@@ -264,7 +287,7 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
     const rowHeight = 50;
     const footerHeight = enableStatusBar ? 40 : 0;
     const padding = 4;
-    const calculatedHeight = headerHeight + (rowData.length * rowHeight) + footerHeight + padding;
+    const calculatedHeight = headerHeight + rowData.length * rowHeight + footerHeight + padding;
 
     const screenHeight = typeof window !== 'undefined' ? window.innerHeight : 900;
     const reservedHeight = 200;
@@ -281,7 +304,7 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
     const screenHeight = typeof window !== 'undefined' ? window.innerHeight : 900;
     const reservedHeight = 200;
     const availableHeight = screenHeight - reservedHeight;
-    const calculatedHeight = 50 + (rowData.length * 50) + (enableStatusBar ? 40 : 0) + 4;
+    const calculatedHeight = 50 + rowData.length * 50 + (enableStatusBar ? 40 : 0) + 4;
     const needsScroll = autoHeight && calculatedHeight > availableHeight;
 
     return {
@@ -290,15 +313,15 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
       alwaysShowVerticalScroll: false,
       suppressHorizontalScroll: false,
       suppressScrollOnNewData: true,
-      domLayout: needsScroll ? ('normal' as const) : ('autoHeight' as const)
+      domLayout: needsScroll ? ('normal' as const) : ('autoHeight' as const),
     };
   }, [defaultGridOptions, gridOptions, autoHeight, rowData.length, enableStatusBar]);
 
   const needsScroll = useMemo(() => {
     if (!autoHeight) return false;
     const screenHeight = typeof window !== 'undefined' ? window.innerHeight : 900;
-    const calculatedHeight = 50 + (rowData.length * 50) + 4;
-    return calculatedHeight > (screenHeight - 200);
+    const calculatedHeight = 50 + rowData.length * 50 + 4;
+    return calculatedHeight > screenHeight - 200;
   }, [autoHeight, rowData.length]);
 
   return (
@@ -327,11 +350,11 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
       )}
 
       <div
-        className={`ag-theme-${theme} ${className || ""}`}
+        className={`ag-theme-${theme} ${className || ''}`}
         style={{
-          height: needsScroll ? dynamicHeight : "auto",
+          height: needsScroll ? dynamicHeight : 'auto',
           width,
-          overflow: needsScroll ? "auto" : "visible",
+          overflow: needsScroll ? 'auto' : 'visible',
         }}
       >
         <AgGridReact
@@ -351,20 +374,39 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
 
 // Export utils remain unchanged
 export const agGridUtils = {
-  exportToCsv: (gridApi: GridApi, filename = 'data.csv') => { gridApi.exportDataAsCsv({ fileName: filename }); },
-  exportToExcel: (gridApi: GridApi, filename = 'data.xlsx') => { gridApi.exportDataAsExcel({ fileName: filename }); },
-  clearFilters: (gridApi: GridApi) => { gridApi.setFilterModel(null); },
-  resetColumns: (gridApi: GridApi) => { gridApi.resetColumnState(); },
+  exportToCsv: (gridApi: GridApi, filename = 'data.csv') => {
+    gridApi.exportDataAsCsv({ fileName: filename });
+  },
+  exportToExcel: (gridApi: GridApi, filename = 'data.xlsx') => {
+    gridApi.exportDataAsExcel({ fileName: filename });
+  },
+  clearFilters: (gridApi: GridApi) => {
+    gridApi.setFilterModel(null);
+  },
+  resetColumns: (gridApi: GridApi) => {
+    gridApi.resetColumnState();
+  },
   expandAllGroups: (gridApi: GridApi) => {
     const rowGroupCols = gridApi.getRowGroupColumns();
-    if (rowGroupCols && rowGroupCols.length > 0) { gridApi.expandAll(); } else { console.warn('No row groups found.'); }
+    if (rowGroupCols && rowGroupCols.length > 0) {
+      gridApi.expandAll();
+    } else {
+      console.warn('No row groups found.');
+    }
   },
   collapseAllGroups: (gridApi: GridApi) => {
     const rowGroupCols = gridApi.getRowGroupColumns();
-    if (rowGroupCols && rowGroupCols.length > 0) { gridApi.collapseAll(); } else { console.warn('No row groups found.'); }
+    if (rowGroupCols && rowGroupCols.length > 0) {
+      gridApi.collapseAll();
+    } else {
+      console.warn('No row groups found.');
+    }
   },
-  hasRowGroups: (gridApi: GridApi) => { const rowGroupCols = gridApi.getRowGroupColumns(); return rowGroupCols && rowGroupCols.length > 0; },
+  hasRowGroups: (gridApi: GridApi) => {
+    const rowGroupCols = gridApi.getRowGroupColumns();
+    return rowGroupCols && rowGroupCols.length > 0;
+  },
   getSelectedRows: (gridApi: GridApi) => gridApi.getSelectedRows(),
   selectAll: (gridApi: GridApi) => gridApi.selectAll(),
-  deselectAll: (gridApi: GridApi) => gridApi.deselectAll()
+  deselectAll: (gridApi: GridApi) => gridApi.deselectAll(),
 };

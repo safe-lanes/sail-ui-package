@@ -55,3 +55,6 @@ export * from './components/layout/Sidebar';
 export * from './components/layout/Navigation-menu';
 export * from './components/layout/ModuleNavigator';
 export * from './components/layout/Header';
+export * from './components/ui/Confirmation-dialog';
+export * from './components/Table/AgGrid';
+export * from './components/Table/Section';

@@ -7,6 +7,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     rightIcon?: React.ReactNode;
     topIcon?: React.ReactNode;
     buttonIcon?: React.ReactNode;
+    labelPosition?: 'top' | 'left' | 'right';
 }
 declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 export { Input };

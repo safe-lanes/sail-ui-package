@@ -1,20 +1,22 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
 export const dateViewFormate = (value: string | number | Date | dayjs.Dayjs | null | undefined) => {
   if (!value) {
-    return "";
+    return '';
   }
-  return dayjs(value).format("dddd, MMMM D, YYYY h:mm A");
+  return dayjs(value).format('dddd, MMMM D, YYYY h:mm A');
 };
 
-export const tableViewFormate = (value: string | number | Date | dayjs.Dayjs | null | undefined) => {
+export const tableViewFormate = (
+  value: string | number | Date | dayjs.Dayjs | null | undefined,
+) => {
   if (!value) {
-    return "";
+    return '';
   }
-  return dayjs(value).format("DD-MMMM-YYYY");
+  return dayjs(value).format('DD-MMMM-YYYY');
 };
 export const todayDate = () => {
-  return dayjs().format("YYYY-MM-DD");
+  return dayjs().format('YYYY-MM-DD');
 };
 
 export function getCurrentAcademicYear() {

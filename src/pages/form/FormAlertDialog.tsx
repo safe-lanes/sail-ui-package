@@ -42,11 +42,10 @@ export default function FormAlertDialog() {
         </div>
       </Card>
       <br />
-      <h1><b>Table View Section</b></h1>
-       <TableSectionView
-        data={tableData[0]}
-
-      />
+      <h1>
+        <b>Table View Section</b>
+      </h1>
+      <TableSectionView data={tableData[0]} />
     </>
   );
 }

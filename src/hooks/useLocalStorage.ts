@@ -48,7 +48,7 @@ class StorageService {
     try {
       localStorage.clear();
     } catch (error) {
-      console.error("Error clearing localStorage:", error);
+      console.error('Error clearing localStorage:', error);
     }
   }
 
@@ -98,7 +98,7 @@ class StorageService {
     try {
       sessionStorage.clear();
     } catch (error) {
-      console.error("Error clearing sessionStorage:", error);
+      console.error('Error clearing sessionStorage:', error);
     }
   }
 

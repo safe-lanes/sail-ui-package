@@ -4,7 +4,6 @@ import { agGridUtils } from './AgGridTable';
 import { toast } from 'react-toastify';
 import { Button } from '../../ui/Button';
 
-
 export interface AgGridTableActionsProps {
   gridApi: GridApi | null;
   className?: string;
@@ -24,9 +23,8 @@ export const AgGridTableActions: React.FC<AgGridTableActionsProps> = ({
   showGroupButtons = true,
   showSelectionButtons = false,
   customButtons,
-  exportFilename = 'data'
+  exportFilename = 'data',
 }) => {
-
   if (!gridApi) return null;
 
   return (
@@ -68,9 +66,11 @@ export const AgGridTableActions: React.FC<AgGridTableActionsProps> = ({
             onClick={() => {
               if (agGridUtils.hasRowGroups(gridApi)) {
                 agGridUtils.expandAllGroups(gridApi);
-                toast.info("Groups Expanded ,All row groups have been expanded.");
+                toast.info('Groups Expanded ,All row groups have been expanded.');
               } else {
-                toast.info("No Row Groups, Drag a column to the Row Groups panel to create groups first.",);
+                toast.info(
+                  'No Row Groups, Drag a column to the Row Groups panel to create groups first.',
+                );
               }
             }}
             title="Expand all row groups (drag columns to Row Groups panel first)"
@@ -83,9 +83,11 @@ export const AgGridTableActions: React.FC<AgGridTableActionsProps> = ({
             onClick={() => {
               if (agGridUtils.hasRowGroups(gridApi)) {
                 agGridUtils.collapseAllGroups(gridApi);
-                toast.info("Groups Collapsed,All row groups have been collapsed.");
+                toast.info('Groups Collapsed,All row groups have been collapsed.');
               } else {
-                toast.info("No Row Groups,Drag a column to the Row Groups panel to create groups first.",);
+                toast.info(
+                  'No Row Groups,Drag a column to the Row Groups panel to create groups first.',
+                );
               }
             }}
             title="Collapse all row groups (drag columns to Row Groups panel first)"

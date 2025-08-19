@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 /**
  * Hook to debounce a value
@@ -24,7 +24,7 @@ export function useDebounce<T>(value: T, delay: number): T {
  */
 export function useDebouncedCallback<T extends (...args: any[]) => any>(
   callback: T,
-  delay: number
+  delay: number,
 ): T {
   const [debouncedCallback, setDebouncedCallback] = useState<T>();
 
@@ -44,11 +44,8 @@ export function useDebouncedCallback<T extends (...args: any[]) => any>(
 /**
  * Hook for debounced search functionality
  */
-export function useDebouncedSearch(
-  searchFn: (query: string) => void,
-  delay: number = 300
-) {
-  const [query, setQuery] = useState("");
+export function useDebouncedSearch(searchFn: (query: string) => void, delay: number = 300) {
+  const [query, setQuery] = useState('');
   const debouncedQuery = useDebounce(query, delay);
 
   useEffect(() => {

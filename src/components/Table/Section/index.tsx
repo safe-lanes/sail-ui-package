@@ -1,1 +1,1 @@
-export { TableSectionView } from "./DataSectionTable"
+export { TableSectionView } from './DataSectionTable';
