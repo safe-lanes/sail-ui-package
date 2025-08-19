@@ -23,7 +23,7 @@
 }
 
 .ag-theme-alpine .ag-icon {
-  color: white !important;
+  color: black !important;
 }
 
 .ag-theme-alpine .ag-header-cell .ag-icon {
@@ -35,7 +35,7 @@
 }
 
 .ag-theme-alpine .ag-header-cell .ag-icon-menu {
-  color: white !important;
+  color: black !important;
 }
 
 .ag-theme-alpine .ag-row {
