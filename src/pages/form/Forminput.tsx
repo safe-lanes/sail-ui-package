@@ -26,18 +26,18 @@ export default function Forminput() {
             label="Email"
             type="email"
             placeholder="Enter your email"
-            leftIcon={<Mail className="w-5 h-5" />}
+            leftIcon={<Mail className="w-5 h-8" />}
           />
           <Input
             label="Search"
             placeholder="Search..."
-            leftIcon={<Search className="w-5 h-5" />}
+            leftIcon={<Search className="w-5 h-8" />}
             helperText="Type to search through items"
           />
           <Input
             label="Settings"
             placeholder="Configure settings"
-            rightIcon={<Settings className="w-5 h-5" />}
+            rightIcon={<Settings className="w-5 h-8" />}
           />
           <Input
             label="Error Example"
@@ -51,27 +51,27 @@ export default function Forminput() {
             label="Password"
             type="password"
             placeholder="Enter your password"
-            leftIcon={<Lock className="w-5 h-5" />}
+            leftIcon={<Lock className="w-5 h-8" />}
           />
           <Input label="Number" type="number" placeholder="Enter a number" />
           <Input
             label="Phone"
             type="tel"
             placeholder="Enter phone number"
-            leftIcon={<Phone className="w-5 h-5" />}
+            leftIcon={<Phone className="w-5 h-8" />}
           />
           <Input
             label="URL"
             type="url"
             placeholder="Enter website URL"
-            leftIcon={<Globe className="w-5 h-5" />}
+            leftIcon={<Globe className="w-5 h-8" />}
           />
-          <Input label="Date" type="date" leftIcon={<Calendar className="w-5 h-5" />} />
-          <Input label="Time" type="time" leftIcon={<Clock className="w-5 h-5" />} />
+          <Input label="Date" type="date" leftIcon={<Calendar className="w-5 h-8" />} />
+          <Input label="Time" type="time" leftIcon={<Clock className="w-5 h-8" />} />
           <Input label="Date & Time" type="datetime-local" />
           <Input label="Month" type="month" />
           <Input label="Week" type="week" />
-          <Input label="Color Picker" type="color" leftIcon={<Palette className="w-5 h-5" />} />
+          <Input label="Color Picker" type="color" leftIcon={<Palette className="w-5 h-8" />} />
           <Input label="Range" type="range" min="0" max="100" />
           <Textarea
             id="demo-textarea"
@@ -104,7 +104,7 @@ export default function Forminput() {
                         name="radioGroup"
                         value="2"
                     /> */}
-          <Input label="File Upload" type="file" leftIcon={<Upload className="w-5 h-5" />} />
+          <Input label="File Upload" type="file" leftIcon={<Upload className="w-5 h-8" />} />
         </div>
       </Card>
     </>
