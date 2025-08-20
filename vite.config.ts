@@ -30,6 +30,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    exclude: ['lucide-react', '@radix-ui/react-slot'],
+    exclude: ['@radix-ui/react-slot'],
   },
 });
