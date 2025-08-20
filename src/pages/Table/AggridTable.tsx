@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { AgGridTable } from "../../components/Table/AgGrid/AgGridTable";
-import { Input } from "../../components/ui/Input";
+import React, { useEffect, useState } from 'react';
+import { AgGridTable } from '../../components/Table/AgGrid/AgGridTable';
+import { Input } from '../../components/ui/Input';
 
 // 👉 import static configs
-import columnDefs from "../../utils/tableData";
-import sampleRowData from "../../utils/rowData";
+import columnDefs from '../../utils/tableData';
+import sampleRowData from '../../utils/rowData';
 
 const AgGridPlayground: React.FC = () => {
   const [rowData, setRowData] = useState<any[]>([]);
@@ -22,14 +22,14 @@ const AgGridPlayground: React.FC = () => {
     enableRowGroup: true,
     enablePivot: true,
     enableAdvancedFilter: false,
-    rowSelection: "single" as "single" | "multiple" | false,
+    rowSelection: 'single' as 'single' | 'multiple' | false,
     pagination: true,
     paginationPageSize: 10,
     animateRows: true,
     enableRangeSelection: true,
-    enableCharts: true, 
+    enableCharts: true,
     autoHeight: false,
-    theme: "alpine" as "alpine" | "balham" | "material" | "legacy",
+    theme: 'alpine' as 'alpine' | 'balham' | 'material' | 'legacy',
   });
 
   const toggleOption = (key: keyof typeof options) => {
@@ -46,14 +46,14 @@ const AgGridPlayground: React.FC = () => {
       {/* Controls */}
       <div className="grid grid-cols-2 md:grid-cols-6 gap-4 bg-gray-50 p-4 rounded-lg shadow">
         {Object.keys(options).map((key) => {
-          if (key === "rowSelection" || key === "paginationPageSize" || key === "theme")
+          if (key === 'rowSelection' || key === 'paginationPageSize' || key === 'theme')
             return null;
           return (
             <Input
               key={key}
               label={key}
               className="w-4"
-              labelPosition={"left"}
+              labelPosition={'left'}
               type="checkbox"
               checked={options[key as keyof typeof options] as boolean}
               onChange={() => toggleOption(key as keyof typeof options)}
@@ -65,14 +65,12 @@ const AgGridPlayground: React.FC = () => {
         <label className="flex flex-col text-sm">
           Row Selection
           <select
-            value={options.rowSelection || ""}
+            value={options.rowSelection || ''}
             onChange={(e) =>
               setOptions((prev) => ({
                 ...prev,
                 rowSelection:
-                  e.target.value === ""
-                    ? false
-                    : (e.target.value as "single" | "multiple"),
+                  e.target.value === '' ? false : (e.target.value as 'single' | 'multiple'),
               }))
             }
             className="border rounded px-2 py-1"
@@ -122,12 +120,7 @@ const AgGridPlayground: React.FC = () => {
       </div>
 
       {/* Grid */}
-      <AgGridTable
-        rowData={rowData}
-        columnDefs={columnDefs}
-        licenseKey=''
-        {...options}
-      />
+      <AgGridTable rowData={rowData} columnDefs={columnDefs} licenseKey="" {...options} />
     </div>
   );
 };

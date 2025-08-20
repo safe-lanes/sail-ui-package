@@ -125,11 +125,11 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
   const gridApiRef = useRef<GridApi | null>(null);
 
   // useEffect(() => {
-    if (licenseKey) {
-      LicenseManager.setLicenseKey(licenseKey);
-    } else {
-      console.warn('⚠️ AG Grid Enterprise license key not provided.');
-    }
+  if (licenseKey) {
+    LicenseManager.setLicenseKey(licenseKey);
+  } else {
+    console.warn('⚠️ AG Grid Enterprise license key not provided.');
+  }
   // });
   //   ModuleRegistry.registerModules([
   //     AllEnterpriseModule,

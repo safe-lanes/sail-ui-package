@@ -22,7 +22,7 @@ export interface AgGridTableProps {
     enablePivot?: boolean;
     enableAdvancedFilter?: boolean;
     rowSelection?: 'single' | 'multiple' | false;
-    theme?: string;
+    theme?: 'alpine' | 'balham' | 'material' | 'legacy';
     gridOptions?: Partial<GridOptions>;
     autoHeight?: boolean;
     maxHeight?: string | number;
