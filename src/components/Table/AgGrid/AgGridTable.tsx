@@ -117,8 +117,8 @@ export const AgGridTable: React.FC<AgGridTableProps> = ({
   pagination = false,
   paginationPageSize = 20,
   animateRows = true,
-  enableRangeSelection = false,
-  enableCharts = false,
+  enableRangeSelection = true,
+  enableCharts = true,
   suppressRowClickSelection = false,
   licenseKey,
 }) => {
