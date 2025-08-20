@@ -59,7 +59,7 @@ const tableData: ColDef[] = [
     type: "numericColumn",
     enableValue: true,
     aggFunc: "avg",
-    cellRenderer: (params) =>
+    cellRenderer: (params:any) =>
       params.value ? params.value.toFixed(1) : "0.0",
   },
   {
