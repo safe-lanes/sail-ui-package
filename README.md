@@ -83,18 +83,17 @@ A big thanks to all who helped build this UI library!
 <tr>
     <td align="center">
         <a href="https://github.com/harendra-singh-negi">
-            <img src="https://avatars.githubusercontent.com/u/94893558?s=64&v=4" width="50;" alt="Harendra Singh Negi"/>
+            <img src="https://avatars.githubusercontent.com/u/94893558?v=4" width="50;" alt="harendra-singh-negi"/>
             <br />
-            <sub><b>Harendra Singh Negi</b></sub>
-        </a>
-    </td>  
-     <td align="center">
-        <a href="https://github.com/Datta-Khade">
-            <img src="https://avatars.githubusercontent.com/u/87643529?s=64&v=4" width="50;" alt="safe-lanes"/>
-            <br />
-            <sub><b>Dattatray A Khade</b></sub>
+            <sub><b>harendra-singh-negi</b></sub>
         </a>
     </td>
-    </tr>
+    <td align="center">
+        <a href="https://github.com/safe-lanes">
+            <img src="https://avatars.githubusercontent.com/u/224569240?v=4" width="50;" alt="safe-lanes"/>
+            <br />
+            <sub><b>safe-lanes</b></sub>
+        </a>
+    </td></tr>
 </table>
 <!-- readme: contributors -end -->
